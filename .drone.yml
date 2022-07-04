@@ -26,6 +26,23 @@ steps:
     commands:
       - ./run.sh build
 
+  - name: push
+    image: docker:20.10.17-dind
+    volumes:
+      - name: dockersock
+        path: /var/run
+    when:
+      branch:
+        - main
+      event:
+        - push
+    environment:
+      DOCKER_TOKEN:
+        from_secret: docker_token
+    commands:
+      - echo $DOCKER_TOKEN | docker login --username weastur --password-stdin
+      - ./run.sh push
+
   - name: slack
     image: plugins/slack
     when:
