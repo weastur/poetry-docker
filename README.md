@@ -51,3 +51,20 @@ wheel      0.37.1
 
 Also, pay attention that **there are no additional settings** of Poetry,
 like `poetry config virtualenvs.in-project true`
+
+Every single step of build process runs with Drone CI/CD.
+
+## Contributing
+
+You need an amd64 Linux host with Docker installed.
+macOS and Windows + WSL would likely work,
+but I haven't tested it.
+You can start from `.drone.yml` to inspect the build process.
+The main files are `Dockerfile` and `run.sh`.
+
+Also, you can use [pre-commit](https://pre-commit.com) to run some checks
+locally before commit.
+
+```bash
+pre-commit install
+```
