@@ -16,6 +16,15 @@ steps:
     image: weastur/metalinter
     commands:
       - hadolint Dockerfile
+      - shellcheck *.sh
+
+  - name: build
+    image: docker:20.10.17-dind
+    volumes:
+      - name: dockersock
+        path: /var/run
+    commands:
+      - ./run.sh build
 
   - name: slack
     image: plugins/slack
