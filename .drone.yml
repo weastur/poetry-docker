@@ -1,0 +1,45 @@
+---
+kind: pipeline
+type: docker
+name: default
+
+steps:
+  - name: wait for docker
+    image: docker:20.10.17-dind
+    volumes:
+      - name: dockersock
+        path: /var/run
+    commands:
+      - while ! docker ps 2>&1 > /dev/null; do sleep 1; done
+
+  - name: lint
+    image: weastur/metalinter
+    commands:
+      - hadolint Dockerfile
+
+  - name: slack
+    image: plugins/slack
+    when:
+      status:
+        - success
+        - failure
+    settings:
+      webhook:
+        from_secret: slack_webhook
+
+services:
+  - name: docker
+    image: docker:20.10.17-dind
+    privileged: true
+    volumes:
+      - name: dockersock
+        path: /var/run
+
+volumes:
+  - name: dockersock
+    temp: {}
+
+trigger:
+  event:
+    - pull_request
+    - push
