@@ -35,7 +35,7 @@ is still `python3`, like in a Official Image.
 
 The image itself is built on top of an Official Python Image, with the
 reference Poetry's
-[installer](https://python-poetry.org/docs/master/#installing-with-the-official-installer),
+[installer](https://github.com/python-poetry/install.python-poetry.org),
 which means that **there are no additional dependencies** in the
 resulting image. For example:
 
