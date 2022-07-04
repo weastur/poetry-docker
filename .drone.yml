@@ -17,6 +17,7 @@ steps:
     commands:
       - hadolint Dockerfile
       - shellcheck *.sh
+      - yamllint .
       - markdownlint *.md
 
   - name: build
