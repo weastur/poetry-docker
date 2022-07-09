@@ -3,7 +3,7 @@
 set -ex
 
 tags=$(wget -q -S -O - https://raw.githubusercontent.com/docker-library/official-images/master/library/python 2>&1 | grep -E '^(Tags|SharedTags)\:.*' | cut -d: -f2 | tr ', ' '\n' | grep -v windows | sort | uniq | tr '\n' ' ')
-poetry_version=1.1.13
+poetry_version=1.1.14
 wget -q -S -O install.py https://install.python-poetry.org
 
 if [ "$1" = "build" ]; then
