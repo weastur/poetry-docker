@@ -11,6 +11,7 @@ RUN --mount=type=bind,source=install.py,target=/install.py set -eux; \
             linux-headers \
             libffi-dev \
             musl-dev \
+            cargo \
         ; \
         POETRY_VERSION=$POETRY_VERSION python /install.py ; \
         apk del --no-network .build-deps; \
