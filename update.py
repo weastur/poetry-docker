@@ -59,7 +59,9 @@ GH_ACTION_BUILD_AND_PUSH_STEP = Template(
         platforms: $platforms
         push: true
         tags: $tags
-        build-args: BASE_IMAGE_VERSION=$base_image_version,POETRY_VERSION=$poetry_version
+        build-args: |
+          BASE_IMAGE_VERSION=$base_image_version
+          POETRY_VERSION=$poetry_version
 """
 )
 
