@@ -4,7 +4,7 @@ import urllib.request
 import re
 
 PYTHON_LIBRARY_URL = 'https://raw.githubusercontent.com/docker-library/official-images/master/library/python'
-PARSING_PATTERN = re.compile(r"^Tags\:(?P<tags>.*)(\nSharedTags\:(?P<shared_tags>.*))?\nArchitectures\:(?P<architectures>.*)", re.MULTILINE)
+PARSING_PATTERN = re.compile(r"^Tags\:(?P<tags>(?!.*windows).*)(\nSharedTags\:(?P<shared_tags>.*))?\nArchitectures\:(?P<architectures>.*)", re.MULTILINE)
 
 response = urllib.request.urlopen(PYTHON_LIBRARY_URL)
 data = response.read().decode('utf-8')
