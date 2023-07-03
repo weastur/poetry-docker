@@ -29,9 +29,9 @@ GH_ACTION_START = """---
 name: Build and Push Docker Image
 
 on:
-  push:
-    branches:
-      - main
+  schedule:
+    - cron: '0 0 * * 1'
+  workflow_dispatch:
 
 jobs:
   build-and-push:
