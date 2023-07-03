@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
 
 import urllib.request
-from string import Template
 import re
+import json
+
+from string import Template
 
 ARCH_TO_PLATFORM = {
     "amd64": "linux/amd64",
@@ -16,7 +18,8 @@ ARCH_TO_PLATFORM = {
     "mips64le": "linux/mips64le",
 }
 IMAGE_NAME = "weastur/poetry"
-POETRY_VERSION = "1.5.1"
+POETRY_INSTALLER_URL = "https://install.python-poetry.org"
+POETRY_RELEASES_URL = "https://api.github.com/repos/python-poetry/poetry/releases/latest"
 PYTHON_LIBRARY_URL = "https://raw.githubusercontent.com/docker-library/official-images/master/library/python"
 PARSING_PATTERN = re.compile(
     r"^Tags\:(?P<tags>(?!.*windows).*)(\nSharedTags\:(?P<shared_tags>.*))?\nArchitectures\:(?P<architectures>.*)",
@@ -63,33 +66,41 @@ GH_ACTION_BUILD_AND_PUSH_STEP = Template(
 )
 
 
-def _archs_to_platforms(archs: str) -> str:
+def _get_latest_poetry_version() -> str:
+    with urllib.request.urlopen(POETRY_RELEASES_URL) as response:
+        data = json.loads(response.read().decode())
+        return data["tag_name"]
+
+
+def _make_platforms(archs: str) -> str:
     return ",".join(ARCH_TO_PLATFORM[arch] for arch in archs.strip().split(", "))
 
 
-def _make_tags(raw_tags: str) -> list[str]:
+def _make_tags(raw_tags: str, poetry_version: str) -> list[str]:
     tags = []
     for tag in raw_tags.split(", "):
         tags.append(f"{IMAGE_NAME}:latest-python-{tag}")
-        tags.append(f"{IMAGE_NAME}:{POETRY_VERSION}-python-{tag}")
+        tags.append(f"{IMAGE_NAME}:{poetry_version}-python-{tag}")
     return tags
 
 
-response = urllib.request.urlopen(PYTHON_LIBRARY_URL)
-data = response.read().decode("utf-8")
+with urllib.request.urlopen(PYTHON_LIBRARY_URL) as response:
+    data = response.read().decode("utf-8")
+urllib.request.urlretrieve(POETRY_INSTALLER_URL, "install.py")
 action = GH_ACTION_START
+poetry_version = _get_latest_poetry_version()
 
 for match in PARSING_PATTERN.finditer(data):
     raw_tags = (
         match.groupdict()["tags"] + (match.groupdict()["shared_tags"] or "")
     ).strip()
-    platforms = _archs_to_platforms(match.groupdict()["architectures"])
-    tags = _make_tags(raw_tags)
+    platforms = _make_platforms(match.groupdict()["architectures"])
+    tags = _make_tags(raw_tags, poetry_version)
     action += GH_ACTION_BUILD_AND_PUSH_STEP.substitute(
         raw_tags=raw_tags,
         platforms=platforms,
         tags=tags,
-        poetry_version=POETRY_VERSION,
+        poetry_version=poetry_version,
         base_image_version=raw_tags.split(', ')[0],
     )
 
