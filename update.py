@@ -18,7 +18,6 @@ ARCH_TO_PLATFORM = {
     "mips64le": "linux/mips64le",
 }
 IMAGE_NAME = "weastur/poetry"
-POETRY_INSTALLER_URL = "https://install.python-poetry.org"
 POETRY_RELEASES_URL = "https://api.github.com/repos/python-poetry/poetry/releases/latest"
 PYTHON_LIBRARY_URL = "https://raw.githubusercontent.com/docker-library/official-images/master/library/python"
 PARSING_PATTERN = re.compile(
@@ -45,6 +44,10 @@ jobs:
       with:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+    - name: Download poetry installer
+      run: |
+        wget -q -S -O install.py https://install.python-poetry.org
 
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v1
@@ -86,7 +89,6 @@ def _make_tags(raw_tags: str, poetry_version: str) -> str:
 
 with urllib.request.urlopen(PYTHON_LIBRARY_URL) as response:
     data = response.read().decode("utf-8")
-urllib.request.urlretrieve(POETRY_INSTALLER_URL, "install.py")
 action = GH_ACTION_START
 poetry_version = _get_latest_poetry_version()
 
