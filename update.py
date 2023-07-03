@@ -89,9 +89,10 @@ action = GH_ACTION_START
 poetry_version = _get_latest_poetry_version()
 
 for match in PARSING_PATTERN.finditer(data):
-    raw_tags = (
-        match.groupdict()["tags"] + (match.groupdict()["shared_tags"] or "")
-    ).strip()
+    raw_tags = match.groupdict()["tags"].strip()
+    if match.groupdict()["shared_tags"]:
+        raw_tags += ", " + match.groupdict()["shared_tags"].strip()
+    raw_tags = raw_tags.strip()
     platforms = _make_platforms(match.groupdict()["architectures"])
     tags = _make_tags(raw_tags, poetry_version)
     action += GH_ACTION_BUILD_AND_PUSH_STEP.substitute(
