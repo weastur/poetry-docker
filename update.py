@@ -59,9 +59,7 @@ GH_ACTION_BUILD_AND_PUSH_STEP = Template(
         platforms: $platforms
         push: true
         tags: $tags
-        build-args:
-          BASE_IMAGE_VERSION: $base_image_version
-          POETRY_VERSION: $poetry_version
+        build-args: BASE_IMAGE_VERSION=$base_image_version,POETRY_VERSION=$poetry_version
 """
 )
 
@@ -76,12 +74,12 @@ def _make_platforms(archs: str) -> str:
     return ",".join(ARCH_TO_PLATFORM[arch] for arch in archs.strip().split(", "))
 
 
-def _make_tags(raw_tags: str, poetry_version: str) -> list[str]:
+def _make_tags(raw_tags: str, poetry_version: str) -> str:
     tags = []
     for tag in raw_tags.split(", "):
         tags.append(f"{IMAGE_NAME}:latest-python-{tag}")
         tags.append(f"{IMAGE_NAME}:{poetry_version}-python-{tag}")
-    return tags
+    return ','.join(tags)
 
 
 with urllib.request.urlopen(PYTHON_LIBRARY_URL) as response:
