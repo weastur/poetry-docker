@@ -40,7 +40,7 @@ jobs:
       uses: actions/checkout@v3
 
     - name: Login to DockerHub
-      uses: docker/login-action@v1
+      uses: docker/login-action@v2
       with:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
@@ -50,12 +50,12 @@ jobs:
         wget -q -S -O install.py https://install.python-poetry.org
 
     - name: Set up Docker Buildx
-      uses: docker/setup-buildx-action@v1
+      uses: docker/setup-buildx-action@v2
 """
 GH_ACTION_BUILD_AND_PUSH_STEP = Template(
     """
     - name: Build and push ($raw_tags)
-      uses: docker/build-push-action@v2
+      uses: docker/build-push-action@v3
       with:
         context: .
         file: ./Dockerfile
