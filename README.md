@@ -1,7 +1,7 @@
 # poetry-docker
 
 ![Update](https://github.com/weastur/poetry-docker/workflows/Update/badge.svg)
-![Build and Push](https://github.com/weastur/poetry-docker/workflows/Build%20And%20Push%20Docker%20Image/badge.svg)
+![Build and Push](https://github.com/weastur/poetry-docker/workflows/Build%20and%20Push/badge.svg)
 [![Docker Pulls](https://img.shields.io/docker/pulls/weastur/poetry)](https://hub.docker.com/r/weastur/poetry/)
 ![GitHub](https://img.shields.io/github/license/weastur/poetry-docker)
 

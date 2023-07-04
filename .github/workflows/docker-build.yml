@@ -1,5 +1,5 @@
 ---
-name: Build and Push Docker Image
+name: Build and Push
 
 on:
   schedule:

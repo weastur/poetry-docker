@@ -25,7 +25,7 @@ PARSING_PATTERN = re.compile(
     re.MULTILINE,
 )
 GH_ACTION_START = """---
-name: Build and Push Docker Image
+name: Build and Push
 
 on:
   schedule:
