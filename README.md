@@ -5,22 +5,21 @@
 [![Docker Pulls](https://img.shields.io/docker/pulls/weastur/poetry)](https://hub.docker.com/r/weastur/poetry/)
 ![GitHub](https://img.shields.io/github/license/weastur/poetry-docker)
 
-Rebuilding of every actual **non-windows**
-[Official Python](https://hub.docker.com/_/python/)
-docker image with the addition of [Poetry](https://python-poetry.org)
+**non-windows** [Official Python](https://hub.docker.com/_/python/)
+docker images with the addition of the latest [Poetry](https://python-poetry.org)
 
 ## Usage
 
-Image tags are generated from the next template:
+Image tags are generating from the next template:
 `{poetry-version}-python-{official-python-image-tag}`,
 where `{poetry-version}` is numeric version or `latest`.
 
 For example:
 
 ```Dockerfile
-FROM weastur/poetry:1.1.13-python-3.10.5-bullseye
-FROM weastur/poetry:1.1.13-python-3.9-alpine
-FROM weastur/poetry:latest-python-3.8
+FROM weastur/poetry:1.5.1-python-3.11.4-bookworm
+FROM weastur/poetry:1.5.1-python-3.11-alpine
+FROM weastur/poetry:latest-python-3.11
 ```
 
 There is one special tag - `latest` - which is equivalent to
@@ -60,7 +59,7 @@ Every single step of build process runs with Drone CI/CD.
 You need an amd64 Linux host with Docker installed.
 macOS and Windows + WSL would likely work,
 but I haven't tested it.
-You can start from `.drone.yml` to inspect the build process.
+You can start from `.github/workflows/docker-build.yml` to inspect the build process.
 The main files are `Dockerfile` and `run.sh`.
 
 Also, you can use [pre-commit](https://pre-commit.com) to run some checks
@@ -69,3 +68,18 @@ locally before commit.
 ```bash
 pre-commit install
 ```
+
+## Support
+
+If you want to support the development or say thanks, become a GitHub Sponsor or
+
+<a href="https://www.buymeacoffee.com/weastur" target="_blank">
+<img src="https://cdn.buymeacoffee.com/buttons/default-orange.png"
+    alt="Buy Me A Coffee"
+    height="41"
+    width="174">
+</a>
+
+## License
+
+MIT, see [LICENSE](./LICENSE).
