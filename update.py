@@ -84,6 +84,8 @@ def _make_tags(raw_tags: str, poetry_version: str) -> str:
     for tag in raw_tags.split(", "):
         tags.append(f"{IMAGE_NAME}:latest-python-{tag}")
         tags.append(f"{IMAGE_NAME}:{poetry_version}-python-{tag}")
+        if tag == 'latest':
+            tags.append(f"{IMAGE_NAME}:latest")
     return ','.join(tags)
 
 
