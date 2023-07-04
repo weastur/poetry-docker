@@ -1,10 +1,11 @@
 # poetry-docker
 
-[![Build Status](https://drone.weastur.com/api/badges/weastur/poetry-docker/status.svg)](https://drone.weastur.com/weastur/poetry-docker)
+![Update](https://github.com/weastur/poetry-docker/workflows/Update/badge.svg)
+![Build and Push](https://github.com/weastur/poetry-docker/workflows/Build%20And%20Push%20Docker%20Image/badge.svg)
 [![Docker Pulls](https://img.shields.io/docker/pulls/weastur/poetry)](https://hub.docker.com/r/weastur/poetry/)
 ![GitHub](https://img.shields.io/github/license/weastur/poetry-docker)
 
-Rebuilding of every actual **amd64 non-windows**
+Rebuilding of every actual **non-windows**
 [Official Python](https://hub.docker.com/_/python/)
 docker image with the addition of [Poetry](https://python-poetry.org)
 
