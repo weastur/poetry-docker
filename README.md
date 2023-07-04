@@ -10,9 +10,9 @@ docker images with the addition of the latest [Poetry](https://python-poetry.org
 
 ## Usage
 
-Image tags are generating from the next template:
+Image tags are generated from the next template:
 `{poetry-version}-python-{official-python-image-tag}`,
-where `{poetry-version}` is numeric version or `latest`.
+where `{poetry-version}` is a numeric version or `latest`.
 
 For example:
 
@@ -29,7 +29,7 @@ based on `python:latest` image.
 ### Usage with `docker run`
 
 The image can be run with `docker run` command. Notice that the `COMMAND` inside
-is still `python3`, like in a Official Image.
+is still `python3`, like in an Official Image.
 
 ## Internals
 
@@ -52,18 +52,16 @@ wheel      0.37.1
 Also, pay attention that **there are no additional settings** of Poetry,
 like `poetry config virtualenvs.in-project true`
 
-Every single step of build process runs with Drone CI/CD.
+Every single step of the build process runs with GitHub Actions.
 
 ## Contributing
 
-You need an amd64 Linux host with Docker installed.
-macOS and Windows + WSL would likely work,
-but I haven't tested it.
+You need Docker installed.
 You can start from `.github/workflows/docker-build.yml` to inspect the build process.
-The main files are `Dockerfile` and `run.sh`.
+The main files are `Dockerfile` and `update.py`.
 
 Also, you can use [pre-commit](https://pre-commit.com) to run some checks
-locally before commit.
+locally before committing.
 
 ```bash
 pre-commit install
