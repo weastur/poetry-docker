@@ -24,22 +24,22 @@ repos:
       - id: destroyed-symlinks
       - id: forbid-submodules
   - repo: https://github.com/jumanjihouse/pre-commit-hooks
-    rev: '2.1.6'
+    rev: '3.0.0'
     hooks:
       - id: shellcheck
         exclude: ^tests/.*$
   - repo: https://github.com/hadolint/hadolint
-    rev: v2.12.0
+    rev: v2.12.1-beta
     hooks:
       - id: hadolint
         exclude: ^tests/.*$
   - repo: https://github.com/igorshubovych/markdownlint-cli
-    rev: v0.31.1
+    rev: v0.35.0
     hooks:
       - id: markdownlint
         exclude: ^(tests|.github)/.*$
   - repo: https://github.com/adrienverge/yamllint
-    rev: v1.26.3
+    rev: v1.32.0
     hooks:
       - id: yamllint
   - repo: https://github.com/jorisroovers/gitlint
@@ -47,6 +47,6 @@ repos:
     hooks:
       - id: gitlint
   - repo: https://github.com/jumanjihouse/pre-commit-hooks
-    rev: '2.1.6'
+    rev: '3.0.0'
     hooks:
       - id: shellcheck
