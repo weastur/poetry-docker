@@ -2,4 +2,4 @@
 
 Please, DO NOT create a public issue for a security problem.
 
-Email directly to me@weastur.com
+Email directly to <me@weastur.com>
