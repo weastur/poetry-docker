@@ -21,7 +21,7 @@ IMAGE_NAME = "weastur/poetry"
 POETRY_RELEASES_URL = "https://api.github.com/repos/python-poetry/poetry/releases/latest"
 PYTHON_LIBRARY_URL = "https://raw.githubusercontent.com/docker-library/official-images/master/library/python"
 PARSING_PATTERN = re.compile(
-    r"^Tags\:(?P<tags>(?!.*windows).*)(\nSharedTags\:(?P<shared_tags>.*))?\nArchitectures\:(?P<architectures>.*)",
+    r"^Tags\:(?P<tags>(?!(.*windows|\ 3\.7.\d+)).*)(\nSharedTags\:(?P<shared_tags>.*))?\nArchitectures\:(?P<architectures>.*)",
     re.MULTILINE,
 )
 GH_ACTION_START = """---
