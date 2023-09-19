@@ -27,7 +27,7 @@ jobs:
       uses: docker/setup-buildx-action@v3
 
     - name: Build and push (3.12.0rc2-bookworm, 3.12-rc-bookworm, 3.12.0rc2, 3.12-rc)
-      uses: docker/build-push-action@v3
+      uses: docker/build-push-action@v5
       with:
         context: .
         file: ./Dockerfile
@@ -39,7 +39,7 @@ jobs:
           POETRY_VERSION=1.6.1
 
     - name: Build and push (3.12.0rc2-slim-bookworm, 3.12-rc-slim-bookworm, 3.12.0rc2-slim, 3.12-rc-slim)
-      uses: docker/build-push-action@v3
+      uses: docker/build-push-action@v5
       with:
         context: .
         file: ./Dockerfile
@@ -51,7 +51,7 @@ jobs:
           POETRY_VERSION=1.6.1
 
     - name: Build and push (3.12.0rc2-bullseye, 3.12-rc-bullseye)
-      uses: docker/build-push-action@v3
+      uses: docker/build-push-action@v5
       with:
         context: .
         file: ./Dockerfile
@@ -63,7 +63,7 @@ jobs:
           POETRY_VERSION=1.6.1
 
     - name: Build and push (3.12.0rc2-slim-bullseye, 3.12-rc-slim-bullseye)
-      uses: docker/build-push-action@v3
+      uses: docker/build-push-action@v5
       with:
         context: .
         file: ./Dockerfile
@@ -75,7 +75,7 @@ jobs:
           POETRY_VERSION=1.6.1
 
     - name: Build and push (3.12.0rc2-alpine3.18, 3.12-rc-alpine3.18, 3.12.0rc2-alpine, 3.12-rc-alpine)
-      uses: docker/build-push-action@v3
+      uses: docker/build-push-action@v5
       with:
         context: .
         file: ./Dockerfile
@@ -87,7 +87,7 @@ jobs:
           POETRY_VERSION=1.6.1
 
     - name: Build and push (3.12.0rc2-alpine3.17, 3.12-rc-alpine3.17)
-      uses: docker/build-push-action@v3
+      uses: docker/build-push-action@v5
       with:
         context: .
         file: ./Dockerfile
@@ -99,7 +99,7 @@ jobs:
           POETRY_VERSION=1.6.1
 
     - name: Build and push (3.11.5-bookworm, 3.11-bookworm, 3-bookworm, bookworm, 3.11.5, 3.11, 3, latest)
-      uses: docker/build-push-action@v3
+      uses: docker/build-push-action@v5
       with:
         context: .
         file: ./Dockerfile
@@ -111,7 +111,7 @@ jobs:
           POETRY_VERSION=1.6.1
 
     - name: Build and push (3.11.5-slim-bookworm, 3.11-slim-bookworm, 3-slim-bookworm, slim-bookworm, 3.11.5-slim, 3.11-slim, 3-slim, slim)
-      uses: docker/build-push-action@v3
+      uses: docker/build-push-action@v5
       with:
         context: .
         file: ./Dockerfile
@@ -123,7 +123,7 @@ jobs:
           POETRY_VERSION=1.6.1
 
     - name: Build and push (3.11.5-bullseye, 3.11-bullseye, 3-bullseye, bullseye)
-      uses: docker/build-push-action@v3
+      uses: docker/build-push-action@v5
       with:
         context: .
         file: ./Dockerfile
@@ -135,7 +135,7 @@ jobs:
           POETRY_VERSION=1.6.1
 
     - name: Build and push (3.11.5-slim-bullseye, 3.11-slim-bullseye, 3-slim-bullseye, slim-bullseye)
-      uses: docker/build-push-action@v3
+      uses: docker/build-push-action@v5
       with:
         context: .
         file: ./Dockerfile
@@ -147,7 +147,7 @@ jobs:
           POETRY_VERSION=1.6.1
 
     - name: Build and push (3.11.5-alpine3.18, 3.11-alpine3.18, 3-alpine3.18, alpine3.18, 3.11.5-alpine, 3.11-alpine, 3-alpine, alpine)
-      uses: docker/build-push-action@v3
+      uses: docker/build-push-action@v5
       with:
         context: .
         file: ./Dockerfile
@@ -159,7 +159,7 @@ jobs:
           POETRY_VERSION=1.6.1
 
     - name: Build and push (3.11.5-alpine3.17, 3.11-alpine3.17, 3-alpine3.17, alpine3.17)
-      uses: docker/build-push-action@v3
+      uses: docker/build-push-action@v5
       with:
         context: .
         file: ./Dockerfile
@@ -171,7 +171,7 @@ jobs:
           POETRY_VERSION=1.6.1
 
     - name: Build and push (3.10.13-bookworm, 3.10-bookworm, 3.10.13, 3.10)
-      uses: docker/build-push-action@v3
+      uses: docker/build-push-action@v5
       with:
         context: .
         file: ./Dockerfile
@@ -183,7 +183,7 @@ jobs:
           POETRY_VERSION=1.6.1
 
     - name: Build and push (3.10.13-slim-bookworm, 3.10-slim-bookworm, 3.10.13-slim, 3.10-slim)
-      uses: docker/build-push-action@v3
+      uses: docker/build-push-action@v5
       with:
         context: .
         file: ./Dockerfile
@@ -195,7 +195,7 @@ jobs:
           POETRY_VERSION=1.6.1
 
     - name: Build and push (3.10.13-bullseye, 3.10-bullseye)
-      uses: docker/build-push-action@v3
+      uses: docker/build-push-action@v5
       with:
         context: .
         file: ./Dockerfile
@@ -207,7 +207,7 @@ jobs:
           POETRY_VERSION=1.6.1
 
     - name: Build and push (3.10.13-slim-bullseye, 3.10-slim-bullseye)
-      uses: docker/build-push-action@v3
+      uses: docker/build-push-action@v5
       with:
         context: .
         file: ./Dockerfile
@@ -219,7 +219,7 @@ jobs:
           POETRY_VERSION=1.6.1
 
     - name: Build and push (3.10.13-alpine3.18, 3.10-alpine3.18, 3.10.13-alpine, 3.10-alpine)
-      uses: docker/build-push-action@v3
+      uses: docker/build-push-action@v5
       with:
         context: .
         file: ./Dockerfile
@@ -231,7 +231,7 @@ jobs:
           POETRY_VERSION=1.6.1
 
     - name: Build and push (3.10.13-alpine3.17, 3.10-alpine3.17)
-      uses: docker/build-push-action@v3
+      uses: docker/build-push-action@v5
       with:
         context: .
         file: ./Dockerfile
@@ -243,7 +243,7 @@ jobs:
           POETRY_VERSION=1.6.1
 
     - name: Build and push (3.9.18-bookworm, 3.9-bookworm, 3.9.18, 3.9)
-      uses: docker/build-push-action@v3
+      uses: docker/build-push-action@v5
       with:
         context: .
         file: ./Dockerfile
@@ -255,7 +255,7 @@ jobs:
           POETRY_VERSION=1.6.1
 
     - name: Build and push (3.9.18-slim-bookworm, 3.9-slim-bookworm, 3.9.18-slim, 3.9-slim)
-      uses: docker/build-push-action@v3
+      uses: docker/build-push-action@v5
       with:
         context: .
         file: ./Dockerfile
@@ -267,7 +267,7 @@ jobs:
           POETRY_VERSION=1.6.1
 
     - name: Build and push (3.9.18-bullseye, 3.9-bullseye)
-      uses: docker/build-push-action@v3
+      uses: docker/build-push-action@v5
       with:
         context: .
         file: ./Dockerfile
@@ -279,7 +279,7 @@ jobs:
           POETRY_VERSION=1.6.1
 
     - name: Build and push (3.9.18-slim-bullseye, 3.9-slim-bullseye)
-      uses: docker/build-push-action@v3
+      uses: docker/build-push-action@v5
       with:
         context: .
         file: ./Dockerfile
@@ -291,7 +291,7 @@ jobs:
           POETRY_VERSION=1.6.1
 
     - name: Build and push (3.9.18-alpine3.18, 3.9-alpine3.18, 3.9.18-alpine, 3.9-alpine)
-      uses: docker/build-push-action@v3
+      uses: docker/build-push-action@v5
       with:
         context: .
         file: ./Dockerfile
@@ -303,7 +303,7 @@ jobs:
           POETRY_VERSION=1.6.1
 
     - name: Build and push (3.9.18-alpine3.17, 3.9-alpine3.17)
-      uses: docker/build-push-action@v3
+      uses: docker/build-push-action@v5
       with:
         context: .
         file: ./Dockerfile
@@ -315,7 +315,7 @@ jobs:
           POETRY_VERSION=1.6.1
 
     - name: Build and push (3.8.18-bookworm, 3.8-bookworm, 3.8.18, 3.8)
-      uses: docker/build-push-action@v3
+      uses: docker/build-push-action@v5
       with:
         context: .
         file: ./Dockerfile
@@ -327,7 +327,7 @@ jobs:
           POETRY_VERSION=1.6.1
 
     - name: Build and push (3.8.18-slim-bookworm, 3.8-slim-bookworm, 3.8.18-slim, 3.8-slim)
-      uses: docker/build-push-action@v3
+      uses: docker/build-push-action@v5
       with:
         context: .
         file: ./Dockerfile
@@ -339,7 +339,7 @@ jobs:
           POETRY_VERSION=1.6.1
 
     - name: Build and push (3.8.18-bullseye, 3.8-bullseye)
-      uses: docker/build-push-action@v3
+      uses: docker/build-push-action@v5
       with:
         context: .
         file: ./Dockerfile
@@ -351,7 +351,7 @@ jobs:
           POETRY_VERSION=1.6.1
 
     - name: Build and push (3.8.18-slim-bullseye, 3.8-slim-bullseye)
-      uses: docker/build-push-action@v3
+      uses: docker/build-push-action@v5
       with:
         context: .
         file: ./Dockerfile
@@ -363,7 +363,7 @@ jobs:
           POETRY_VERSION=1.6.1
 
     - name: Build and push (3.8.18-alpine3.18, 3.8-alpine3.18, 3.8.18-alpine, 3.8-alpine)
-      uses: docker/build-push-action@v3
+      uses: docker/build-push-action@v5
       with:
         context: .
         file: ./Dockerfile
@@ -375,7 +375,7 @@ jobs:
           POETRY_VERSION=1.6.1
 
     - name: Build and push (3.8.18-alpine3.17, 3.8-alpine3.17)
-      uses: docker/build-push-action@v3
+      uses: docker/build-push-action@v5
       with:
         context: .
         file: ./Dockerfile
