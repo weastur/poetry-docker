@@ -33,10 +33,10 @@ jobs:
         file: ./Dockerfile
         platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64,linux/386,linux/ppc64le,linux/s390x
         push: true
-        tags: weastur/poetry:latest-python-3.13.0a1-bookworm,weastur/poetry:1.7.0-python-3.13.0a1-bookworm,weastur/poetry:latest-python-3.13-rc-bookworm,weastur/poetry:1.7.0-python-3.13-rc-bookworm,weastur/poetry:latest-python-3.13.0a1,weastur/poetry:1.7.0-python-3.13.0a1,weastur/poetry:latest-python-3.13-rc,weastur/poetry:1.7.0-python-3.13-rc
+        tags: weastur/poetry:latest-python-3.13.0a1-bookworm,weastur/poetry:1.7.1-python-3.13.0a1-bookworm,weastur/poetry:latest-python-3.13-rc-bookworm,weastur/poetry:1.7.1-python-3.13-rc-bookworm,weastur/poetry:latest-python-3.13.0a1,weastur/poetry:1.7.1-python-3.13.0a1,weastur/poetry:latest-python-3.13-rc,weastur/poetry:1.7.1-python-3.13-rc
         build-args: |
           BASE_IMAGE_VERSION=3.13.0a1-bookworm
-          POETRY_VERSION=1.7.0
+          POETRY_VERSION=1.7.1
 
     - name: Build and push (3.13.0a1-slim-bookworm, 3.13-rc-slim-bookworm, 3.13.0a1-slim, 3.13-rc-slim)
       uses: docker/build-push-action@v5
@@ -45,10 +45,10 @@ jobs:
         file: ./Dockerfile
         platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64,linux/386,linux/ppc64le,linux/s390x
         push: true
-        tags: weastur/poetry:latest-python-3.13.0a1-slim-bookworm,weastur/poetry:1.7.0-python-3.13.0a1-slim-bookworm,weastur/poetry:latest-python-3.13-rc-slim-bookworm,weastur/poetry:1.7.0-python-3.13-rc-slim-bookworm,weastur/poetry:latest-python-3.13.0a1-slim,weastur/poetry:1.7.0-python-3.13.0a1-slim,weastur/poetry:latest-python-3.13-rc-slim,weastur/poetry:1.7.0-python-3.13-rc-slim
+        tags: weastur/poetry:latest-python-3.13.0a1-slim-bookworm,weastur/poetry:1.7.1-python-3.13.0a1-slim-bookworm,weastur/poetry:latest-python-3.13-rc-slim-bookworm,weastur/poetry:1.7.1-python-3.13-rc-slim-bookworm,weastur/poetry:latest-python-3.13.0a1-slim,weastur/poetry:1.7.1-python-3.13.0a1-slim,weastur/poetry:latest-python-3.13-rc-slim,weastur/poetry:1.7.1-python-3.13-rc-slim
         build-args: |
           BASE_IMAGE_VERSION=3.13.0a1-slim-bookworm
-          POETRY_VERSION=1.7.0
+          POETRY_VERSION=1.7.1
 
     - name: Build and push (3.13.0a1-bullseye, 3.13-rc-bullseye)
       uses: docker/build-push-action@v5
@@ -57,10 +57,10 @@ jobs:
         file: ./Dockerfile
         platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64,linux/386,linux/ppc64le,linux/s390x
         push: true
-        tags: weastur/poetry:latest-python-3.13.0a1-bullseye,weastur/poetry:1.7.0-python-3.13.0a1-bullseye,weastur/poetry:latest-python-3.13-rc-bullseye,weastur/poetry:1.7.0-python-3.13-rc-bullseye
+        tags: weastur/poetry:latest-python-3.13.0a1-bullseye,weastur/poetry:1.7.1-python-3.13.0a1-bullseye,weastur/poetry:latest-python-3.13-rc-bullseye,weastur/poetry:1.7.1-python-3.13-rc-bullseye
         build-args: |
           BASE_IMAGE_VERSION=3.13.0a1-bullseye
-          POETRY_VERSION=1.7.0
+          POETRY_VERSION=1.7.1
 
     - name: Build and push (3.13.0a1-slim-bullseye, 3.13-rc-slim-bullseye)
       uses: docker/build-push-action@v5
@@ -69,10 +69,10 @@ jobs:
         file: ./Dockerfile
         platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64,linux/386,linux/ppc64le,linux/s390x
         push: true
-        tags: weastur/poetry:latest-python-3.13.0a1-slim-bullseye,weastur/poetry:1.7.0-python-3.13.0a1-slim-bullseye,weastur/poetry:latest-python-3.13-rc-slim-bullseye,weastur/poetry:1.7.0-python-3.13-rc-slim-bullseye
+        tags: weastur/poetry:latest-python-3.13.0a1-slim-bullseye,weastur/poetry:1.7.1-python-3.13.0a1-slim-bullseye,weastur/poetry:latest-python-3.13-rc-slim-bullseye,weastur/poetry:1.7.1-python-3.13-rc-slim-bullseye
         build-args: |
           BASE_IMAGE_VERSION=3.13.0a1-slim-bullseye
-          POETRY_VERSION=1.7.0
+          POETRY_VERSION=1.7.1
 
     - name: Build and push (3.13.0a1-alpine3.18, 3.13-rc-alpine3.18, 3.13.0a1-alpine, 3.13-rc-alpine)
       uses: docker/build-push-action@v5
@@ -81,10 +81,10 @@ jobs:
         file: ./Dockerfile
         platforms: linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64,linux/386,linux/ppc64le,linux/s390x
         push: true
-        tags: weastur/poetry:latest-python-3.13.0a1-alpine3.18,weastur/poetry:1.7.0-python-3.13.0a1-alpine3.18,weastur/poetry:latest-python-3.13-rc-alpine3.18,weastur/poetry:1.7.0-python-3.13-rc-alpine3.18,weastur/poetry:latest-python-3.13.0a1-alpine,weastur/poetry:1.7.0-python-3.13.0a1-alpine,weastur/poetry:latest-python-3.13-rc-alpine,weastur/poetry:1.7.0-python-3.13-rc-alpine
+        tags: weastur/poetry:latest-python-3.13.0a1-alpine3.18,weastur/poetry:1.7.1-python-3.13.0a1-alpine3.18,weastur/poetry:latest-python-3.13-rc-alpine3.18,weastur/poetry:1.7.1-python-3.13-rc-alpine3.18,weastur/poetry:latest-python-3.13.0a1-alpine,weastur/poetry:1.7.1-python-3.13.0a1-alpine,weastur/poetry:latest-python-3.13-rc-alpine,weastur/poetry:1.7.1-python-3.13-rc-alpine
         build-args: |
           BASE_IMAGE_VERSION=3.13.0a1-alpine3.18
-          POETRY_VERSION=1.7.0
+          POETRY_VERSION=1.7.1
 
     - name: Build and push (3.13.0a1-alpine3.17, 3.13-rc-alpine3.17)
       uses: docker/build-push-action@v5
@@ -93,10 +93,10 @@ jobs:
         file: ./Dockerfile
         platforms: linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64,linux/386,linux/ppc64le,linux/s390x
         push: true
-        tags: weastur/poetry:latest-python-3.13.0a1-alpine3.17,weastur/poetry:1.7.0-python-3.13.0a1-alpine3.17,weastur/poetry:latest-python-3.13-rc-alpine3.17,weastur/poetry:1.7.0-python-3.13-rc-alpine3.17
+        tags: weastur/poetry:latest-python-3.13.0a1-alpine3.17,weastur/poetry:1.7.1-python-3.13.0a1-alpine3.17,weastur/poetry:latest-python-3.13-rc-alpine3.17,weastur/poetry:1.7.1-python-3.13-rc-alpine3.17
         build-args: |
           BASE_IMAGE_VERSION=3.13.0a1-alpine3.17
-          POETRY_VERSION=1.7.0
+          POETRY_VERSION=1.7.1
 
     - name: Build and push (3.12.0-bookworm, 3.12-bookworm, 3-bookworm, bookworm, 3.12.0, 3.12, 3, latest)
       uses: docker/build-push-action@v5
@@ -105,10 +105,10 @@ jobs:
         file: ./Dockerfile
         platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64,linux/386,linux/ppc64le,linux/s390x
         push: true
-        tags: weastur/poetry:latest-python-3.12.0-bookworm,weastur/poetry:1.7.0-python-3.12.0-bookworm,weastur/poetry:latest-python-3.12-bookworm,weastur/poetry:1.7.0-python-3.12-bookworm,weastur/poetry:latest-python-3-bookworm,weastur/poetry:1.7.0-python-3-bookworm,weastur/poetry:latest-python-bookworm,weastur/poetry:1.7.0-python-bookworm,weastur/poetry:latest-python-3.12.0,weastur/poetry:1.7.0-python-3.12.0,weastur/poetry:latest-python-3.12,weastur/poetry:1.7.0-python-3.12,weastur/poetry:latest-python-3,weastur/poetry:1.7.0-python-3,weastur/poetry:latest-python-latest,weastur/poetry:1.7.0-python-latest,weastur/poetry:latest
+        tags: weastur/poetry:latest-python-3.12.0-bookworm,weastur/poetry:1.7.1-python-3.12.0-bookworm,weastur/poetry:latest-python-3.12-bookworm,weastur/poetry:1.7.1-python-3.12-bookworm,weastur/poetry:latest-python-3-bookworm,weastur/poetry:1.7.1-python-3-bookworm,weastur/poetry:latest-python-bookworm,weastur/poetry:1.7.1-python-bookworm,weastur/poetry:latest-python-3.12.0,weastur/poetry:1.7.1-python-3.12.0,weastur/poetry:latest-python-3.12,weastur/poetry:1.7.1-python-3.12,weastur/poetry:latest-python-3,weastur/poetry:1.7.1-python-3,weastur/poetry:latest-python-latest,weastur/poetry:1.7.1-python-latest,weastur/poetry:latest
         build-args: |
           BASE_IMAGE_VERSION=3.12.0-bookworm
-          POETRY_VERSION=1.7.0
+          POETRY_VERSION=1.7.1
 
     - name: Build and push (3.12.0-slim-bookworm, 3.12-slim-bookworm, 3-slim-bookworm, slim-bookworm, 3.12.0-slim, 3.12-slim, 3-slim, slim)
       uses: docker/build-push-action@v5
@@ -117,10 +117,10 @@ jobs:
         file: ./Dockerfile
         platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64,linux/386,linux/ppc64le,linux/s390x
         push: true
-        tags: weastur/poetry:latest-python-3.12.0-slim-bookworm,weastur/poetry:1.7.0-python-3.12.0-slim-bookworm,weastur/poetry:latest-python-3.12-slim-bookworm,weastur/poetry:1.7.0-python-3.12-slim-bookworm,weastur/poetry:latest-python-3-slim-bookworm,weastur/poetry:1.7.0-python-3-slim-bookworm,weastur/poetry:latest-python-slim-bookworm,weastur/poetry:1.7.0-python-slim-bookworm,weastur/poetry:latest-python-3.12.0-slim,weastur/poetry:1.7.0-python-3.12.0-slim,weastur/poetry:latest-python-3.12-slim,weastur/poetry:1.7.0-python-3.12-slim,weastur/poetry:latest-python-3-slim,weastur/poetry:1.7.0-python-3-slim,weastur/poetry:latest-python-slim,weastur/poetry:1.7.0-python-slim
+        tags: weastur/poetry:latest-python-3.12.0-slim-bookworm,weastur/poetry:1.7.1-python-3.12.0-slim-bookworm,weastur/poetry:latest-python-3.12-slim-bookworm,weastur/poetry:1.7.1-python-3.12-slim-bookworm,weastur/poetry:latest-python-3-slim-bookworm,weastur/poetry:1.7.1-python-3-slim-bookworm,weastur/poetry:latest-python-slim-bookworm,weastur/poetry:1.7.1-python-slim-bookworm,weastur/poetry:latest-python-3.12.0-slim,weastur/poetry:1.7.1-python-3.12.0-slim,weastur/poetry:latest-python-3.12-slim,weastur/poetry:1.7.1-python-3.12-slim,weastur/poetry:latest-python-3-slim,weastur/poetry:1.7.1-python-3-slim,weastur/poetry:latest-python-slim,weastur/poetry:1.7.1-python-slim
         build-args: |
           BASE_IMAGE_VERSION=3.12.0-slim-bookworm
-          POETRY_VERSION=1.7.0
+          POETRY_VERSION=1.7.1
 
     - name: Build and push (3.12.0-bullseye, 3.12-bullseye, 3-bullseye, bullseye)
       uses: docker/build-push-action@v5
@@ -129,10 +129,10 @@ jobs:
         file: ./Dockerfile
         platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64,linux/386,linux/ppc64le,linux/s390x
         push: true
-        tags: weastur/poetry:latest-python-3.12.0-bullseye,weastur/poetry:1.7.0-python-3.12.0-bullseye,weastur/poetry:latest-python-3.12-bullseye,weastur/poetry:1.7.0-python-3.12-bullseye,weastur/poetry:latest-python-3-bullseye,weastur/poetry:1.7.0-python-3-bullseye,weastur/poetry:latest-python-bullseye,weastur/poetry:1.7.0-python-bullseye
+        tags: weastur/poetry:latest-python-3.12.0-bullseye,weastur/poetry:1.7.1-python-3.12.0-bullseye,weastur/poetry:latest-python-3.12-bullseye,weastur/poetry:1.7.1-python-3.12-bullseye,weastur/poetry:latest-python-3-bullseye,weastur/poetry:1.7.1-python-3-bullseye,weastur/poetry:latest-python-bullseye,weastur/poetry:1.7.1-python-bullseye
         build-args: |
           BASE_IMAGE_VERSION=3.12.0-bullseye
-          POETRY_VERSION=1.7.0
+          POETRY_VERSION=1.7.1
 
     - name: Build and push (3.12.0-slim-bullseye, 3.12-slim-bullseye, 3-slim-bullseye, slim-bullseye)
       uses: docker/build-push-action@v5
@@ -141,10 +141,10 @@ jobs:
         file: ./Dockerfile
         platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64,linux/386,linux/ppc64le,linux/s390x
         push: true
-        tags: weastur/poetry:latest-python-3.12.0-slim-bullseye,weastur/poetry:1.7.0-python-3.12.0-slim-bullseye,weastur/poetry:latest-python-3.12-slim-bullseye,weastur/poetry:1.7.0-python-3.12-slim-bullseye,weastur/poetry:latest-python-3-slim-bullseye,weastur/poetry:1.7.0-python-3-slim-bullseye,weastur/poetry:latest-python-slim-bullseye,weastur/poetry:1.7.0-python-slim-bullseye
+        tags: weastur/poetry:latest-python-3.12.0-slim-bullseye,weastur/poetry:1.7.1-python-3.12.0-slim-bullseye,weastur/poetry:latest-python-3.12-slim-bullseye,weastur/poetry:1.7.1-python-3.12-slim-bullseye,weastur/poetry:latest-python-3-slim-bullseye,weastur/poetry:1.7.1-python-3-slim-bullseye,weastur/poetry:latest-python-slim-bullseye,weastur/poetry:1.7.1-python-slim-bullseye
         build-args: |
           BASE_IMAGE_VERSION=3.12.0-slim-bullseye
-          POETRY_VERSION=1.7.0
+          POETRY_VERSION=1.7.1
 
     - name: Build and push (3.12.0-alpine3.18, 3.12-alpine3.18, 3-alpine3.18, alpine3.18, 3.12.0-alpine, 3.12-alpine, 3-alpine, alpine)
       uses: docker/build-push-action@v5
@@ -153,10 +153,10 @@ jobs:
         file: ./Dockerfile
         platforms: linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64,linux/386,linux/ppc64le,linux/s390x
         push: true
-        tags: weastur/poetry:latest-python-3.12.0-alpine3.18,weastur/poetry:1.7.0-python-3.12.0-alpine3.18,weastur/poetry:latest-python-3.12-alpine3.18,weastur/poetry:1.7.0-python-3.12-alpine3.18,weastur/poetry:latest-python-3-alpine3.18,weastur/poetry:1.7.0-python-3-alpine3.18,weastur/poetry:latest-python-alpine3.18,weastur/poetry:1.7.0-python-alpine3.18,weastur/poetry:latest-python-3.12.0-alpine,weastur/poetry:1.7.0-python-3.12.0-alpine,weastur/poetry:latest-python-3.12-alpine,weastur/poetry:1.7.0-python-3.12-alpine,weastur/poetry:latest-python-3-alpine,weastur/poetry:1.7.0-python-3-alpine,weastur/poetry:latest-python-alpine,weastur/poetry:1.7.0-python-alpine
+        tags: weastur/poetry:latest-python-3.12.0-alpine3.18,weastur/poetry:1.7.1-python-3.12.0-alpine3.18,weastur/poetry:latest-python-3.12-alpine3.18,weastur/poetry:1.7.1-python-3.12-alpine3.18,weastur/poetry:latest-python-3-alpine3.18,weastur/poetry:1.7.1-python-3-alpine3.18,weastur/poetry:latest-python-alpine3.18,weastur/poetry:1.7.1-python-alpine3.18,weastur/poetry:latest-python-3.12.0-alpine,weastur/poetry:1.7.1-python-3.12.0-alpine,weastur/poetry:latest-python-3.12-alpine,weastur/poetry:1.7.1-python-3.12-alpine,weastur/poetry:latest-python-3-alpine,weastur/poetry:1.7.1-python-3-alpine,weastur/poetry:latest-python-alpine,weastur/poetry:1.7.1-python-alpine
         build-args: |
           BASE_IMAGE_VERSION=3.12.0-alpine3.18
-          POETRY_VERSION=1.7.0
+          POETRY_VERSION=1.7.1
 
     - name: Build and push (3.12.0-alpine3.17, 3.12-alpine3.17, 3-alpine3.17, alpine3.17)
       uses: docker/build-push-action@v5
@@ -165,10 +165,10 @@ jobs:
         file: ./Dockerfile
         platforms: linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64,linux/386,linux/ppc64le,linux/s390x
         push: true
-        tags: weastur/poetry:latest-python-3.12.0-alpine3.17,weastur/poetry:1.7.0-python-3.12.0-alpine3.17,weastur/poetry:latest-python-3.12-alpine3.17,weastur/poetry:1.7.0-python-3.12-alpine3.17,weastur/poetry:latest-python-3-alpine3.17,weastur/poetry:1.7.0-python-3-alpine3.17,weastur/poetry:latest-python-alpine3.17,weastur/poetry:1.7.0-python-alpine3.17
+        tags: weastur/poetry:latest-python-3.12.0-alpine3.17,weastur/poetry:1.7.1-python-3.12.0-alpine3.17,weastur/poetry:latest-python-3.12-alpine3.17,weastur/poetry:1.7.1-python-3.12-alpine3.17,weastur/poetry:latest-python-3-alpine3.17,weastur/poetry:1.7.1-python-3-alpine3.17,weastur/poetry:latest-python-alpine3.17,weastur/poetry:1.7.1-python-alpine3.17
         build-args: |
           BASE_IMAGE_VERSION=3.12.0-alpine3.17
-          POETRY_VERSION=1.7.0
+          POETRY_VERSION=1.7.1
 
     - name: Build and push (3.11.6-bookworm, 3.11-bookworm, 3.11.6, 3.11)
       uses: docker/build-push-action@v5
@@ -177,10 +177,10 @@ jobs:
         file: ./Dockerfile
         platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64,linux/386,linux/ppc64le,linux/s390x
         push: true
-        tags: weastur/poetry:latest-python-3.11.6-bookworm,weastur/poetry:1.7.0-python-3.11.6-bookworm,weastur/poetry:latest-python-3.11-bookworm,weastur/poetry:1.7.0-python-3.11-bookworm,weastur/poetry:latest-python-3.11.6,weastur/poetry:1.7.0-python-3.11.6,weastur/poetry:latest-python-3.11,weastur/poetry:1.7.0-python-3.11
+        tags: weastur/poetry:latest-python-3.11.6-bookworm,weastur/poetry:1.7.1-python-3.11.6-bookworm,weastur/poetry:latest-python-3.11-bookworm,weastur/poetry:1.7.1-python-3.11-bookworm,weastur/poetry:latest-python-3.11.6,weastur/poetry:1.7.1-python-3.11.6,weastur/poetry:latest-python-3.11,weastur/poetry:1.7.1-python-3.11
         build-args: |
           BASE_IMAGE_VERSION=3.11.6-bookworm
-          POETRY_VERSION=1.7.0
+          POETRY_VERSION=1.7.1
 
     - name: Build and push (3.11.6-slim-bookworm, 3.11-slim-bookworm, 3.11.6-slim, 3.11-slim)
       uses: docker/build-push-action@v5
@@ -189,10 +189,10 @@ jobs:
         file: ./Dockerfile
         platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64,linux/386,linux/ppc64le,linux/s390x
         push: true
-        tags: weastur/poetry:latest-python-3.11.6-slim-bookworm,weastur/poetry:1.7.0-python-3.11.6-slim-bookworm,weastur/poetry:latest-python-3.11-slim-bookworm,weastur/poetry:1.7.0-python-3.11-slim-bookworm,weastur/poetry:latest-python-3.11.6-slim,weastur/poetry:1.7.0-python-3.11.6-slim,weastur/poetry:latest-python-3.11-slim,weastur/poetry:1.7.0-python-3.11-slim
+        tags: weastur/poetry:latest-python-3.11.6-slim-bookworm,weastur/poetry:1.7.1-python-3.11.6-slim-bookworm,weastur/poetry:latest-python-3.11-slim-bookworm,weastur/poetry:1.7.1-python-3.11-slim-bookworm,weastur/poetry:latest-python-3.11.6-slim,weastur/poetry:1.7.1-python-3.11.6-slim,weastur/poetry:latest-python-3.11-slim,weastur/poetry:1.7.1-python-3.11-slim
         build-args: |
           BASE_IMAGE_VERSION=3.11.6-slim-bookworm
-          POETRY_VERSION=1.7.0
+          POETRY_VERSION=1.7.1
 
     - name: Build and push (3.11.6-bullseye, 3.11-bullseye)
       uses: docker/build-push-action@v5
@@ -201,10 +201,10 @@ jobs:
         file: ./Dockerfile
         platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64,linux/386,linux/ppc64le,linux/s390x
         push: true
-        tags: weastur/poetry:latest-python-3.11.6-bullseye,weastur/poetry:1.7.0-python-3.11.6-bullseye,weastur/poetry:latest-python-3.11-bullseye,weastur/poetry:1.7.0-python-3.11-bullseye
+        tags: weastur/poetry:latest-python-3.11.6-bullseye,weastur/poetry:1.7.1-python-3.11.6-bullseye,weastur/poetry:latest-python-3.11-bullseye,weastur/poetry:1.7.1-python-3.11-bullseye
         build-args: |
           BASE_IMAGE_VERSION=3.11.6-bullseye
-          POETRY_VERSION=1.7.0
+          POETRY_VERSION=1.7.1
 
     - name: Build and push (3.11.6-slim-bullseye, 3.11-slim-bullseye)
       uses: docker/build-push-action@v5
@@ -213,10 +213,10 @@ jobs:
         file: ./Dockerfile
         platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64,linux/386,linux/ppc64le,linux/s390x
         push: true
-        tags: weastur/poetry:latest-python-3.11.6-slim-bullseye,weastur/poetry:1.7.0-python-3.11.6-slim-bullseye,weastur/poetry:latest-python-3.11-slim-bullseye,weastur/poetry:1.7.0-python-3.11-slim-bullseye
+        tags: weastur/poetry:latest-python-3.11.6-slim-bullseye,weastur/poetry:1.7.1-python-3.11.6-slim-bullseye,weastur/poetry:latest-python-3.11-slim-bullseye,weastur/poetry:1.7.1-python-3.11-slim-bullseye
         build-args: |
           BASE_IMAGE_VERSION=3.11.6-slim-bullseye
-          POETRY_VERSION=1.7.0
+          POETRY_VERSION=1.7.1
 
     - name: Build and push (3.11.6-alpine3.18, 3.11-alpine3.18, 3.11.6-alpine, 3.11-alpine)
       uses: docker/build-push-action@v5
@@ -225,10 +225,10 @@ jobs:
         file: ./Dockerfile
         platforms: linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64,linux/386,linux/ppc64le,linux/s390x
         push: true
-        tags: weastur/poetry:latest-python-3.11.6-alpine3.18,weastur/poetry:1.7.0-python-3.11.6-alpine3.18,weastur/poetry:latest-python-3.11-alpine3.18,weastur/poetry:1.7.0-python-3.11-alpine3.18,weastur/poetry:latest-python-3.11.6-alpine,weastur/poetry:1.7.0-python-3.11.6-alpine,weastur/poetry:latest-python-3.11-alpine,weastur/poetry:1.7.0-python-3.11-alpine
+        tags: weastur/poetry:latest-python-3.11.6-alpine3.18,weastur/poetry:1.7.1-python-3.11.6-alpine3.18,weastur/poetry:latest-python-3.11-alpine3.18,weastur/poetry:1.7.1-python-3.11-alpine3.18,weastur/poetry:latest-python-3.11.6-alpine,weastur/poetry:1.7.1-python-3.11.6-alpine,weastur/poetry:latest-python-3.11-alpine,weastur/poetry:1.7.1-python-3.11-alpine
         build-args: |
           BASE_IMAGE_VERSION=3.11.6-alpine3.18
-          POETRY_VERSION=1.7.0
+          POETRY_VERSION=1.7.1
 
     - name: Build and push (3.11.6-alpine3.17, 3.11-alpine3.17)
       uses: docker/build-push-action@v5
@@ -237,10 +237,10 @@ jobs:
         file: ./Dockerfile
         platforms: linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64,linux/386,linux/ppc64le,linux/s390x
         push: true
-        tags: weastur/poetry:latest-python-3.11.6-alpine3.17,weastur/poetry:1.7.0-python-3.11.6-alpine3.17,weastur/poetry:latest-python-3.11-alpine3.17,weastur/poetry:1.7.0-python-3.11-alpine3.17
+        tags: weastur/poetry:latest-python-3.11.6-alpine3.17,weastur/poetry:1.7.1-python-3.11.6-alpine3.17,weastur/poetry:latest-python-3.11-alpine3.17,weastur/poetry:1.7.1-python-3.11-alpine3.17
         build-args: |
           BASE_IMAGE_VERSION=3.11.6-alpine3.17
-          POETRY_VERSION=1.7.0
+          POETRY_VERSION=1.7.1
 
     - name: Build and push (3.10.13-bookworm, 3.10-bookworm, 3.10.13, 3.10)
       uses: docker/build-push-action@v5
@@ -249,10 +249,10 @@ jobs:
         file: ./Dockerfile
         platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64,linux/386,linux/ppc64le,linux/s390x
         push: true
-        tags: weastur/poetry:latest-python-3.10.13-bookworm,weastur/poetry:1.7.0-python-3.10.13-bookworm,weastur/poetry:latest-python-3.10-bookworm,weastur/poetry:1.7.0-python-3.10-bookworm,weastur/poetry:latest-python-3.10.13,weastur/poetry:1.7.0-python-3.10.13,weastur/poetry:latest-python-3.10,weastur/poetry:1.7.0-python-3.10
+        tags: weastur/poetry:latest-python-3.10.13-bookworm,weastur/poetry:1.7.1-python-3.10.13-bookworm,weastur/poetry:latest-python-3.10-bookworm,weastur/poetry:1.7.1-python-3.10-bookworm,weastur/poetry:latest-python-3.10.13,weastur/poetry:1.7.1-python-3.10.13,weastur/poetry:latest-python-3.10,weastur/poetry:1.7.1-python-3.10
         build-args: |
           BASE_IMAGE_VERSION=3.10.13-bookworm
-          POETRY_VERSION=1.7.0
+          POETRY_VERSION=1.7.1
 
     - name: Build and push (3.10.13-slim-bookworm, 3.10-slim-bookworm, 3.10.13-slim, 3.10-slim)
       uses: docker/build-push-action@v5
@@ -261,10 +261,10 @@ jobs:
         file: ./Dockerfile
         platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64,linux/386,linux/ppc64le,linux/s390x
         push: true
-        tags: weastur/poetry:latest-python-3.10.13-slim-bookworm,weastur/poetry:1.7.0-python-3.10.13-slim-bookworm,weastur/poetry:latest-python-3.10-slim-bookworm,weastur/poetry:1.7.0-python-3.10-slim-bookworm,weastur/poetry:latest-python-3.10.13-slim,weastur/poetry:1.7.0-python-3.10.13-slim,weastur/poetry:latest-python-3.10-slim,weastur/poetry:1.7.0-python-3.10-slim
+        tags: weastur/poetry:latest-python-3.10.13-slim-bookworm,weastur/poetry:1.7.1-python-3.10.13-slim-bookworm,weastur/poetry:latest-python-3.10-slim-bookworm,weastur/poetry:1.7.1-python-3.10-slim-bookworm,weastur/poetry:latest-python-3.10.13-slim,weastur/poetry:1.7.1-python-3.10.13-slim,weastur/poetry:latest-python-3.10-slim,weastur/poetry:1.7.1-python-3.10-slim
         build-args: |
           BASE_IMAGE_VERSION=3.10.13-slim-bookworm
-          POETRY_VERSION=1.7.0
+          POETRY_VERSION=1.7.1
 
     - name: Build and push (3.10.13-bullseye, 3.10-bullseye)
       uses: docker/build-push-action@v5
@@ -273,10 +273,10 @@ jobs:
         file: ./Dockerfile
         platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64,linux/386,linux/ppc64le,linux/s390x
         push: true
-        tags: weastur/poetry:latest-python-3.10.13-bullseye,weastur/poetry:1.7.0-python-3.10.13-bullseye,weastur/poetry:latest-python-3.10-bullseye,weastur/poetry:1.7.0-python-3.10-bullseye
+        tags: weastur/poetry:latest-python-3.10.13-bullseye,weastur/poetry:1.7.1-python-3.10.13-bullseye,weastur/poetry:latest-python-3.10-bullseye,weastur/poetry:1.7.1-python-3.10-bullseye
         build-args: |
           BASE_IMAGE_VERSION=3.10.13-bullseye
-          POETRY_VERSION=1.7.0
+          POETRY_VERSION=1.7.1
 
     - name: Build and push (3.10.13-slim-bullseye, 3.10-slim-bullseye)
       uses: docker/build-push-action@v5
@@ -285,10 +285,10 @@ jobs:
         file: ./Dockerfile
         platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64,linux/386,linux/ppc64le,linux/s390x
         push: true
-        tags: weastur/poetry:latest-python-3.10.13-slim-bullseye,weastur/poetry:1.7.0-python-3.10.13-slim-bullseye,weastur/poetry:latest-python-3.10-slim-bullseye,weastur/poetry:1.7.0-python-3.10-slim-bullseye
+        tags: weastur/poetry:latest-python-3.10.13-slim-bullseye,weastur/poetry:1.7.1-python-3.10.13-slim-bullseye,weastur/poetry:latest-python-3.10-slim-bullseye,weastur/poetry:1.7.1-python-3.10-slim-bullseye
         build-args: |
           BASE_IMAGE_VERSION=3.10.13-slim-bullseye
-          POETRY_VERSION=1.7.0
+          POETRY_VERSION=1.7.1
 
     - name: Build and push (3.10.13-alpine3.18, 3.10-alpine3.18, 3.10.13-alpine, 3.10-alpine)
       uses: docker/build-push-action@v5
@@ -297,10 +297,10 @@ jobs:
         file: ./Dockerfile
         platforms: linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64,linux/386,linux/ppc64le,linux/s390x
         push: true
-        tags: weastur/poetry:latest-python-3.10.13-alpine3.18,weastur/poetry:1.7.0-python-3.10.13-alpine3.18,weastur/poetry:latest-python-3.10-alpine3.18,weastur/poetry:1.7.0-python-3.10-alpine3.18,weastur/poetry:latest-python-3.10.13-alpine,weastur/poetry:1.7.0-python-3.10.13-alpine,weastur/poetry:latest-python-3.10-alpine,weastur/poetry:1.7.0-python-3.10-alpine
+        tags: weastur/poetry:latest-python-3.10.13-alpine3.18,weastur/poetry:1.7.1-python-3.10.13-alpine3.18,weastur/poetry:latest-python-3.10-alpine3.18,weastur/poetry:1.7.1-python-3.10-alpine3.18,weastur/poetry:latest-python-3.10.13-alpine,weastur/poetry:1.7.1-python-3.10.13-alpine,weastur/poetry:latest-python-3.10-alpine,weastur/poetry:1.7.1-python-3.10-alpine
         build-args: |
           BASE_IMAGE_VERSION=3.10.13-alpine3.18
-          POETRY_VERSION=1.7.0
+          POETRY_VERSION=1.7.1
 
     - name: Build and push (3.10.13-alpine3.17, 3.10-alpine3.17)
       uses: docker/build-push-action@v5
@@ -309,10 +309,10 @@ jobs:
         file: ./Dockerfile
         platforms: linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64,linux/386,linux/ppc64le,linux/s390x
         push: true
-        tags: weastur/poetry:latest-python-3.10.13-alpine3.17,weastur/poetry:1.7.0-python-3.10.13-alpine3.17,weastur/poetry:latest-python-3.10-alpine3.17,weastur/poetry:1.7.0-python-3.10-alpine3.17
+        tags: weastur/poetry:latest-python-3.10.13-alpine3.17,weastur/poetry:1.7.1-python-3.10.13-alpine3.17,weastur/poetry:latest-python-3.10-alpine3.17,weastur/poetry:1.7.1-python-3.10-alpine3.17
         build-args: |
           BASE_IMAGE_VERSION=3.10.13-alpine3.17
-          POETRY_VERSION=1.7.0
+          POETRY_VERSION=1.7.1
 
     - name: Build and push (3.9.18-bookworm, 3.9-bookworm, 3.9.18, 3.9)
       uses: docker/build-push-action@v5
@@ -321,10 +321,10 @@ jobs:
         file: ./Dockerfile
         platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64,linux/386,linux/mips64le,linux/ppc64le,linux/s390x
         push: true
-        tags: weastur/poetry:latest-python-3.9.18-bookworm,weastur/poetry:1.7.0-python-3.9.18-bookworm,weastur/poetry:latest-python-3.9-bookworm,weastur/poetry:1.7.0-python-3.9-bookworm,weastur/poetry:latest-python-3.9.18,weastur/poetry:1.7.0-python-3.9.18,weastur/poetry:latest-python-3.9,weastur/poetry:1.7.0-python-3.9
+        tags: weastur/poetry:latest-python-3.9.18-bookworm,weastur/poetry:1.7.1-python-3.9.18-bookworm,weastur/poetry:latest-python-3.9-bookworm,weastur/poetry:1.7.1-python-3.9-bookworm,weastur/poetry:latest-python-3.9.18,weastur/poetry:1.7.1-python-3.9.18,weastur/poetry:latest-python-3.9,weastur/poetry:1.7.1-python-3.9
         build-args: |
           BASE_IMAGE_VERSION=3.9.18-bookworm
-          POETRY_VERSION=1.7.0
+          POETRY_VERSION=1.7.1
 
     - name: Build and push (3.9.18-slim-bookworm, 3.9-slim-bookworm, 3.9.18-slim, 3.9-slim)
       uses: docker/build-push-action@v5
@@ -333,10 +333,10 @@ jobs:
         file: ./Dockerfile
         platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64,linux/386,linux/mips64le,linux/ppc64le,linux/s390x
         push: true
-        tags: weastur/poetry:latest-python-3.9.18-slim-bookworm,weastur/poetry:1.7.0-python-3.9.18-slim-bookworm,weastur/poetry:latest-python-3.9-slim-bookworm,weastur/poetry:1.7.0-python-3.9-slim-bookworm,weastur/poetry:latest-python-3.9.18-slim,weastur/poetry:1.7.0-python-3.9.18-slim,weastur/poetry:latest-python-3.9-slim,weastur/poetry:1.7.0-python-3.9-slim
+        tags: weastur/poetry:latest-python-3.9.18-slim-bookworm,weastur/poetry:1.7.1-python-3.9.18-slim-bookworm,weastur/poetry:latest-python-3.9-slim-bookworm,weastur/poetry:1.7.1-python-3.9-slim-bookworm,weastur/poetry:latest-python-3.9.18-slim,weastur/poetry:1.7.1-python-3.9.18-slim,weastur/poetry:latest-python-3.9-slim,weastur/poetry:1.7.1-python-3.9-slim
         build-args: |
           BASE_IMAGE_VERSION=3.9.18-slim-bookworm
-          POETRY_VERSION=1.7.0
+          POETRY_VERSION=1.7.1
 
     - name: Build and push (3.9.18-bullseye, 3.9-bullseye)
       uses: docker/build-push-action@v5
@@ -345,10 +345,10 @@ jobs:
         file: ./Dockerfile
         platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64,linux/386,linux/mips64le,linux/ppc64le,linux/s390x
         push: true
-        tags: weastur/poetry:latest-python-3.9.18-bullseye,weastur/poetry:1.7.0-python-3.9.18-bullseye,weastur/poetry:latest-python-3.9-bullseye,weastur/poetry:1.7.0-python-3.9-bullseye
+        tags: weastur/poetry:latest-python-3.9.18-bullseye,weastur/poetry:1.7.1-python-3.9.18-bullseye,weastur/poetry:latest-python-3.9-bullseye,weastur/poetry:1.7.1-python-3.9-bullseye
         build-args: |
           BASE_IMAGE_VERSION=3.9.18-bullseye
-          POETRY_VERSION=1.7.0
+          POETRY_VERSION=1.7.1
 
     - name: Build and push (3.9.18-slim-bullseye, 3.9-slim-bullseye)
       uses: docker/build-push-action@v5
@@ -357,10 +357,10 @@ jobs:
         file: ./Dockerfile
         platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64,linux/386,linux/mips64le,linux/ppc64le,linux/s390x
         push: true
-        tags: weastur/poetry:latest-python-3.9.18-slim-bullseye,weastur/poetry:1.7.0-python-3.9.18-slim-bullseye,weastur/poetry:latest-python-3.9-slim-bullseye,weastur/poetry:1.7.0-python-3.9-slim-bullseye
+        tags: weastur/poetry:latest-python-3.9.18-slim-bullseye,weastur/poetry:1.7.1-python-3.9.18-slim-bullseye,weastur/poetry:latest-python-3.9-slim-bullseye,weastur/poetry:1.7.1-python-3.9-slim-bullseye
         build-args: |
           BASE_IMAGE_VERSION=3.9.18-slim-bullseye
-          POETRY_VERSION=1.7.0
+          POETRY_VERSION=1.7.1
 
     - name: Build and push (3.9.18-alpine3.18, 3.9-alpine3.18, 3.9.18-alpine, 3.9-alpine)
       uses: docker/build-push-action@v5
@@ -369,10 +369,10 @@ jobs:
         file: ./Dockerfile
         platforms: linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64,linux/386,linux/ppc64le,linux/s390x
         push: true
-        tags: weastur/poetry:latest-python-3.9.18-alpine3.18,weastur/poetry:1.7.0-python-3.9.18-alpine3.18,weastur/poetry:latest-python-3.9-alpine3.18,weastur/poetry:1.7.0-python-3.9-alpine3.18,weastur/poetry:latest-python-3.9.18-alpine,weastur/poetry:1.7.0-python-3.9.18-alpine,weastur/poetry:latest-python-3.9-alpine,weastur/poetry:1.7.0-python-3.9-alpine
+        tags: weastur/poetry:latest-python-3.9.18-alpine3.18,weastur/poetry:1.7.1-python-3.9.18-alpine3.18,weastur/poetry:latest-python-3.9-alpine3.18,weastur/poetry:1.7.1-python-3.9-alpine3.18,weastur/poetry:latest-python-3.9.18-alpine,weastur/poetry:1.7.1-python-3.9.18-alpine,weastur/poetry:latest-python-3.9-alpine,weastur/poetry:1.7.1-python-3.9-alpine
         build-args: |
           BASE_IMAGE_VERSION=3.9.18-alpine3.18
-          POETRY_VERSION=1.7.0
+          POETRY_VERSION=1.7.1
 
     - name: Build and push (3.9.18-alpine3.17, 3.9-alpine3.17)
       uses: docker/build-push-action@v5
@@ -381,10 +381,10 @@ jobs:
         file: ./Dockerfile
         platforms: linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64,linux/386,linux/ppc64le,linux/s390x
         push: true
-        tags: weastur/poetry:latest-python-3.9.18-alpine3.17,weastur/poetry:1.7.0-python-3.9.18-alpine3.17,weastur/poetry:latest-python-3.9-alpine3.17,weastur/poetry:1.7.0-python-3.9-alpine3.17
+        tags: weastur/poetry:latest-python-3.9.18-alpine3.17,weastur/poetry:1.7.1-python-3.9.18-alpine3.17,weastur/poetry:latest-python-3.9-alpine3.17,weastur/poetry:1.7.1-python-3.9-alpine3.17
         build-args: |
           BASE_IMAGE_VERSION=3.9.18-alpine3.17
-          POETRY_VERSION=1.7.0
+          POETRY_VERSION=1.7.1
 
     - name: Build and push (3.8.18-bookworm, 3.8-bookworm, 3.8.18, 3.8)
       uses: docker/build-push-action@v5
@@ -393,10 +393,10 @@ jobs:
         file: ./Dockerfile
         platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64,linux/386,linux/mips64le,linux/ppc64le,linux/s390x
         push: true
-        tags: weastur/poetry:latest-python-3.8.18-bookworm,weastur/poetry:1.7.0-python-3.8.18-bookworm,weastur/poetry:latest-python-3.8-bookworm,weastur/poetry:1.7.0-python-3.8-bookworm,weastur/poetry:latest-python-3.8.18,weastur/poetry:1.7.0-python-3.8.18,weastur/poetry:latest-python-3.8,weastur/poetry:1.7.0-python-3.8
+        tags: weastur/poetry:latest-python-3.8.18-bookworm,weastur/poetry:1.7.1-python-3.8.18-bookworm,weastur/poetry:latest-python-3.8-bookworm,weastur/poetry:1.7.1-python-3.8-bookworm,weastur/poetry:latest-python-3.8.18,weastur/poetry:1.7.1-python-3.8.18,weastur/poetry:latest-python-3.8,weastur/poetry:1.7.1-python-3.8
         build-args: |
           BASE_IMAGE_VERSION=3.8.18-bookworm
-          POETRY_VERSION=1.7.0
+          POETRY_VERSION=1.7.1
 
     - name: Build and push (3.8.18-slim-bookworm, 3.8-slim-bookworm, 3.8.18-slim, 3.8-slim)
       uses: docker/build-push-action@v5
@@ -405,10 +405,10 @@ jobs:
         file: ./Dockerfile
         platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64,linux/386,linux/mips64le,linux/ppc64le,linux/s390x
         push: true
-        tags: weastur/poetry:latest-python-3.8.18-slim-bookworm,weastur/poetry:1.7.0-python-3.8.18-slim-bookworm,weastur/poetry:latest-python-3.8-slim-bookworm,weastur/poetry:1.7.0-python-3.8-slim-bookworm,weastur/poetry:latest-python-3.8.18-slim,weastur/poetry:1.7.0-python-3.8.18-slim,weastur/poetry:latest-python-3.8-slim,weastur/poetry:1.7.0-python-3.8-slim
+        tags: weastur/poetry:latest-python-3.8.18-slim-bookworm,weastur/poetry:1.7.1-python-3.8.18-slim-bookworm,weastur/poetry:latest-python-3.8-slim-bookworm,weastur/poetry:1.7.1-python-3.8-slim-bookworm,weastur/poetry:latest-python-3.8.18-slim,weastur/poetry:1.7.1-python-3.8.18-slim,weastur/poetry:latest-python-3.8-slim,weastur/poetry:1.7.1-python-3.8-slim
         build-args: |
           BASE_IMAGE_VERSION=3.8.18-slim-bookworm
-          POETRY_VERSION=1.7.0
+          POETRY_VERSION=1.7.1
 
     - name: Build and push (3.8.18-bullseye, 3.8-bullseye)
       uses: docker/build-push-action@v5
@@ -417,10 +417,10 @@ jobs:
         file: ./Dockerfile
         platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64,linux/386,linux/mips64le,linux/ppc64le,linux/s390x
         push: true
-        tags: weastur/poetry:latest-python-3.8.18-bullseye,weastur/poetry:1.7.0-python-3.8.18-bullseye,weastur/poetry:latest-python-3.8-bullseye,weastur/poetry:1.7.0-python-3.8-bullseye
+        tags: weastur/poetry:latest-python-3.8.18-bullseye,weastur/poetry:1.7.1-python-3.8.18-bullseye,weastur/poetry:latest-python-3.8-bullseye,weastur/poetry:1.7.1-python-3.8-bullseye
         build-args: |
           BASE_IMAGE_VERSION=3.8.18-bullseye
-          POETRY_VERSION=1.7.0
+          POETRY_VERSION=1.7.1
 
     - name: Build and push (3.8.18-slim-bullseye, 3.8-slim-bullseye)
       uses: docker/build-push-action@v5
@@ -429,10 +429,10 @@ jobs:
         file: ./Dockerfile
         platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64,linux/386,linux/mips64le,linux/ppc64le,linux/s390x
         push: true
-        tags: weastur/poetry:latest-python-3.8.18-slim-bullseye,weastur/poetry:1.7.0-python-3.8.18-slim-bullseye,weastur/poetry:latest-python-3.8-slim-bullseye,weastur/poetry:1.7.0-python-3.8-slim-bullseye
+        tags: weastur/poetry:latest-python-3.8.18-slim-bullseye,weastur/poetry:1.7.1-python-3.8.18-slim-bullseye,weastur/poetry:latest-python-3.8-slim-bullseye,weastur/poetry:1.7.1-python-3.8-slim-bullseye
         build-args: |
           BASE_IMAGE_VERSION=3.8.18-slim-bullseye
-          POETRY_VERSION=1.7.0
+          POETRY_VERSION=1.7.1
 
     - name: Build and push (3.8.18-alpine3.18, 3.8-alpine3.18, 3.8.18-alpine, 3.8-alpine)
       uses: docker/build-push-action@v5
@@ -441,10 +441,10 @@ jobs:
         file: ./Dockerfile
         platforms: linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64,linux/386,linux/ppc64le,linux/s390x
         push: true
-        tags: weastur/poetry:latest-python-3.8.18-alpine3.18,weastur/poetry:1.7.0-python-3.8.18-alpine3.18,weastur/poetry:latest-python-3.8-alpine3.18,weastur/poetry:1.7.0-python-3.8-alpine3.18,weastur/poetry:latest-python-3.8.18-alpine,weastur/poetry:1.7.0-python-3.8.18-alpine,weastur/poetry:latest-python-3.8-alpine,weastur/poetry:1.7.0-python-3.8-alpine
+        tags: weastur/poetry:latest-python-3.8.18-alpine3.18,weastur/poetry:1.7.1-python-3.8.18-alpine3.18,weastur/poetry:latest-python-3.8-alpine3.18,weastur/poetry:1.7.1-python-3.8-alpine3.18,weastur/poetry:latest-python-3.8.18-alpine,weastur/poetry:1.7.1-python-3.8.18-alpine,weastur/poetry:latest-python-3.8-alpine,weastur/poetry:1.7.1-python-3.8-alpine
         build-args: |
           BASE_IMAGE_VERSION=3.8.18-alpine3.18
-          POETRY_VERSION=1.7.0
+          POETRY_VERSION=1.7.1
 
     - name: Build and push (3.8.18-alpine3.17, 3.8-alpine3.17)
       uses: docker/build-push-action@v5
@@ -453,7 +453,7 @@ jobs:
         file: ./Dockerfile
         platforms: linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64,linux/386,linux/ppc64le,linux/s390x
         push: true
-        tags: weastur/poetry:latest-python-3.8.18-alpine3.17,weastur/poetry:1.7.0-python-3.8.18-alpine3.17,weastur/poetry:latest-python-3.8-alpine3.17,weastur/poetry:1.7.0-python-3.8-alpine3.17
+        tags: weastur/poetry:latest-python-3.8.18-alpine3.17,weastur/poetry:1.7.1-python-3.8.18-alpine3.17,weastur/poetry:latest-python-3.8-alpine3.17,weastur/poetry:1.7.1-python-3.8-alpine3.17
         build-args: |
           BASE_IMAGE_VERSION=3.8.18-alpine3.17
-          POETRY_VERSION=1.7.0
+          POETRY_VERSION=1.7.1
