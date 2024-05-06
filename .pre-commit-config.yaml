@@ -29,12 +29,12 @@ repos:
       - id: shellcheck
         exclude: ^tests/.*$
   - repo: https://github.com/hadolint/hadolint
-    rev: v2.12.1-beta
+    rev: v2.13.0-beta
     hooks:
       - id: hadolint
         exclude: ^tests/.*$
   - repo: https://github.com/igorshubovych/markdownlint-cli
-    rev: v0.39.0
+    rev: v0.40.0
     hooks:
       - id: markdownlint
         exclude: ^(tests|.github)/.*$
