@@ -4,7 +4,7 @@ FROM python:${BASE_IMAGE_VERSION}
 ARG POETRY_VERSION
 
 ENV PATH=/root/.local/bin:$PATH
-RUN --mount=type=bind,source=install.py,target=/install.py set -eux; \
+RUN --mount=type=tmpfs,target=/root/.cargo --mount=type=bind,source=install.py,target=/install.py set -eux; \
     if grep -q alpine /etc/os-release ; then \
         apk add --no-cache --virtual .build-deps \
             gcc \
