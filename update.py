@@ -31,7 +31,7 @@ name: Build and Push ($id)
 
 on:
   schedule:
-    - cron: '0 $(hour) * * 1'
+    - cron: '0 $hour * * 1'
   workflow_dispatch:
 
 jobs:
@@ -97,7 +97,7 @@ with urllib.request.urlopen(PYTHON_LIBRARY_URL) as response:
 poetry_version = _get_latest_poetry_version()
 
 for _id, match in enumerate(PARSING_PATTERN.finditer(data)):
-    action = GH_ACTION_START.substitute(id=_id, hour=_id % 24)
+    action = GH_ACTION_START.substitute(_id=_id, hour=_id % 24)
     raw_tags = match.groupdict()["tags"].strip()
     if match.groupdict()["shared_tags"]:
         raw_tags += ", " + match.groupdict()["shared_tags"].strip()
