@@ -25,12 +25,13 @@ PARSING_PATTERN = re.compile(
     r"^Tags\:(?P<tags>(?!(.*windows|\ 3\.7.\d+|\ 3\.13.\d+)).*)(\nSharedTags\:(?P<shared_tags>.*))?\nArchitectures\:(?P<architectures>.*)",
     re.MULTILINE,
 )
-GH_ACTION_START = """---
-name: Build and Push
+GH_ACTION_START = Template(
+"""---
+name: Build and Push ($id)
 
 on:
   schedule:
-    - cron: '0 0 * * 1'
+    - cron: '0 $(hour) * * 1'
   workflow_dispatch:
 
 jobs:
@@ -53,6 +54,7 @@ jobs:
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v3
 """
+)
 GH_ACTION_BUILD_AND_PUSH_STEP = Template(
     """
     - name: Build and push ($raw_tags)
@@ -92,10 +94,10 @@ def _make_tags(raw_tags: str, poetry_version: str) -> str:
 
 with urllib.request.urlopen(PYTHON_LIBRARY_URL) as response:
     data = response.read().decode("utf-8")
-action = GH_ACTION_START
 poetry_version = _get_latest_poetry_version()
 
-for match in PARSING_PATTERN.finditer(data):
+for _id, match in enumerate(PARSING_PATTERN.finditer(data)):
+    action = GH_ACTION_START.substitute(id=_id, hour=_id % 24)
     raw_tags = match.groupdict()["tags"].strip()
     if match.groupdict()["shared_tags"]:
         raw_tags += ", " + match.groupdict()["shared_tags"].strip()
@@ -109,6 +111,5 @@ for match in PARSING_PATTERN.finditer(data):
         poetry_version=poetry_version,
         base_image_version=raw_tags.split(', ')[0],
     )
-
-with open('.github/workflows/docker-build.yml', 'w') as file:
-    file.write(action)
+    with open(f'.github/workflows/docker-build-{_id}.yml', 'w') as file:
+        file.write(action)
