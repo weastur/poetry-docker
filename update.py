@@ -7,15 +7,16 @@ import json
 from string import Template
 
 ARCH_TO_PLATFORM = {
+    "riscv64": "linux/riscv64",
     "amd64": "linux/amd64",
     "arm32v5": "linux/arm/v5",
     "arm32v6": "linux/arm/v6",
     "arm32v7": "linux/arm/v7",
     "arm64v8": "linux/arm64",
     "i386": "linux/386",
+    "mips64le": "linux/mips64le",
     "ppc64le": "linux/ppc64le",
     "s390x": "linux/s390x",
-    "mips64le": "linux/mips64le",
 }
 IMAGE_NAME = "weastur/poetry"
 POETRY_RELEASES_URL = "https://api.github.com/repos/python-poetry/poetry/releases/latest"
