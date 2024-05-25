@@ -27,7 +27,7 @@ PARSING_PATTERN = re.compile(
 )
 GH_ACTION_START = Template(
 """---
-name: Build and Push ($id)
+name: Build and Push ($_id)
 
 on:
   schedule:
