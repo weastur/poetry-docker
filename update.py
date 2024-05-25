@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
 
-import urllib.request
-import re
+import glob
 import json
+import os
+import re
+import urllib.request
 
 from string import Template
 
@@ -95,6 +97,9 @@ def _make_tags(raw_tags: str, poetry_version: str) -> str:
 with urllib.request.urlopen(PYTHON_LIBRARY_URL) as response:
     data = response.read().decode("utf-8")
 poetry_version = _get_latest_poetry_version()
+
+for file_path in glob.glob(".github/workflows/docker-build-*"):
+    os.remove(file_path)
 
 for _id, match in enumerate(PARSING_PATTERN.finditer(data)):
     action = GH_ACTION_START.substitute(_id=_id, hour=_id % 24)
