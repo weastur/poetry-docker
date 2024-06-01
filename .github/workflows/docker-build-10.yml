@@ -31,7 +31,7 @@ jobs:
       with:
         context: .
         file: ./Dockerfile
-        platforms: linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64,linux/386,linux/ppc64le,linux/riscv64,linux/s390x
+        platforms: linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64
         push: true
         tags: weastur/poetry:latest-python-3.11.9-alpine3.20,weastur/poetry:1.8.3-python-3.11.9-alpine3.20,weastur/poetry:latest-python-3.11-alpine3.20,weastur/poetry:1.8.3-python-3.11-alpine3.20,weastur/poetry:latest-python-3.11.9-alpine,weastur/poetry:1.8.3-python-3.11.9-alpine,weastur/poetry:latest-python-3.11-alpine,weastur/poetry:1.8.3-python-3.11-alpine
         build-args: |

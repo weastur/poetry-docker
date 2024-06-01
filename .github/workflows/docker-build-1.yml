@@ -31,7 +31,7 @@ jobs:
       with:
         context: .
         file: ./Dockerfile
-        platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64,linux/386,linux/ppc64le,linux/s390x
+        platforms: linux/amd64,linux/arm/v7,linux/arm64
         push: true
         tags: weastur/poetry:latest-python-3.12.3-slim-bookworm,weastur/poetry:1.8.3-python-3.12.3-slim-bookworm,weastur/poetry:latest-python-3.12-slim-bookworm,weastur/poetry:1.8.3-python-3.12-slim-bookworm,weastur/poetry:latest-python-3-slim-bookworm,weastur/poetry:1.8.3-python-3-slim-bookworm,weastur/poetry:latest-python-slim-bookworm,weastur/poetry:1.8.3-python-slim-bookworm,weastur/poetry:latest-python-3.12.3-slim,weastur/poetry:1.8.3-python-3.12.3-slim,weastur/poetry:latest-python-3.12-slim,weastur/poetry:1.8.3-python-3.12-slim,weastur/poetry:latest-python-3-slim,weastur/poetry:1.8.3-python-3-slim,weastur/poetry:latest-python-slim,weastur/poetry:1.8.3-python-slim
         build-args: |
