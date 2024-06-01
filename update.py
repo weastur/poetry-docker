@@ -20,15 +20,18 @@ ARCH_TO_PLATFORM = {
     "ppc64le": "linux/ppc64le",
     "s390x": "linux/s390x",
 }
+OFFICIALLY_SUPPORTED_ARCHS = ["arm32v6", "arm32v7", "arm64v8", "amd64"]
 IMAGE_NAME = "weastur/poetry"
-POETRY_RELEASES_URL = "https://api.github.com/repos/python-poetry/poetry/releases/latest"
+POETRY_RELEASES_URL = (
+    "https://api.github.com/repos/python-poetry/poetry/releases/latest"
+)
 PYTHON_LIBRARY_URL = "https://raw.githubusercontent.com/docker-library/official-images/master/library/python"
 PARSING_PATTERN = re.compile(
     r"^Tags\:(?P<tags>(?!(.*windows|\ 3\.7.\d+|\ 3\.13.\d+)).*)(\nSharedTags\:(?P<shared_tags>.*))?\nArchitectures\:(?P<architectures>.*)",
     re.MULTILINE,
 )
 GH_ACTION_START = Template(
-"""---
+    """---
 name: Build and Push ($_id)
 
 on:
@@ -81,7 +84,11 @@ def _get_latest_poetry_version() -> str:
 
 
 def _make_platforms(archs: str) -> str:
-    return ",".join(ARCH_TO_PLATFORM[arch] for arch in archs.strip().split(", "))
+    return ",".join(
+        ARCH_TO_PLATFORM[arch]
+        for arch in archs.strip().split(", ")
+        if arch in OFFICIALLY_SUPPORTED_ARCHS
+    )
 
 
 def _make_tags(raw_tags: str, poetry_version: str) -> str:
@@ -89,9 +96,9 @@ def _make_tags(raw_tags: str, poetry_version: str) -> str:
     for tag in raw_tags.split(", "):
         tags.append(f"{IMAGE_NAME}:latest-python-{tag}")
         tags.append(f"{IMAGE_NAME}:{poetry_version}-python-{tag}")
-        if tag == 'latest':
+        if tag == "latest":
             tags.append(f"{IMAGE_NAME}:latest")
-    return ','.join(tags)
+    return ",".join(tags)
 
 
 with urllib.request.urlopen(PYTHON_LIBRARY_URL) as response:
@@ -114,7 +121,7 @@ for _id, match in enumerate(PARSING_PATTERN.finditer(data)):
         platforms=platforms,
         tags=tags,
         poetry_version=poetry_version,
-        base_image_version=raw_tags.split(', ')[0],
+        base_image_version=raw_tags.split(", ")[0],
     )
-    with open(f'.github/workflows/docker-build-{_id}.yml', 'w') as file:
+    with open(f".github/workflows/docker-build-{_id}.yml", "w") as file:
         file.write(action)

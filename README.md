@@ -53,6 +53,16 @@ like `poetry config virtualenvs.in-project true`
 
 Every single step of the build process runs with GitHub Actions.
 
+## Architectures
+
+The images are built only for architectures officially supported by Docker, Inc.
+for running Docker
+
+- arm32v6
+- arm32v7
+- arm64v8
+- amd64
+
 ## Contributing
 
 You need Docker installed.
