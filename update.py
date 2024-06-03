@@ -17,6 +17,8 @@ ALLOWED_VERSIONS = ["3.8", "3.9", "3.10", "3.11", "3.12"]
 GH_ACTION_START = """---
 name: Build and Push
 
+runs-on: [self-hosted]
+
 on:
   schedule:
     - cron: '0 0 * * 1'
