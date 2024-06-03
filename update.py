@@ -70,8 +70,7 @@ GH_ACTION_BUILD_AND_PUSH_STEP = Template(
 )
 
 
-GH_ACTION_MOVE_CACHE_STEP =
-"""
+GH_ACTION_MOVE_CACHE_STEP = """
     - name: Move cache
       run: |
         rm -rf /tmp/.buildx-cache
