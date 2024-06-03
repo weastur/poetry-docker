@@ -68,9 +68,9 @@ def _get_latest_poetry_version() -> str:
 
 def _make_platform(image: dict) -> str:
     if image["variant"]:
-        return "{}/{}/{}".format(image["architecture"], image["os"], image["variant"])
+        return "{}/{}/{}".format(image["os"], image["architecture"], image["variant"])
     else:
-        return "{}/{}".format(image["architecture"], image["os"])
+        return "{}/{}".format(image["os"], image["architecture"])
 
 
 def _make_tags(raw_tags: str, poetry_version: str) -> str:
