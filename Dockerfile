@@ -13,7 +13,7 @@ RUN --mount=type=tmpfs,target=/root/.cargo --mount=type=bind,source=install.py,t
             musl-dev \
             cargo \
         ; \
-        POETRY_VERSION=$POETRY_VERSION python /install.py ; \
+        POETRY_VERSION=$POETRY_VERSION python /install.py || cat /poetry-installer-error-*.log ; \
         apk del --no-network .build-deps; \
     else \
         apt-get update && apt-get install -y --no-install-recommends \
@@ -23,7 +23,7 @@ RUN --mount=type=tmpfs,target=/root/.cargo --mount=type=bind,source=install.py,t
             cargo \
             pkg-config \
         ; \
-        POETRY_VERSION=$POETRY_VERSION python /install.py ; \
+        POETRY_VERSION=$POETRY_VERSION python /install.py || cat /poetry-installer-error-*.log ; \
         apt-get purge -y \
             build-essential \
             libssl-dev \
