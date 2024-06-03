@@ -1,7 +1,7 @@
 ---
 extends: default
 ignore: |
-  .github/workflows/docker-build-*.yml
+  .github/workflows/docker-build.yml
 rules:
   line-length:
     max: 120
