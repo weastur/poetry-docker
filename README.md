@@ -1,6 +1,7 @@
 # poetry-docker
 
 ![Update](https://github.com/weastur/poetry-docker/workflows/Update/badge.svg)
+![Build and Push](https://github.com/weastur/poetry-docker/workflows/Build%20and%20Push/badge.svg)
 [![Docker Pulls](https://img.shields.io/docker/pulls/weastur/poetry)](https://hub.docker.com/r/weastur/poetry/)
 ![GitHub](https://img.shields.io/github/license/weastur/poetry-docker)
 
@@ -52,16 +53,6 @@ Also, pay attention that **there are no additional settings** of Poetry,
 like `poetry config virtualenvs.in-project true`
 
 Every single step of the build process runs with GitHub Actions.
-
-## Architectures
-
-The images are built only for architectures officially supported by Docker, Inc.
-for running Docker
-
-- arm32v6
-- arm32v7
-- arm64v8
-- amd64
 
 ## Contributing
 

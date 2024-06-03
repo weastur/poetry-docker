@@ -8,35 +8,18 @@ import urllib.request
 
 from string import Template
 
-ARCH_TO_PLATFORM = {
-    "riscv64": "linux/riscv64",
-    "amd64": "linux/amd64",
-    "arm32v5": "linux/arm/v5",
-    "arm32v6": "linux/arm/v6",
-    "arm32v7": "linux/arm/v7",
-    "arm64v8": "linux/arm64",
-    "i386": "linux/386",
-    "mips64le": "linux/mips64le",
-    "ppc64le": "linux/ppc64le",
-    "s390x": "linux/s390x",
-}
-OFFICIALLY_SUPPORTED_ARCHS = ["arm32v6", "arm32v7", "arm64v8", "amd64"]
 IMAGE_NAME = "weastur/poetry"
 POETRY_RELEASES_URL = (
     "https://api.github.com/repos/python-poetry/poetry/releases/latest"
 )
-PYTHON_LIBRARY_URL = "https://raw.githubusercontent.com/docker-library/official-images/master/library/python"
-PARSING_PATTERN = re.compile(
-    r"^Tags\:(?P<tags>(?!(.*windows|\ 3\.7.\d+|\ 3\.13.\d+)).*)(\nSharedTags\:(?P<shared_tags>.*))?\nArchitectures\:(?P<architectures>.*)",
-    re.MULTILINE,
-)
-GH_ACTION_START = Template(
-    """---
-name: Build and Push ($_id)
+PYTHON_IMAGE_METADATA_URL_TEMPLATE = "https://hub.docker.com/v2/namespaces/library/repositories/python/tags?page_size={page_size}&page={page}"
+ALLOWED_VERSIONS = ["3.8", "3.9", "3.10", "3.11", "3.12"]
+GH_ACTION_START = """---
+name: Build and Push
 
 on:
   schedule:
-    - cron: '0 $hour * * 1'
+    - cron: '0 0 * * 1'
   workflow_dispatch:
 
 jobs:
@@ -59,7 +42,7 @@ jobs:
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v3
 """
-)
+
 GH_ACTION_BUILD_AND_PUSH_STEP = Template(
     """
     - name: Build and push ($raw_tags)
@@ -83,12 +66,11 @@ def _get_latest_poetry_version() -> str:
         return data["tag_name"]
 
 
-def _make_platforms(archs: str) -> str:
-    return ",".join(
-        ARCH_TO_PLATFORM[arch]
-        for arch in archs.strip().split(", ")
-        if arch in OFFICIALLY_SUPPORTED_ARCHS
-    )
+def _make_platform(image: dict) -> str:
+    if image["variant"]:
+        return "{}/{}/{}".format(image["architecture"], image["os"], image["variant"])
+    else:
+        return "{}/{}".format(image["architecture"], image["os"])
 
 
 def _make_tags(raw_tags: str, poetry_version: str) -> str:
@@ -101,27 +83,52 @@ def _make_tags(raw_tags: str, poetry_version: str) -> str:
     return ",".join(tags)
 
 
-with urllib.request.urlopen(PYTHON_LIBRARY_URL) as response:
-    data = response.read().decode("utf-8")
+def _download_python_image_metadata() -> list:
+    page_size = 100
+    page = 1
+    metadata = []
+    while True:
+        with urllib.request.urlopen(
+            PYTHON_IMAGE_METADATA_URL_TEMPLATE.format(page_size=page_size, page=page)
+        ) as response:
+            data = json.loads(response.read().decode())
+            metadata.extend(data["results"])
+            if data["next"] is None:
+                break
+            page += 1
+    return metadata
+
+
 poetry_version = _get_latest_poetry_version()
+python_image_metadata = _download_python_image_metadata()
+action = GH_ACTION_START
 
-for file_path in glob.glob(".github/workflows/docker-build-*"):
-    os.remove(file_path)
-
-for _id, match in enumerate(PARSING_PATTERN.finditer(data)):
-    action = GH_ACTION_START.substitute(_id=_id, hour=_id % 24)
-    raw_tags = match.groupdict()["tags"].strip()
-    if match.groupdict()["shared_tags"]:
-        raw_tags += ", " + match.groupdict()["shared_tags"].strip()
-    raw_tags = raw_tags.strip()
-    platforms = _make_platforms(match.groupdict()["architectures"])
-    tags = _make_tags(raw_tags, poetry_version)
+for metadata in python_image_metadata:
+    if (
+        metadata.get("tag_status") != "active"
+        or metadata.get("content_type") != "image"
+        or "windows" in metadata["name"]
+    ):
+        continue
+    tag = metadata["name"]
+    if (
+        tag != "latest"
+        and tag != "3"
+        and not any(map(lambda ver: tag.startswith(ver), ALLOWED_VERSIONS))
+    ):
+        continue
+    if not tag.split('-')[0].replace('.', '').isdigit() or 'rc' in tag:
+        continue
+    platforms = []
+    for image in metadata["images"]:
+        platforms.append(_make_platform(image))
     action += GH_ACTION_BUILD_AND_PUSH_STEP.substitute(
-        raw_tags=raw_tags,
-        platforms=platforms,
-        tags=tags,
+        raw_tags=tag,
+        platforms=",".join(platforms),
+        tags=_make_tags(tag, poetry_version),
         poetry_version=poetry_version,
-        base_image_version=raw_tags.split(", ")[0],
+        base_image_version=tag,
     )
-    with open(f".github/workflows/docker-build-{_id}.yml", "w") as file:
-        file.write(action)
+
+with open(f".github/workflows/docker-build.yml", "w") as file:
+    file.write(action)
