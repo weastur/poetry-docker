@@ -29,6 +29,14 @@ jobs:
     - name: Check out code
       uses: actions/checkout@v4
 
+    - name: Cache Docker layers
+      uses: actions/cache@v4
+      with:
+        path: /tmp/.buildx-cache
+        key: ${{ runner.os }}-buildx-${{ github.sha }}
+        restore-keys: |
+          ${{ runner.os }}-buildx-
+
     - name: Login to DockerHub
       uses: docker/login-action@v3
       with:
@@ -53,11 +61,22 @@ GH_ACTION_BUILD_AND_PUSH_STEP = Template(
         platforms: $platforms
         push: true
         tags: $tags
+        cache-from: type=local,src=/tmp/.buildx-cache
+        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
         build-args: |
           BASE_IMAGE_VERSION=$base_image_version
           POETRY_VERSION=$poetry_version
 """
 )
+
+
+GH_ACTION_MOVE_CACHE_STEP =
+"""
+    - name: Move cache
+      run: |
+        rm -rf /tmp/.buildx-cache
+        mv /tmp/.buildx-cache-new /tmp/.buildx-cache
+"""
 
 
 def _get_latest_poetry_version() -> str:
@@ -129,6 +148,8 @@ for metadata in python_image_metadata:
         poetry_version=poetry_version,
         base_image_version=tag,
     )
+
+action += GH_ACTION_MOVE_CACHE_STEP
 
 with open(f".github/workflows/docker-build.yml", "w") as file:
     file.write(action)
