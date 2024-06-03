@@ -13,6 +13,8 @@ RUN --mount=type=tmpfs,target=/root/.cargo --mount=type=bind,source=install.py,t
             libffi-dev \
             linux-headers \
             musl-dev \
+            openssl \
+            openssl-dev \
         ; \
         POETRY_VERSION=$POETRY_VERSION python /install.py || cat /poetry-installer-error-*.log ; \
         apk del --no-network .build-deps; \
