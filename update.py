@@ -135,11 +135,15 @@ for metadata in python_image_metadata:
         and not any(map(lambda ver: tag.startswith(ver), ALLOWED_VERSIONS))
     ):
         continue
-    if not tag.split('-')[0].replace('.', '').isdigit() or 'rc' in tag:
+    if not tag.split("-")[0].replace(".", "").isdigit() or "rc" in tag:
         continue
     platforms = []
     for image in metadata["images"]:
+        if image["os"] != "linux":
+            continue
         platforms.append(_make_platform(image))
+    if not platforms:
+        continue
     action += GH_ACTION_BUILD_AND_PUSH_STEP.substitute(
         raw_tags=tag,
         platforms=",".join(platforms),
