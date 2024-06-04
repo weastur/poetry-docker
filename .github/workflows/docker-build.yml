@@ -319,7 +319,7 @@ jobs:
       with:
         context: .
         file: ./Dockerfile
-        platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x,windows/amd64,windows/amd64
+        platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x
         push: true
         tags: weastur/poetry:latest-python-3.12.3,weastur/poetry:1.8.3-python-3.12.3
         cache-from: type=local,src=/tmp/.buildx-cache
@@ -333,7 +333,7 @@ jobs:
       with:
         context: .
         file: ./Dockerfile
-        platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x,windows/amd64,windows/amd64
+        platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x
         push: true
         tags: weastur/poetry:latest-python-3.12,weastur/poetry:1.8.3-python-3.12
         cache-from: type=local,src=/tmp/.buildx-cache
@@ -347,7 +347,7 @@ jobs:
       with:
         context: .
         file: ./Dockerfile
-        platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x,windows/amd64,windows/amd64
+        platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x
         push: true
         tags: weastur/poetry:latest-python-3.11.9,weastur/poetry:1.8.3-python-3.11.9
         cache-from: type=local,src=/tmp/.buildx-cache
@@ -361,7 +361,7 @@ jobs:
       with:
         context: .
         file: ./Dockerfile
-        platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x,windows/amd64,windows/amd64
+        platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x
         push: true
         tags: weastur/poetry:latest-python-3.11,weastur/poetry:1.8.3-python-3.11
         cache-from: type=local,src=/tmp/.buildx-cache
@@ -375,7 +375,7 @@ jobs:
       with:
         context: .
         file: ./Dockerfile
-        platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x,windows/amd64,windows/amd64
+        platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x
         push: true
         tags: weastur/poetry:latest-python-3,weastur/poetry:1.8.3-python-3
         cache-from: type=local,src=/tmp/.buildx-cache
@@ -1509,7 +1509,7 @@ jobs:
       with:
         context: .
         file: ./Dockerfile
-        platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x,windows/amd64,windows/amd64
+        platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x
         push: true
         tags: weastur/poetry:latest-python-3.12.2,weastur/poetry:1.8.3-python-3.12.2
         cache-from: type=local,src=/tmp/.buildx-cache
@@ -1635,7 +1635,7 @@ jobs:
       with:
         context: .
         file: ./Dockerfile
-        platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x,windows/amd64,windows/amd64
+        platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x
         push: true
         tags: weastur/poetry:latest-python-3.11.8,weastur/poetry:1.8.3-python-3.11.8
         cache-from: type=local,src=/tmp/.buildx-cache
@@ -2111,7 +2111,7 @@ jobs:
       with:
         context: .
         file: ./Dockerfile
-        platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x,windows/amd64,windows/amd64
+        platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x
         push: true
         tags: weastur/poetry:latest-python-3.12.1,weastur/poetry:1.8.3-python-3.12.1
         cache-from: type=local,src=/tmp/.buildx-cache
@@ -2153,7 +2153,7 @@ jobs:
       with:
         context: .
         file: ./Dockerfile
-        platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x,windows/amd64,windows/amd64
+        platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x
         push: true
         tags: weastur/poetry:latest-python-3.11.7,weastur/poetry:1.8.3-python-3.11.7
         cache-from: type=local,src=/tmp/.buildx-cache
@@ -2531,7 +2531,7 @@ jobs:
       with:
         context: .
         file: ./Dockerfile
-        platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x,windows/amd64,windows/amd64
+        platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x
         push: true
         tags: weastur/poetry:latest-python-3.12.0,weastur/poetry:1.8.3-python-3.12.0
         cache-from: type=local,src=/tmp/.buildx-cache
@@ -2671,7 +2671,7 @@ jobs:
       with:
         context: .
         file: ./Dockerfile
-        platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x,windows/amd64,windows/amd64
+        platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x
         push: true
         tags: weastur/poetry:latest-python-3.11.6,weastur/poetry:1.8.3-python-3.11.6
         cache-from: type=local,src=/tmp/.buildx-cache
@@ -2811,7 +2811,7 @@ jobs:
       with:
         context: .
         file: ./Dockerfile
-        platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x,windows/amd64,windows/amd64
+        platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x
         push: true
         tags: weastur/poetry:latest-python-3.11.5,weastur/poetry:1.8.3-python-3.11.5
         cache-from: type=local,src=/tmp/.buildx-cache
@@ -3077,7 +3077,7 @@ jobs:
       with:
         context: .
         file: ./Dockerfile
-        platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x,windows/amd64,windows/amd64
+        platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x
         push: true
         tags: weastur/poetry:latest-python-3.11.4,weastur/poetry:1.8.3-python-3.11.4
         cache-from: type=local,src=/tmp/.buildx-cache
@@ -3805,7 +3805,7 @@ jobs:
       with:
         context: .
         file: ./Dockerfile
-        platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x,windows/amd64,windows/amd64
+        platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x
         push: true
         tags: weastur/poetry:latest-python-3.11.3,weastur/poetry:1.8.3-python-3.11.3
         cache-from: type=local,src=/tmp/.buildx-cache
@@ -3889,7 +3889,7 @@ jobs:
       with:
         context: .
         file: ./Dockerfile
-        platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x,windows/amd64,windows/amd64
+        platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x
         push: true
         tags: weastur/poetry:latest-python-3.10.11,weastur/poetry:1.8.3-python-3.10.11
         cache-from: type=local,src=/tmp/.buildx-cache
@@ -4309,7 +4309,7 @@ jobs:
       with:
         context: .
         file: ./Dockerfile
-        platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x,windows/amd64,windows/amd64
+        platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x
         push: true
         tags: weastur/poetry:latest-python-3.11.2,weastur/poetry:1.8.3-python-3.11.2
         cache-from: type=local,src=/tmp/.buildx-cache
@@ -4365,7 +4365,7 @@ jobs:
       with:
         context: .
         file: ./Dockerfile
-        platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x,windows/amd64,windows/amd64
+        platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x
         push: true
         tags: weastur/poetry:latest-python-3.10.10,weastur/poetry:1.8.3-python-3.10.10
         cache-from: type=local,src=/tmp/.buildx-cache
@@ -4449,7 +4449,7 @@ jobs:
       with:
         context: .
         file: ./Dockerfile
-        platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/mips64le,linux/ppc64le,linux/s390x,windows/amd64,windows/amd64
+        platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/mips64le,linux/ppc64le,linux/s390x
         push: true
         tags: weastur/poetry:latest-python-3.10.9,weastur/poetry:1.8.3-python-3.10.9
         cache-from: type=local,src=/tmp/.buildx-cache
@@ -4561,7 +4561,7 @@ jobs:
       with:
         context: .
         file: ./Dockerfile
-        platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x,windows/amd64,windows/amd64
+        platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x
         push: true
         tags: weastur/poetry:latest-python-3.11.1,weastur/poetry:1.8.3-python-3.11.1
         cache-from: type=local,src=/tmp/.buildx-cache
@@ -4799,7 +4799,7 @@ jobs:
       with:
         context: .
         file: ./Dockerfile
-        platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x,windows/amd64,windows/amd64
+        platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x
         push: true
         tags: weastur/poetry:latest-python-3.11.0,weastur/poetry:1.8.3-python-3.11.0
         cache-from: type=local,src=/tmp/.buildx-cache
@@ -4841,7 +4841,7 @@ jobs:
       with:
         context: .
         file: ./Dockerfile
-        platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x,windows/amd64,windows/amd64
+        platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x
         push: true
         tags: weastur/poetry:latest-python-3.10.8,weastur/poetry:1.8.3-python-3.10.8
         cache-from: type=local,src=/tmp/.buildx-cache
@@ -5303,7 +5303,7 @@ jobs:
       with:
         context: .
         file: ./Dockerfile
-        platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/mips64le,linux/ppc64le,linux/s390x,windows/amd64,windows/amd64
+        platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/mips64le,linux/ppc64le,linux/s390x
         push: true
         tags: weastur/poetry:latest-python-3.10.7,weastur/poetry:1.8.3-python-3.10.7
         cache-from: type=local,src=/tmp/.buildx-cache
@@ -5737,7 +5737,7 @@ jobs:
       with:
         context: .
         file: ./Dockerfile
-        platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/mips64le,linux/ppc64le,linux/s390x,windows/amd64,windows/amd64
+        platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/mips64le,linux/ppc64le,linux/s390x
         push: true
         tags: weastur/poetry:latest-python-3.9.13,weastur/poetry:1.8.3-python-3.9.13
         cache-from: type=local,src=/tmp/.buildx-cache
@@ -5793,7 +5793,7 @@ jobs:
       with:
         context: .
         file: ./Dockerfile
-        platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/mips64le,linux/ppc64le,linux/s390x,windows/amd64,windows/amd64
+        platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/mips64le,linux/ppc64le,linux/s390x
         push: true
         tags: weastur/poetry:latest-python-3.10.6,weastur/poetry:1.8.3-python-3.10.6
         cache-from: type=local,src=/tmp/.buildx-cache
@@ -6129,7 +6129,7 @@ jobs:
       with:
         context: .
         file: ./Dockerfile
-        platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/mips64le,linux/ppc64le,linux/s390x,windows/amd64,windows/amd64
+        platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/mips64le,linux/ppc64le,linux/s390x
         push: true
         tags: weastur/poetry:latest-python-3.10.5,weastur/poetry:1.8.3-python-3.10.5
         cache-from: type=local,src=/tmp/.buildx-cache
@@ -6297,7 +6297,7 @@ jobs:
       with:
         context: .
         file: ./Dockerfile
-        platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/mips64le,linux/ppc64le,linux/s390x,windows/amd64,windows/amd64
+        platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/mips64le,linux/ppc64le,linux/s390x
         push: true
         tags: weastur/poetry:latest-python-3.10.4,weastur/poetry:1.8.3-python-3.10.4
         cache-from: type=local,src=/tmp/.buildx-cache
@@ -6465,7 +6465,7 @@ jobs:
       with:
         context: .
         file: ./Dockerfile
-        platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/mips64le,linux/ppc64le,linux/s390x,windows/amd64,windows/amd64
+        platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/mips64le,linux/ppc64le,linux/s390x
         push: true
         tags: weastur/poetry:latest-python-3.9.12,weastur/poetry:1.8.3-python-3.9.12
         cache-from: type=local,src=/tmp/.buildx-cache
@@ -6577,7 +6577,7 @@ jobs:
       with:
         context: .
         file: ./Dockerfile
-        platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x,windows/amd64,windows/amd64
+        platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x
         push: true
         tags: weastur/poetry:latest-python-3.10.3,weastur/poetry:1.8.3-python-3.10.3
         cache-from: type=local,src=/tmp/.buildx-cache
@@ -6675,7 +6675,7 @@ jobs:
       with:
         context: .
         file: ./Dockerfile
-        platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/mips64le,linux/ppc64le,linux/s390x,windows/amd64,windows/amd64
+        platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/mips64le,linux/ppc64le,linux/s390x
         push: true
         tags: weastur/poetry:latest-python-3.9.11,weastur/poetry:1.8.3-python-3.9.11
         cache-from: type=local,src=/tmp/.buildx-cache
@@ -6773,7 +6773,7 @@ jobs:
       with:
         context: .
         file: ./Dockerfile
-        platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/mips64le,linux/ppc64le,linux/s390x,windows/amd64,windows/amd64
+        platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/mips64le,linux/ppc64le,linux/s390x
         push: true
         tags: weastur/poetry:latest-python-3.9.10,weastur/poetry:1.8.3-python-3.9.10
         cache-from: type=local,src=/tmp/.buildx-cache
@@ -6787,7 +6787,7 @@ jobs:
       with:
         context: .
         file: ./Dockerfile
-        platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x,windows/amd64,windows/amd64
+        platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x
         push: true
         tags: weastur/poetry:latest-python-3.10.2,weastur/poetry:1.8.3-python-3.10.2
         cache-from: type=local,src=/tmp/.buildx-cache
@@ -7151,7 +7151,7 @@ jobs:
       with:
         context: .
         file: ./Dockerfile
-        platforms: linux/386,linux/amd64,windows/amd64,windows/amd64,linux/ppc64le,linux/s390x,linux/arm64/v8,linux/arm/v5,linux/mips64le,linux/arm/v7
+        platforms: linux/386,linux/amd64,linux/ppc64le,linux/s390x,linux/arm64/v8,linux/arm/v5,linux/mips64le,linux/arm/v7
         push: true
         tags: weastur/poetry:latest-python-3.9.9,weastur/poetry:1.8.3-python-3.9.9
         cache-from: type=local,src=/tmp/.buildx-cache
@@ -7165,7 +7165,7 @@ jobs:
       with:
         context: .
         file: ./Dockerfile
-        platforms: linux/amd64,linux/s390x,windows/amd64,linux/ppc64le,linux/arm/v7,linux/arm64/v8,windows/amd64,linux/386,linux/arm/v5,linux/mips64le
+        platforms: linux/amd64,linux/s390x,linux/ppc64le,linux/arm/v7,linux/arm64/v8,linux/386,linux/arm/v5,linux/mips64le
         push: true
         tags: weastur/poetry:latest-python-3.10.1,weastur/poetry:1.8.3-python-3.10.1
         cache-from: type=local,src=/tmp/.buildx-cache
@@ -7431,7 +7431,7 @@ jobs:
       with:
         context: .
         file: ./Dockerfile
-        platforms: windows/amd64,linux/amd64,linux/mips64le,linux/arm64/v8,windows/amd64,linux/arm/v7,linux/arm/v5,linux/386,linux/s390x,linux/ppc64le,windows/amd64
+        platforms: linux/amd64,linux/mips64le,linux/arm64/v8,linux/arm/v7,linux/arm/v5,linux/386,linux/s390x,linux/ppc64le
         push: true
         tags: weastur/poetry:latest-python-3.10.0,weastur/poetry:1.8.3-python-3.10.0
         cache-from: type=local,src=/tmp/.buildx-cache
@@ -7655,7 +7655,7 @@ jobs:
       with:
         context: .
         file: ./Dockerfile
-        platforms: linux/arm/v7,linux/386,linux/arm/v5,linux/mips64le,windows/amd64,linux/s390x,windows/amd64,linux/arm64/v8,linux/ppc64le,windows/amd64,linux/amd64
+        platforms: linux/arm/v7,linux/386,linux/arm/v5,linux/mips64le,linux/s390x,linux/arm64/v8,linux/ppc64le,linux/amd64
         push: true
         tags: weastur/poetry:latest-python-3.9.8,weastur/poetry:1.8.3-python-3.9.8
         cache-from: type=local,src=/tmp/.buildx-cache
@@ -7809,7 +7809,7 @@ jobs:
       with:
         context: .
         file: ./Dockerfile
-        platforms: linux/arm/v5,linux/amd64,linux/386,linux/arm64/v8,linux/ppc64le,windows/amd64,linux/mips64le,linux/arm/v7,linux/s390x,windows/amd64,windows/amd64
+        platforms: linux/arm/v5,linux/amd64,linux/386,linux/arm64/v8,linux/ppc64le,linux/mips64le,linux/arm/v7,linux/s390x
         push: true
         tags: weastur/poetry:latest-python-3.9.7,weastur/poetry:1.8.3-python-3.9.7
         cache-from: type=local,src=/tmp/.buildx-cache
@@ -7921,7 +7921,7 @@ jobs:
       with:
         context: .
         file: ./Dockerfile
-        platforms: linux/386,linux/amd64,windows/amd64,linux/arm/v7,linux/arm64/v8,linux/s390x,linux/arm/v5,windows/amd64,linux/mips64le,linux/ppc64le
+        platforms: linux/386,linux/amd64,linux/arm/v7,linux/arm64/v8,linux/s390x,linux/arm/v5,linux/mips64le,linux/ppc64le
         push: true
         tags: weastur/poetry:latest-python-3.9.6,weastur/poetry:1.8.3-python-3.9.6
         cache-from: type=local,src=/tmp/.buildx-cache
@@ -8173,7 +8173,7 @@ jobs:
       with:
         context: .
         file: ./Dockerfile
-        platforms: linux/amd64,linux/arm64/v8,linux/arm/v7,linux/mips64le,linux/386,linux/s390x,windows/amd64,linux/ppc64le,windows/amd64,linux/arm/v5
+        platforms: linux/amd64,linux/arm64/v8,linux/arm/v7,linux/mips64le,linux/386,linux/s390x,linux/ppc64le,linux/arm/v5
         push: true
         tags: weastur/poetry:latest-python-3.9.5,weastur/poetry:1.8.3-python-3.9.5
         cache-from: type=local,src=/tmp/.buildx-cache
@@ -8243,7 +8243,7 @@ jobs:
       with:
         context: .
         file: ./Dockerfile
-        platforms: linux/arm64/v8,linux/386,linux/arm/v5,linux/s390x,windows/amd64,linux/arm/v7,linux/amd64,linux/mips64le,windows/amd64,linux/ppc64le
+        platforms: linux/arm64/v8,linux/386,linux/arm/v5,linux/s390x,linux/arm/v7,linux/amd64,linux/mips64le,linux/ppc64le
         push: true
         tags: weastur/poetry:latest-python-3.8.10,weastur/poetry:1.8.3-python-3.8.10
         cache-from: type=local,src=/tmp/.buildx-cache
@@ -8453,7 +8453,7 @@ jobs:
       with:
         context: .
         file: ./Dockerfile
-        platforms: windows/amd64,linux/s390x,linux/arm/v7,windows/amd64,linux/arm/v5,linux/arm64/v8,linux/mips64le,linux/amd64,linux/386,linux/ppc64le
+        platforms: linux/s390x,linux/arm/v7,linux/arm/v5,linux/arm64/v8,linux/mips64le,linux/amd64,linux/386,linux/ppc64le
         push: true
         tags: weastur/poetry:latest-python-3.9.4,weastur/poetry:1.8.3-python-3.9.4
         cache-from: type=local,src=/tmp/.buildx-cache
@@ -8551,7 +8551,7 @@ jobs:
       with:
         context: .
         file: ./Dockerfile
-        platforms: linux/mips64le,windows/amd64,linux/386,linux/amd64,linux/ppc64le,linux/arm64/v8,linux/arm/v5,windows/amd64,linux/arm/v7,linux/s390x
+        platforms: linux/mips64le,linux/386,linux/amd64,linux/ppc64le,linux/arm64/v8,linux/arm/v5,linux/arm/v7,linux/s390x
         push: true
         tags: weastur/poetry:latest-python-3.8.9,weastur/poetry:1.8.3-python-3.8.9
         cache-from: type=local,src=/tmp/.buildx-cache
@@ -8649,7 +8649,7 @@ jobs:
       with:
         context: .
         file: ./Dockerfile
-        platforms: linux/ppc64le,linux/386,windows/amd64,windows/amd64,linux/s390x,linux/arm64/v8,linux/arm/v5,linux/arm/v7,linux/mips64le,linux/amd64
+        platforms: linux/ppc64le,linux/386,linux/s390x,linux/arm64/v8,linux/arm/v5,linux/arm/v7,linux/mips64le,linux/amd64
         push: true
         tags: weastur/poetry:latest-python-3.9.3,weastur/poetry:1.8.3-python-3.9.3
         cache-from: type=local,src=/tmp/.buildx-cache
@@ -8789,7 +8789,7 @@ jobs:
       with:
         context: .
         file: ./Dockerfile
-        platforms: linux/amd64,linux/s390x,linux/arm/v5,linux/arm/v7,windows/amd64,windows/amd64,linux/ppc64le,linux/arm64/v8,linux/386,linux/mips64le
+        platforms: linux/amd64,linux/s390x,linux/arm/v5,linux/arm/v7,linux/ppc64le,linux/arm64/v8,linux/386,linux/mips64le
         push: true
         tags: weastur/poetry:latest-python-3.9.2,weastur/poetry:1.8.3-python-3.9.2
         cache-from: type=local,src=/tmp/.buildx-cache
@@ -8845,7 +8845,7 @@ jobs:
       with:
         context: .
         file: ./Dockerfile
-        platforms: linux/arm/v7,linux/arm/v5,linux/mips64le,linux/arm64/v8,linux/386,linux/s390x,linux/amd64,windows/amd64,windows/amd64,linux/ppc64le
+        platforms: linux/arm/v7,linux/arm/v5,linux/mips64le,linux/arm64/v8,linux/386,linux/s390x,linux/amd64,linux/ppc64le
         push: true
         tags: weastur/poetry:latest-python-3.8.8,weastur/poetry:1.8.3-python-3.8.8
         cache-from: type=local,src=/tmp/.buildx-cache
@@ -8915,7 +8915,7 @@ jobs:
       with:
         context: .
         file: ./Dockerfile
-        platforms: linux/386,linux/mips64le,linux/arm/v5,windows/amd64,linux/ppc64le,linux/amd64,linux/arm64/v8,windows/amd64,linux/s390x,linux/arm/v7
+        platforms: linux/386,linux/mips64le,linux/arm/v5,linux/ppc64le,linux/amd64,linux/arm64/v8,linux/s390x,linux/arm/v7
         push: true
         tags: weastur/poetry:latest-python-3.9.1,weastur/poetry:1.8.3-python-3.9.1
         cache-from: type=local,src=/tmp/.buildx-cache
@@ -8929,7 +8929,7 @@ jobs:
       with:
         context: .
         file: ./Dockerfile
-        platforms: linux/amd64,linux/mips64le,linux/s390x,linux/ppc64le,linux/386,linux/arm/v5,windows/amd64,windows/amd64,linux/arm/v7,linux/arm64/v8
+        platforms: linux/amd64,linux/mips64le,linux/s390x,linux/ppc64le,linux/386,linux/arm/v5,linux/arm/v7,linux/arm64/v8
         push: true
         tags: weastur/poetry:latest-python-3.8.7,weastur/poetry:1.8.3-python-3.8.7
         cache-from: type=local,src=/tmp/.buildx-cache
@@ -9097,7 +9097,7 @@ jobs:
       with:
         context: .
         file: ./Dockerfile
-        platforms: linux/arm/v7,linux/s390x,linux/mips64le,linux/386,linux/ppc64le,linux/arm64/v8,linux/amd64,linux/arm/v5,windows/amd64,windows/amd64
+        platforms: linux/arm/v7,linux/s390x,linux/mips64le,linux/386,linux/ppc64le,linux/arm64/v8,linux/amd64,linux/arm/v5
         push: true
         tags: weastur/poetry:latest-python-3.8.6,weastur/poetry:1.8.3-python-3.8.6
         cache-from: type=local,src=/tmp/.buildx-cache
@@ -9181,7 +9181,7 @@ jobs:
       with:
         context: .
         file: ./Dockerfile
-        platforms: linux/s390x,linux/ppc64le,linux/386,linux/mips64le,linux/amd64,linux/arm64/v8,windows/amd64,linux/arm/v5,windows/amd64,linux/arm/v7
+        platforms: linux/s390x,linux/ppc64le,linux/386,linux/mips64le,linux/amd64,linux/arm64/v8,linux/arm/v5,linux/arm/v7
         push: true
         tags: weastur/poetry:latest-python-3.9.0,weastur/poetry:1.8.3-python-3.9.0
         cache-from: type=local,src=/tmp/.buildx-cache
@@ -9307,7 +9307,7 @@ jobs:
       with:
         context: .
         file: ./Dockerfile
-        platforms: linux/amd64,windows/amd64,linux/arm64/v8,windows/amd64,linux/ppc64le,linux/arm/v7,linux/386,linux/mips64le,linux/s390x,linux/arm/v5
+        platforms: linux/amd64,linux/arm64/v8,linux/ppc64le,linux/arm/v7,linux/386,linux/mips64le,linux/s390x,linux/arm/v5
         push: true
         tags: weastur/poetry:latest-python-3.8.5,weastur/poetry:1.8.3-python-3.8.5
         cache-from: type=local,src=/tmp/.buildx-cache
@@ -9363,7 +9363,7 @@ jobs:
       with:
         context: .
         file: ./Dockerfile
-        platforms: linux/ppc64le,linux/amd64,linux/s390x,windows/amd64,linux/arm64/v8,linux/arm/v5,linux/386,windows/amd64,linux/arm/v7,linux/mips64le
+        platforms: linux/ppc64le,linux/amd64,linux/s390x,linux/arm64/v8,linux/arm/v5,linux/386,linux/arm/v7,linux/mips64le
         push: true
         tags: weastur/poetry:latest-python-3.8.4,weastur/poetry:1.8.3-python-3.8.4
         cache-from: type=local,src=/tmp/.buildx-cache
@@ -9461,7 +9461,7 @@ jobs:
       with:
         context: .
         file: ./Dockerfile
-        platforms: linux/amd64,windows/amd64,linux/arm/v7,linux/ppc64le,linux/386,linux/mips64le,linux/arm64/v8,linux/s390x,windows/amd64,linux/arm/v5
+        platforms: linux/amd64,linux/arm/v7,linux/ppc64le,linux/386,linux/mips64le,linux/arm64/v8,linux/s390x,linux/arm/v5
         push: true
         tags: weastur/poetry:latest-python-3.8.3,weastur/poetry:1.8.3-python-3.8.3
         cache-from: type=local,src=/tmp/.buildx-cache
@@ -9629,7 +9629,7 @@ jobs:
       with:
         context: .
         file: ./Dockerfile
-        platforms: linux/amd64,windows/amd64,windows/amd64,linux/arm/v5,linux/ppc64le,linux/mips64le,linux/s390x,linux/arm/v7,linux/386,linux/arm64/v8
+        platforms: linux/amd64,linux/arm/v5,linux/ppc64le,linux/mips64le,linux/s390x,linux/arm/v7,linux/386,linux/arm64/v8
         push: true
         tags: weastur/poetry:latest-python-3.8.2,weastur/poetry:1.8.3-python-3.8.2
         cache-from: type=local,src=/tmp/.buildx-cache
@@ -9685,7 +9685,7 @@ jobs:
       with:
         context: .
         file: ./Dockerfile
-        platforms: linux/amd64,windows/amd64,linux/arm64/v8,windows/amd64,linux/arm/v5,linux/386,linux/ppc64le,linux/arm/v7
+        platforms: linux/amd64,linux/arm64/v8,linux/arm/v5,linux/386,linux/ppc64le,linux/arm/v7
         push: true
         tags: weastur/poetry:latest-python-3.8.1,weastur/poetry:1.8.3-python-3.8.1
         cache-from: type=local,src=/tmp/.buildx-cache
@@ -9783,7 +9783,7 @@ jobs:
       with:
         context: .
         file: ./Dockerfile
-        platforms: linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/s390x,linux/ppc64le,windows/amd64,windows/amd64,linux/amd64
+        platforms: linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/s390x,linux/ppc64le,linux/amd64
         push: true
         tags: weastur/poetry:latest-python-3.8.0,weastur/poetry:1.8.3-python-3.8.0
         cache-from: type=local,src=/tmp/.buildx-cache
