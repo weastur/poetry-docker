@@ -127,6 +127,7 @@ for metadata in python_image_metadata:
         metadata.get("tag_status") != "active"
         or metadata.get("content_type") != "image"
         or "windows" in metadata["name"]
+        or "bullseye" in metadata["name"]
     ):
         continue
     tag = metadata["name"]
