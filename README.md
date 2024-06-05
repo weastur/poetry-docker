@@ -1,7 +1,11 @@
 # poetry-docker
 
 ![Update](https://github.com/weastur/poetry-docker/workflows/Update/badge.svg)
-[![Build and Push](https://github.com/weastur/poetry-docker/actions/workflows/docker-build.yml/badge.svg)](https://github.com/weastur/poetry-docker/actions/workflows/docker-build.yml)
+[![Python 3.8](https://github.com/weastur/poetry-docker/actions/workflows/docker-build-38.yml/badge.svg)](https://github.com/weastur/poetry-docker/actions/workflows/docker-build-38.yml)
+[![Python 3.9](https://github.com/weastur/poetry-docker/actions/workflows/docker-build-39.yml/badge.svg)](https://github.com/weastur/poetry-docker/actions/workflows/docker-build-39.yml)
+[![Python 3.10](https://github.com/weastur/poetry-docker/actions/workflows/docker-build-310.yml/badge.svg)](https://github.com/weastur/poetry-docker/actions/workflows/docker-build-310.yml)
+[![Python 3.11](https://github.com/weastur/poetry-docker/actions/workflows/docker-build-311.yml/badge.svg)](https://github.com/weastur/poetry-docker/actions/workflows/docker-build-311.yml)
+[![Python 3.12](https://github.com/weastur/poetry-docker/actions/workflows/docker-build-312.yml/badge.svg)](https://github.com/weastur/poetry-docker/actions/workflows/docker-build-312.yml)
 [![Docker Pulls](https://img.shields.io/docker/pulls/weastur/poetry)](https://hub.docker.com/r/weastur/poetry/)
 ![GitHub](https://img.shields.io/github/license/weastur/poetry-docker)
 

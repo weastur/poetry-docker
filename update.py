@@ -17,7 +17,7 @@ CRYPTOGRAPHY_WHEEL_ARCHS = ["amd64", "arm64"]
 ALLOWED_VERSIONS = ["3.8", "3.9", "3.10", "3.11", "3.12"]
 GH_ACTION_START = Template(
     """---
-name: Build and Push (python $ver)
+name: Python $ver
 
 on:
   schedule:
