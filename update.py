@@ -16,12 +16,12 @@ PYTHON_IMAGE_METADATA_URL_TEMPLATE = "https://hub.docker.com/v2/namespaces/libra
 CRYPTOGRAPHY_WHEEL_ARCHS = ["amd64", "arm64"]
 ALLOWED_VERSIONS = ["3.8", "3.9", "3.10", "3.11", "3.12"]
 GH_ACTION_START = Template(
-    """---
+"""---
 name: Python $ver
 
 on:
   schedule:
-    - cron: '0 0 * * $day'
+    - cron: '0 3 * * $day'
   workflow_dispatch:
 
 jobs:
@@ -48,6 +48,10 @@ jobs:
     - name: Download poetry installer
       run: |
         wget -q -S -O install.py https://install.python-poetry.org
+
+    - name: Download rust installer
+      run: |
+        wget -q -S -O install.sh https://sh.rustup.rs
 
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v3
@@ -141,7 +145,6 @@ for metadata in python_image_metadata:
         metadata.get("tag_status") != "active"
         or metadata.get("content_type") != "image"
         or "windows" in metadata["name"]
-        or "bullseye" in metadata["name"]
     ):
         continue
     tag = metadata["name"]
@@ -156,12 +159,15 @@ for metadata in python_image_metadata:
     version = _parse_version(tag)
     platforms_for_simple = []
     platforms_for_packaged_rust = []
+    platforms_for_latest_rust = []
     for image in metadata["images"]:
         if image["os"] != "linux":
             continue
         platform = _make_platform(image)
         if image["architecture"] in CRYPTOGRAPHY_WHEEL_ARCHS:
             platforms_for_simple.append(platform)
+        elif 'bullseye' in tag or 'buster' in tag:
+            platforms_for_latest_rust.append(platform)
         else:
             platforms_for_packaged_rust.append(platform)
     if platforms_for_simple:
@@ -170,6 +176,16 @@ for metadata in python_image_metadata:
             raw_tags=tag,
             platforms=",".join(platforms_for_simple),
             dockerfile="Dockerfile",
+            tags=_make_tags(tag, poetry_version),
+            poetry_version=poetry_version,
+            base_image_version=tag,
+        )
+    if platforms_for_latest_rust:
+        actions[version] += GH_ACTION_BUILD_AND_PUSH_STEP.substitute(
+            type="latest rust",
+            raw_tags=tag,
+            platforms=",".join(platforms_for_latest_rust),
+            dockerfile="Dockerfile.latestrust",
             tags=_make_tags(tag, poetry_version),
             poetry_version=poetry_version,
             base_image_version=tag,
