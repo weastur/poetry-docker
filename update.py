@@ -13,6 +13,7 @@ POETRY_RELEASES_URL = (
     "https://api.github.com/repos/python-poetry/poetry/releases/latest"
 )
 PYTHON_IMAGE_METADATA_URL_TEMPLATE = "https://hub.docker.com/v2/namespaces/library/repositories/python/tags?page_size={page_size}&page={page}"
+CRYPTOGRAPHY_WHEEL_ARCHS = ["amd64", "arm64"]
 ALLOWED_VERSIONS = ["3.8", "3.9", "3.10", "3.11", "3.12"]
 GH_ACTION_START = """---
 name: Build and Push
@@ -58,7 +59,7 @@ GH_ACTION_BUILD_AND_PUSH_STEP = Template(
       continue-on-error: true
       with:
         context: .
-        file: ./Dockerfile
+        file: ./$dockerfile
         platforms: $platforms
         push: true
         tags: $tags
@@ -139,20 +140,34 @@ for metadata in python_image_metadata:
         continue
     if not tag.split("-")[0].replace(".", "").isdigit() or "rc" in tag:
         continue
-    platforms = []
+    platforms_for_simple = []
+    platforms_for_packaged_rust = []
     for image in metadata["images"]:
         if image["os"] != "linux":
             continue
-        platforms.append(_make_platform(image))
-    if not platforms:
-        continue
-    action += GH_ACTION_BUILD_AND_PUSH_STEP.substitute(
-        raw_tags=tag,
-        platforms=",".join(platforms),
-        tags=_make_tags(tag, poetry_version),
-        poetry_version=poetry_version,
-        base_image_version=tag,
-    )
+        platform = _make_platform(image)
+        if image["architecture"] in CRYPTOGRAPHY_WHEEL_ARCHS:
+            platforms_for_simple.append(platform)
+        else:
+            platforms_for_packaged_rust.append(platform)
+    if platforms_for_simple:
+        action += GH_ACTION_BUILD_AND_PUSH_STEP.substitute(
+            raw_tags=tag,
+            platforms=",".join(platforms_for_simple),
+            dockerfile="Dockerfile",
+            tags=_make_tags(tag, poetry_version),
+            poetry_version=poetry_version,
+            base_image_version=tag,
+        )
+    if platforms_for_packaged_rust:
+        action += GH_ACTION_BUILD_AND_PUSH_STEP.substitute(
+            raw_tags=tag,
+            platforms=",".join(platforms_for_packaged_rust),
+            dockerfile="Dockerfile.packagedrust",
+            tags=_make_tags(tag, poetry_version),
+            poetry_version=poetry_version,
+            base_image_version=tag,
+        )
 
 action += GH_ACTION_MOVE_CACHE_STEP
 
