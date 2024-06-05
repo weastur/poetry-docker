@@ -629,7 +629,7 @@ jobs:
       with:
         context: .
         file: ./Dockerfile.packagedrust
-        platforms: linux/ppc64le,linux/s390x,linux/arm/v7,linux/386,linux/arm/v6
+        platforms: linux/arm/v7,linux/386,linux/ppc64le,linux/s390x,linux/arm/v6
         push: true
         tags: weastur/poetry:latest-python-3.12-alpine3.19,weastur/poetry:1.8.3-python-3.12-alpine3.19
         cache-from: type=local,src=/tmp/.buildx-cache
