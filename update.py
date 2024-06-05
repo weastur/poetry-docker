@@ -15,12 +15,13 @@ POETRY_RELEASES_URL = (
 PYTHON_IMAGE_METADATA_URL_TEMPLATE = "https://hub.docker.com/v2/namespaces/library/repositories/python/tags?page_size={page_size}&page={page}"
 CRYPTOGRAPHY_WHEEL_ARCHS = ["amd64", "arm64"]
 ALLOWED_VERSIONS = ["3.8", "3.9", "3.10", "3.11", "3.12"]
-GH_ACTION_START = """---
-name: Build and Push
+GH_ACTION_START = Template(
+    """---
+name: Build and Push (python $ver)
 
 on:
   schedule:
-    - cron: '0 0 * * 1'
+    - cron: '0 0 * * $day'
   workflow_dispatch:
 
 jobs:
@@ -34,15 +35,15 @@ jobs:
       uses: actions/cache@v4
       with:
         path: /tmp/.buildx-cache
-        key: ${{ runner.os }}-buildx-${{ github.sha }}
+        key: $${{ runner.os }}-buildx-$${{ github.sha }}
         restore-keys: |
-          ${{ runner.os }}-buildx-
+          $${{ runner.os }}-buildx-
 
     - name: Login to DockerHub
       uses: docker/login-action@v3
       with:
-        username: ${{ secrets.DOCKERHUB_USERNAME }}
-        password: ${{ secrets.DOCKERHUB_TOKEN }}
+        username: $${{ secrets.DOCKERHUB_USERNAME }}
+        password: $${{ secrets.DOCKERHUB_TOKEN }}
 
     - name: Download poetry installer
       run: |
@@ -51,6 +52,7 @@ jobs:
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v3
 """
+)
 
 GH_ACTION_BUILD_AND_PUSH_STEP = Template(
     """
@@ -119,9 +121,20 @@ def _download_python_image_metadata() -> list:
     return metadata
 
 
+def _parse_version(tag: str) -> str:
+    if tag in ("latest", "3"):
+        return ALLOWED_VERSIONS[-1]
+    for ver in ALLOWED_VERSIONS:
+        if tag.startswith(ver):
+            return ver
+
+
 poetry_version = _get_latest_poetry_version()
 python_image_metadata = _download_python_image_metadata()
-action = GH_ACTION_START
+actions = {
+    ver: GH_ACTION_START.substitute(ver=ver, day=_id)
+    for _id, ver in enumerate(ALLOWED_VERSIONS)
+}
 
 for metadata in python_image_metadata:
     if (
@@ -140,6 +153,7 @@ for metadata in python_image_metadata:
         continue
     if not tag.split("-")[0].replace(".", "").isdigit() or "rc" in tag:
         continue
+    version = _parse_version(tag)
     platforms_for_simple = []
     platforms_for_packaged_rust = []
     for image in metadata["images"]:
@@ -151,7 +165,7 @@ for metadata in python_image_metadata:
         else:
             platforms_for_packaged_rust.append(platform)
     if platforms_for_simple:
-        action += GH_ACTION_BUILD_AND_PUSH_STEP.substitute(
+        actions[version] += GH_ACTION_BUILD_AND_PUSH_STEP.substitute(
             type="simple",
             raw_tags=tag,
             platforms=",".join(platforms_for_simple),
@@ -161,7 +175,7 @@ for metadata in python_image_metadata:
             base_image_version=tag,
         )
     if platforms_for_packaged_rust:
-        action += GH_ACTION_BUILD_AND_PUSH_STEP.substitute(
+        actions[version] += GH_ACTION_BUILD_AND_PUSH_STEP.substitute(
             type="packaged rust",
             raw_tags=tag,
             platforms=",".join(platforms_for_packaged_rust),
@@ -171,7 +185,11 @@ for metadata in python_image_metadata:
             base_image_version=tag,
         )
 
-action += GH_ACTION_MOVE_CACHE_STEP
+for file_path in glob.glob(".github/workflows/docker-build-*"):
+    os.remove(file_path)
 
-with open(f".github/workflows/docker-build.yml", "w") as file:
-    file.write(action)
+for version in actions:
+    action = actions[version] + GH_ACTION_MOVE_CACHE_STEP
+    fid = version.replace(".", "")
+    with open(f".github/workflows/docker-build-{fid}.yml", "w") as file:
+        file.write(action)
