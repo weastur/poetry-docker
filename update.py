@@ -54,7 +54,7 @@ jobs:
 
 GH_ACTION_BUILD_AND_PUSH_STEP = Template(
     """
-    - name: Build and push ($raw_tags)
+    - name: Build and push ($type) ($raw_tags)
       uses: docker/build-push-action@v5
       continue-on-error: true
       with:
@@ -152,6 +152,7 @@ for metadata in python_image_metadata:
             platforms_for_packaged_rust.append(platform)
     if platforms_for_simple:
         action += GH_ACTION_BUILD_AND_PUSH_STEP.substitute(
+            type="simple",
             raw_tags=tag,
             platforms=",".join(platforms_for_simple),
             dockerfile="Dockerfile",
@@ -161,6 +162,7 @@ for metadata in python_image_metadata:
         )
     if platforms_for_packaged_rust:
         action += GH_ACTION_BUILD_AND_PUSH_STEP.substitute(
+            type="packaged rust",
             raw_tags=tag,
             platforms=",".join(platforms_for_packaged_rust),
             dockerfile="Dockerfile.packagedrust",
