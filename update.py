@@ -13,7 +13,6 @@ POETRY_RELEASES_URL = (
     "https://api.github.com/repos/python-poetry/poetry/releases/latest"
 )
 PYTHON_IMAGE_METADATA_URL_TEMPLATE = "https://hub.docker.com/v2/namespaces/library/repositories/python/tags?page_size={page_size}&page={page}"
-CRYPTOGRAPHY_WHEEL_ARCHS = ["amd64", "arm64"]
 ALLOWED_VERSIONS = ["3.8", "3.9", "3.10", "3.11", "3.12"]
 GH_ACTION_START = Template(
     """---
@@ -164,7 +163,7 @@ for metadata in python_image_metadata:
         if image["os"] != "linux":
             continue
         platform = _make_platform(image)
-        if image["architecture"] in CRYPTOGRAPHY_WHEEL_ARCHS:
+        if image["architecture"] == 'amd64':
             platforms_for_simple.append(platform)
         elif "bullseye" in tag or "buster" in tag:
             pass
