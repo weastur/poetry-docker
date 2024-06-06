@@ -59,12 +59,12 @@ jobs:
 
 GH_ACTION_BUILD_AND_PUSH_STEP = Template(
     """
-    - name: Build and push ($type) ($raw_tags)
+    - name: Build and push ($raw_tags)
       uses: docker/build-push-action@v5
       continue-on-error: false
       with:
         context: .
-        file: ./$dockerfile
+        file: ./Dockerfile
         platforms: $platforms
         push: true
         tags: $tags
@@ -156,32 +156,17 @@ for metadata in python_image_metadata:
     if not tag.split("-")[0].replace(".", "").isdigit() or "rc" in tag:
         continue
     version = _parse_version(tag)
-    platforms_for_packaged_rust = []
-    platforms_for_latest_rust = []
+    platforms = []
     for image in metadata["images"]:
         if image["os"] != "linux":
             continue
         platform = _make_platform(image)
-        if ("bullseye" in tag or "buster" in tag) and image['architecture'] not in ['i386', 'mips64le']:
-            platforms_for_latest_rust.append(platform)
-        else:
-            platforms_for_packaged_rust.append(platform)
-    if platforms_for_latest_rust:
+        if not ("bullseye" in tag or "buster" in tag):
+            platforms.append(platform)
+    if platforms:
         actions[version] += GH_ACTION_BUILD_AND_PUSH_STEP.substitute(
-            type="latest rust",
             raw_tags=tag,
-            platforms=",".join(platforms_for_latest_rust),
-            dockerfile="Dockerfile.latestrust",
-            tags=_make_tags(tag, poetry_version),
-            poetry_version=poetry_version,
-            base_image_version=tag,
-        )
-    if platforms_for_packaged_rust:
-        actions[version] += GH_ACTION_BUILD_AND_PUSH_STEP.substitute(
-            type="packaged rust",
-            raw_tags=tag,
-            platforms=",".join(platforms_for_packaged_rust),
-            dockerfile="Dockerfile.packagedrust",
+            platforms=",".join(platforms),
             tags=_make_tags(tag, poetry_version),
             poetry_version=poetry_version,
             base_image_version=tag,
