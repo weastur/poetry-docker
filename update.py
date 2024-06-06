@@ -16,7 +16,7 @@ PYTHON_IMAGE_METADATA_URL_TEMPLATE = "https://hub.docker.com/v2/namespaces/libra
 CRYPTOGRAPHY_WHEEL_ARCHS = ["amd64", "arm64"]
 ALLOWED_VERSIONS = ["3.8", "3.9", "3.10", "3.11", "3.12"]
 GH_ACTION_START = Template(
-"""---
+    """---
 name: Python $ver
 
 on:
@@ -166,8 +166,9 @@ for metadata in python_image_metadata:
         platform = _make_platform(image)
         if image["architecture"] in CRYPTOGRAPHY_WHEEL_ARCHS:
             platforms_for_simple.append(platform)
-        elif 'bullseye' in tag or 'buster' in tag:
-            platforms_for_latest_rust.append(platform)
+        elif "bullseye" in tag or "buster" in tag:
+            pass
+            # platforms_for_latest_rust.append(platform)
         else:
             platforms_for_packaged_rust.append(platform)
     if platforms_for_simple:
