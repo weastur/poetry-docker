@@ -1004,7 +1004,22 @@ jobs:
       with:
         context: .
         file: ./Dockerfile.latestrust
-        platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/mips64le,linux/ppc64le,linux/s390x
+        platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x
+        push: true
+        tags: weastur/poetry:latest-python-3.10.9-bullseye,weastur/poetry:1.8.3-python-3.10.9-bullseye
+        cache-from: type=local,src=/tmp/.buildx-cache
+        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
+        build-args: |
+          BASE_IMAGE_VERSION=3.10.9-bullseye
+          POETRY_VERSION=1.8.3
+
+    - name: Build and push (packaged rust) (3.10.9-bullseye)
+      uses: docker/build-push-action@v5
+      continue-on-error: false
+      with:
+        context: .
+        file: ./Dockerfile.packagedrust
+        platforms: linux/mips64le
         push: true
         tags: weastur/poetry:latest-python-3.10.9-bullseye,weastur/poetry:1.8.3-python-3.10.9-bullseye
         cache-from: type=local,src=/tmp/.buildx-cache
@@ -1034,7 +1049,22 @@ jobs:
       with:
         context: .
         file: ./Dockerfile.latestrust
-        platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/mips64le,linux/ppc64le,linux/s390x
+        platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x
+        push: true
+        tags: weastur/poetry:latest-python-3.10.9-slim-bullseye,weastur/poetry:1.8.3-python-3.10.9-slim-bullseye
+        cache-from: type=local,src=/tmp/.buildx-cache
+        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
+        build-args: |
+          BASE_IMAGE_VERSION=3.10.9-slim-bullseye
+          POETRY_VERSION=1.8.3
+
+    - name: Build and push (packaged rust) (3.10.9-slim-bullseye)
+      uses: docker/build-push-action@v5
+      continue-on-error: false
+      with:
+        context: .
+        file: ./Dockerfile.packagedrust
+        platforms: linux/mips64le
         push: true
         tags: weastur/poetry:latest-python-3.10.9-slim-bullseye,weastur/poetry:1.8.3-python-3.10.9-slim-bullseye
         cache-from: type=local,src=/tmp/.buildx-cache
@@ -1379,7 +1409,22 @@ jobs:
       with:
         context: .
         file: ./Dockerfile.latestrust
-        platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/mips64le,linux/ppc64le,linux/s390x
+        platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x
+        push: true
+        tags: weastur/poetry:latest-python-3.10.7-slim-bullseye,weastur/poetry:1.8.3-python-3.10.7-slim-bullseye
+        cache-from: type=local,src=/tmp/.buildx-cache
+        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
+        build-args: |
+          BASE_IMAGE_VERSION=3.10.7-slim-bullseye
+          POETRY_VERSION=1.8.3
+
+    - name: Build and push (packaged rust) (3.10.7-slim-bullseye)
+      uses: docker/build-push-action@v5
+      continue-on-error: false
+      with:
+        context: .
+        file: ./Dockerfile.packagedrust
+        platforms: linux/mips64le
         push: true
         tags: weastur/poetry:latest-python-3.10.7-slim-bullseye,weastur/poetry:1.8.3-python-3.10.7-slim-bullseye
         cache-from: type=local,src=/tmp/.buildx-cache
@@ -1424,7 +1469,22 @@ jobs:
       with:
         context: .
         file: ./Dockerfile.latestrust
-        platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/mips64le,linux/ppc64le,linux/s390x
+        platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x
+        push: true
+        tags: weastur/poetry:latest-python-3.10.7-bullseye,weastur/poetry:1.8.3-python-3.10.7-bullseye
+        cache-from: type=local,src=/tmp/.buildx-cache
+        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
+        build-args: |
+          BASE_IMAGE_VERSION=3.10.7-bullseye
+          POETRY_VERSION=1.8.3
+
+    - name: Build and push (packaged rust) (3.10.7-bullseye)
+      uses: docker/build-push-action@v5
+      continue-on-error: false
+      with:
+        context: .
+        file: ./Dockerfile.packagedrust
+        platforms: linux/mips64le
         push: true
         tags: weastur/poetry:latest-python-3.10.7-bullseye,weastur/poetry:1.8.3-python-3.10.7-bullseye
         cache-from: type=local,src=/tmp/.buildx-cache
@@ -1454,7 +1514,22 @@ jobs:
       with:
         context: .
         file: ./Dockerfile.latestrust
-        platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/mips64le,linux/ppc64le,linux/s390x
+        platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x
+        push: true
+        tags: weastur/poetry:latest-python-3.10.6-bullseye,weastur/poetry:1.8.3-python-3.10.6-bullseye
+        cache-from: type=local,src=/tmp/.buildx-cache
+        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
+        build-args: |
+          BASE_IMAGE_VERSION=3.10.6-bullseye
+          POETRY_VERSION=1.8.3
+
+    - name: Build and push (packaged rust) (3.10.6-bullseye)
+      uses: docker/build-push-action@v5
+      continue-on-error: false
+      with:
+        context: .
+        file: ./Dockerfile.packagedrust
+        platforms: linux/mips64le
         push: true
         tags: weastur/poetry:latest-python-3.10.6-bullseye,weastur/poetry:1.8.3-python-3.10.6-bullseye
         cache-from: type=local,src=/tmp/.buildx-cache
@@ -1499,7 +1574,22 @@ jobs:
       with:
         context: .
         file: ./Dockerfile.latestrust
-        platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/mips64le,linux/ppc64le,linux/s390x
+        platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x
+        push: true
+        tags: weastur/poetry:latest-python-3.10.6-slim-bullseye,weastur/poetry:1.8.3-python-3.10.6-slim-bullseye
+        cache-from: type=local,src=/tmp/.buildx-cache
+        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
+        build-args: |
+          BASE_IMAGE_VERSION=3.10.6-slim-bullseye
+          POETRY_VERSION=1.8.3
+
+    - name: Build and push (packaged rust) (3.10.6-slim-bullseye)
+      uses: docker/build-push-action@v5
+      continue-on-error: false
+      with:
+        context: .
+        file: ./Dockerfile.packagedrust
+        platforms: linux/mips64le
         push: true
         tags: weastur/poetry:latest-python-3.10.6-slim-bullseye,weastur/poetry:1.8.3-python-3.10.6-slim-bullseye
         cache-from: type=local,src=/tmp/.buildx-cache
@@ -1574,7 +1664,22 @@ jobs:
       with:
         context: .
         file: ./Dockerfile.latestrust
-        platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/mips64le,linux/ppc64le,linux/s390x
+        platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x
+        push: true
+        tags: weastur/poetry:latest-python-3.10.5-slim-buster,weastur/poetry:1.8.3-python-3.10.5-slim-buster
+        cache-from: type=local,src=/tmp/.buildx-cache
+        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
+        build-args: |
+          BASE_IMAGE_VERSION=3.10.5-slim-buster
+          POETRY_VERSION=1.8.3
+
+    - name: Build and push (packaged rust) (3.10.5-slim-buster)
+      uses: docker/build-push-action@v5
+      continue-on-error: false
+      with:
+        context: .
+        file: ./Dockerfile.packagedrust
+        platforms: linux/mips64le
         push: true
         tags: weastur/poetry:latest-python-3.10.5-slim-buster,weastur/poetry:1.8.3-python-3.10.5-slim-buster
         cache-from: type=local,src=/tmp/.buildx-cache
@@ -1589,7 +1694,22 @@ jobs:
       with:
         context: .
         file: ./Dockerfile.latestrust
-        platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/mips64le,linux/ppc64le,linux/s390x
+        platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x
+        push: true
+        tags: weastur/poetry:latest-python-3.10.5-slim-bullseye,weastur/poetry:1.8.3-python-3.10.5-slim-bullseye
+        cache-from: type=local,src=/tmp/.buildx-cache
+        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
+        build-args: |
+          BASE_IMAGE_VERSION=3.10.5-slim-bullseye
+          POETRY_VERSION=1.8.3
+
+    - name: Build and push (packaged rust) (3.10.5-slim-bullseye)
+      uses: docker/build-push-action@v5
+      continue-on-error: false
+      with:
+        context: .
+        file: ./Dockerfile.packagedrust
+        platforms: linux/mips64le
         push: true
         tags: weastur/poetry:latest-python-3.10.5-slim-bullseye,weastur/poetry:1.8.3-python-3.10.5-slim-bullseye
         cache-from: type=local,src=/tmp/.buildx-cache
@@ -1619,7 +1739,22 @@ jobs:
       with:
         context: .
         file: ./Dockerfile.latestrust
-        platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/mips64le,linux/ppc64le,linux/s390x
+        platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x
+        push: true
+        tags: weastur/poetry:latest-python-3.10.5-buster,weastur/poetry:1.8.3-python-3.10.5-buster
+        cache-from: type=local,src=/tmp/.buildx-cache
+        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
+        build-args: |
+          BASE_IMAGE_VERSION=3.10.5-buster
+          POETRY_VERSION=1.8.3
+
+    - name: Build and push (packaged rust) (3.10.5-buster)
+      uses: docker/build-push-action@v5
+      continue-on-error: false
+      with:
+        context: .
+        file: ./Dockerfile.packagedrust
+        platforms: linux/mips64le
         push: true
         tags: weastur/poetry:latest-python-3.10.5-buster,weastur/poetry:1.8.3-python-3.10.5-buster
         cache-from: type=local,src=/tmp/.buildx-cache
@@ -1634,7 +1769,22 @@ jobs:
       with:
         context: .
         file: ./Dockerfile.latestrust
-        platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/mips64le,linux/ppc64le,linux/s390x
+        platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x
+        push: true
+        tags: weastur/poetry:latest-python-3.10.5-bullseye,weastur/poetry:1.8.3-python-3.10.5-bullseye
+        cache-from: type=local,src=/tmp/.buildx-cache
+        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
+        build-args: |
+          BASE_IMAGE_VERSION=3.10.5-bullseye
+          POETRY_VERSION=1.8.3
+
+    - name: Build and push (packaged rust) (3.10.5-bullseye)
+      uses: docker/build-push-action@v5
+      continue-on-error: false
+      with:
+        context: .
+        file: ./Dockerfile.packagedrust
+        platforms: linux/mips64le
         push: true
         tags: weastur/poetry:latest-python-3.10.5-bullseye,weastur/poetry:1.8.3-python-3.10.5-bullseye
         cache-from: type=local,src=/tmp/.buildx-cache
@@ -1709,7 +1859,22 @@ jobs:
       with:
         context: .
         file: ./Dockerfile.latestrust
-        platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/mips64le,linux/ppc64le,linux/s390x
+        platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x
+        push: true
+        tags: weastur/poetry:latest-python-3.10.4-slim-buster,weastur/poetry:1.8.3-python-3.10.4-slim-buster
+        cache-from: type=local,src=/tmp/.buildx-cache
+        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
+        build-args: |
+          BASE_IMAGE_VERSION=3.10.4-slim-buster
+          POETRY_VERSION=1.8.3
+
+    - name: Build and push (packaged rust) (3.10.4-slim-buster)
+      uses: docker/build-push-action@v5
+      continue-on-error: false
+      with:
+        context: .
+        file: ./Dockerfile.packagedrust
+        platforms: linux/mips64le
         push: true
         tags: weastur/poetry:latest-python-3.10.4-slim-buster,weastur/poetry:1.8.3-python-3.10.4-slim-buster
         cache-from: type=local,src=/tmp/.buildx-cache
@@ -1724,7 +1889,22 @@ jobs:
       with:
         context: .
         file: ./Dockerfile.latestrust
-        platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/mips64le,linux/ppc64le,linux/s390x
+        platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x
+        push: true
+        tags: weastur/poetry:latest-python-3.10.4-slim-bullseye,weastur/poetry:1.8.3-python-3.10.4-slim-bullseye
+        cache-from: type=local,src=/tmp/.buildx-cache
+        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
+        build-args: |
+          BASE_IMAGE_VERSION=3.10.4-slim-bullseye
+          POETRY_VERSION=1.8.3
+
+    - name: Build and push (packaged rust) (3.10.4-slim-bullseye)
+      uses: docker/build-push-action@v5
+      continue-on-error: false
+      with:
+        context: .
+        file: ./Dockerfile.packagedrust
+        platforms: linux/mips64le
         push: true
         tags: weastur/poetry:latest-python-3.10.4-slim-bullseye,weastur/poetry:1.8.3-python-3.10.4-slim-bullseye
         cache-from: type=local,src=/tmp/.buildx-cache
@@ -1754,7 +1934,22 @@ jobs:
       with:
         context: .
         file: ./Dockerfile.latestrust
-        platforms: linux/arm/v7,linux/arm64/v8,linux/386,linux/mips64le,linux/ppc64le,linux/s390x,linux/amd64,linux/arm/v5
+        platforms: linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x,linux/amd64,linux/arm/v5
+        push: true
+        tags: weastur/poetry:latest-python-3.10.4-buster,weastur/poetry:1.8.3-python-3.10.4-buster
+        cache-from: type=local,src=/tmp/.buildx-cache
+        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
+        build-args: |
+          BASE_IMAGE_VERSION=3.10.4-buster
+          POETRY_VERSION=1.8.3
+
+    - name: Build and push (packaged rust) (3.10.4-buster)
+      uses: docker/build-push-action@v5
+      continue-on-error: false
+      with:
+        context: .
+        file: ./Dockerfile.packagedrust
+        platforms: linux/mips64le
         push: true
         tags: weastur/poetry:latest-python-3.10.4-buster,weastur/poetry:1.8.3-python-3.10.4-buster
         cache-from: type=local,src=/tmp/.buildx-cache
@@ -1769,7 +1964,22 @@ jobs:
       with:
         context: .
         file: ./Dockerfile.latestrust
-        platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/mips64le,linux/ppc64le,linux/s390x
+        platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x
+        push: true
+        tags: weastur/poetry:latest-python-3.10.4-bullseye,weastur/poetry:1.8.3-python-3.10.4-bullseye
+        cache-from: type=local,src=/tmp/.buildx-cache
+        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
+        build-args: |
+          BASE_IMAGE_VERSION=3.10.4-bullseye
+          POETRY_VERSION=1.8.3
+
+    - name: Build and push (packaged rust) (3.10.4-bullseye)
+      uses: docker/build-push-action@v5
+      continue-on-error: false
+      with:
+        context: .
+        file: ./Dockerfile.packagedrust
+        platforms: linux/mips64le
         push: true
         tags: weastur/poetry:latest-python-3.10.4-bullseye,weastur/poetry:1.8.3-python-3.10.4-bullseye
         cache-from: type=local,src=/tmp/.buildx-cache
@@ -2159,7 +2369,22 @@ jobs:
       with:
         context: .
         file: ./Dockerfile.latestrust
-        platforms: linux/amd64,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x,linux/arm/v7,linux/mips64le,linux/arm/v5
+        platforms: linux/amd64,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x,linux/arm/v7,linux/arm/v5
+        push: true
+        tags: weastur/poetry:latest-python-3.10.1-slim-buster,weastur/poetry:1.8.3-python-3.10.1-slim-buster
+        cache-from: type=local,src=/tmp/.buildx-cache
+        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
+        build-args: |
+          BASE_IMAGE_VERSION=3.10.1-slim-buster
+          POETRY_VERSION=1.8.3
+
+    - name: Build and push (packaged rust) (3.10.1-slim-buster)
+      uses: docker/build-push-action@v5
+      continue-on-error: false
+      with:
+        context: .
+        file: ./Dockerfile.packagedrust
+        platforms: linux/mips64le
         push: true
         tags: weastur/poetry:latest-python-3.10.1-slim-buster,weastur/poetry:1.8.3-python-3.10.1-slim-buster
         cache-from: type=local,src=/tmp/.buildx-cache
@@ -2174,7 +2399,22 @@ jobs:
       with:
         context: .
         file: ./Dockerfile.latestrust
-        platforms: linux/mips64le,linux/amd64,linux/386,linux/arm64/v8,linux/arm/v5,linux/s390x,linux/arm/v7,linux/ppc64le
+        platforms: linux/amd64,linux/386,linux/arm64/v8,linux/arm/v5,linux/s390x,linux/arm/v7,linux/ppc64le
+        push: true
+        tags: weastur/poetry:latest-python-3.10.1-slim-bullseye,weastur/poetry:1.8.3-python-3.10.1-slim-bullseye
+        cache-from: type=local,src=/tmp/.buildx-cache
+        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
+        build-args: |
+          BASE_IMAGE_VERSION=3.10.1-slim-bullseye
+          POETRY_VERSION=1.8.3
+
+    - name: Build and push (packaged rust) (3.10.1-slim-bullseye)
+      uses: docker/build-push-action@v5
+      continue-on-error: false
+      with:
+        context: .
+        file: ./Dockerfile.packagedrust
+        platforms: linux/mips64le
         push: true
         tags: weastur/poetry:latest-python-3.10.1-slim-bullseye,weastur/poetry:1.8.3-python-3.10.1-slim-bullseye
         cache-from: type=local,src=/tmp/.buildx-cache
@@ -2204,7 +2444,22 @@ jobs:
       with:
         context: .
         file: ./Dockerfile.latestrust
-        platforms: linux/mips64le,linux/386,linux/arm64/v8,linux/arm/v7,linux/amd64,linux/s390x,linux/arm/v5,linux/ppc64le
+        platforms: linux/386,linux/arm64/v8,linux/arm/v7,linux/amd64,linux/s390x,linux/arm/v5,linux/ppc64le
+        push: true
+        tags: weastur/poetry:latest-python-3.10.1-buster,weastur/poetry:1.8.3-python-3.10.1-buster
+        cache-from: type=local,src=/tmp/.buildx-cache
+        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
+        build-args: |
+          BASE_IMAGE_VERSION=3.10.1-buster
+          POETRY_VERSION=1.8.3
+
+    - name: Build and push (packaged rust) (3.10.1-buster)
+      uses: docker/build-push-action@v5
+      continue-on-error: false
+      with:
+        context: .
+        file: ./Dockerfile.packagedrust
+        platforms: linux/mips64le
         push: true
         tags: weastur/poetry:latest-python-3.10.1-buster,weastur/poetry:1.8.3-python-3.10.1-buster
         cache-from: type=local,src=/tmp/.buildx-cache
@@ -2219,7 +2474,22 @@ jobs:
       with:
         context: .
         file: ./Dockerfile.latestrust
-        platforms: linux/arm64/v8,linux/arm/v5,linux/amd64,linux/386,linux/s390x,linux/arm/v7,linux/mips64le,linux/ppc64le
+        platforms: linux/arm64/v8,linux/arm/v5,linux/amd64,linux/386,linux/s390x,linux/arm/v7,linux/ppc64le
+        push: true
+        tags: weastur/poetry:latest-python-3.10.1-bullseye,weastur/poetry:1.8.3-python-3.10.1-bullseye
+        cache-from: type=local,src=/tmp/.buildx-cache
+        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
+        build-args: |
+          BASE_IMAGE_VERSION=3.10.1-bullseye
+          POETRY_VERSION=1.8.3
+
+    - name: Build and push (packaged rust) (3.10.1-bullseye)
+      uses: docker/build-push-action@v5
+      continue-on-error: false
+      with:
+        context: .
+        file: ./Dockerfile.packagedrust
+        platforms: linux/mips64le
         push: true
         tags: weastur/poetry:latest-python-3.10.1-bullseye,weastur/poetry:1.8.3-python-3.10.1-bullseye
         cache-from: type=local,src=/tmp/.buildx-cache
@@ -2279,7 +2549,22 @@ jobs:
       with:
         context: .
         file: ./Dockerfile.latestrust
-        platforms: linux/amd64,linux/386,linux/arm/v7,linux/arm64/v8,linux/ppc64le,linux/arm/v5,linux/mips64le,linux/s390x
+        platforms: linux/amd64,linux/386,linux/arm/v7,linux/arm64/v8,linux/ppc64le,linux/arm/v5,linux/s390x
+        push: true
+        tags: weastur/poetry:latest-python-3.10.0-slim-buster,weastur/poetry:1.8.3-python-3.10.0-slim-buster
+        cache-from: type=local,src=/tmp/.buildx-cache
+        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
+        build-args: |
+          BASE_IMAGE_VERSION=3.10.0-slim-buster
+          POETRY_VERSION=1.8.3
+
+    - name: Build and push (packaged rust) (3.10.0-slim-buster)
+      uses: docker/build-push-action@v5
+      continue-on-error: false
+      with:
+        context: .
+        file: ./Dockerfile.packagedrust
+        platforms: linux/mips64le
         push: true
         tags: weastur/poetry:latest-python-3.10.0-slim-buster,weastur/poetry:1.8.3-python-3.10.0-slim-buster
         cache-from: type=local,src=/tmp/.buildx-cache
@@ -2294,7 +2579,22 @@ jobs:
       with:
         context: .
         file: ./Dockerfile.latestrust
-        platforms: linux/386,linux/arm/v5,linux/ppc64le,linux/amd64,linux/s390x,linux/mips64le,linux/arm/v7,linux/arm64/v8
+        platforms: linux/386,linux/arm/v5,linux/ppc64le,linux/amd64,linux/s390x,linux/arm/v7,linux/arm64/v8
+        push: true
+        tags: weastur/poetry:latest-python-3.10.0-slim-bullseye,weastur/poetry:1.8.3-python-3.10.0-slim-bullseye
+        cache-from: type=local,src=/tmp/.buildx-cache
+        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
+        build-args: |
+          BASE_IMAGE_VERSION=3.10.0-slim-bullseye
+          POETRY_VERSION=1.8.3
+
+    - name: Build and push (packaged rust) (3.10.0-slim-bullseye)
+      uses: docker/build-push-action@v5
+      continue-on-error: false
+      with:
+        context: .
+        file: ./Dockerfile.packagedrust
+        platforms: linux/mips64le
         push: true
         tags: weastur/poetry:latest-python-3.10.0-slim-bullseye,weastur/poetry:1.8.3-python-3.10.0-slim-bullseye
         cache-from: type=local,src=/tmp/.buildx-cache
@@ -2324,7 +2624,22 @@ jobs:
       with:
         context: .
         file: ./Dockerfile.latestrust
-        platforms: linux/amd64,linux/arm64/v8,linux/arm/v5,linux/arm/v7,linux/mips64le,linux/ppc64le,linux/s390x,linux/386
+        platforms: linux/amd64,linux/arm64/v8,linux/arm/v5,linux/arm/v7,linux/ppc64le,linux/s390x,linux/386
+        push: true
+        tags: weastur/poetry:latest-python-3.10.0-buster,weastur/poetry:1.8.3-python-3.10.0-buster
+        cache-from: type=local,src=/tmp/.buildx-cache
+        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
+        build-args: |
+          BASE_IMAGE_VERSION=3.10.0-buster
+          POETRY_VERSION=1.8.3
+
+    - name: Build and push (packaged rust) (3.10.0-buster)
+      uses: docker/build-push-action@v5
+      continue-on-error: false
+      with:
+        context: .
+        file: ./Dockerfile.packagedrust
+        platforms: linux/mips64le
         push: true
         tags: weastur/poetry:latest-python-3.10.0-buster,weastur/poetry:1.8.3-python-3.10.0-buster
         cache-from: type=local,src=/tmp/.buildx-cache
@@ -2339,7 +2654,22 @@ jobs:
       with:
         context: .
         file: ./Dockerfile.latestrust
-        platforms: linux/amd64,linux/ppc64le,linux/s390x,linux/arm/v7,linux/arm/v5,linux/arm64/v8,linux/mips64le,linux/386
+        platforms: linux/amd64,linux/ppc64le,linux/s390x,linux/arm/v7,linux/arm/v5,linux/arm64/v8,linux/386
+        push: true
+        tags: weastur/poetry:latest-python-3.10.0-bullseye,weastur/poetry:1.8.3-python-3.10.0-bullseye
+        cache-from: type=local,src=/tmp/.buildx-cache
+        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
+        build-args: |
+          BASE_IMAGE_VERSION=3.10.0-bullseye
+          POETRY_VERSION=1.8.3
+
+    - name: Build and push (packaged rust) (3.10.0-bullseye)
+      uses: docker/build-push-action@v5
+      continue-on-error: false
+      with:
+        context: .
+        file: ./Dockerfile.packagedrust
+        platforms: linux/mips64le
         push: true
         tags: weastur/poetry:latest-python-3.10.0-bullseye,weastur/poetry:1.8.3-python-3.10.0-bullseye
         cache-from: type=local,src=/tmp/.buildx-cache

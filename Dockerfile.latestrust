@@ -13,7 +13,7 @@ RUN --mount=type=bind,source=install.py,target=/install.py --mount=type=bind,sou
         libssl-dev \
         pkg-config \
     ; \
-    sh /install.sh --no-modify-path --default-toolchain beta -y ; \
+    sh /install.sh --no-modify-path -y ; \
     PATH="/root/.cargo/bin:$PATH" POETRY_VERSION=$POETRY_VERSION python /install.py || cat /poetry-installer-error-*.log ; \
     apt-get purge -y \
         build-essential \

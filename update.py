@@ -162,7 +162,7 @@ for metadata in python_image_metadata:
         if image["os"] != "linux":
             continue
         platform = _make_platform(image)
-        if ("bullseye" in tag or "buster" in tag) and image['architecture'] != 'i386':
+        if ("bullseye" in tag or "buster" in tag) and image['architecture'] not in ['i386', 'mips64le']:
             platforms_for_latest_rust.append(platform)
         else:
             platforms_for_packaged_rust.append(platform)
