@@ -156,30 +156,16 @@ for metadata in python_image_metadata:
     if not tag.split("-")[0].replace(".", "").isdigit() or "rc" in tag:
         continue
     version = _parse_version(tag)
-    platforms_for_simple = []
     platforms_for_packaged_rust = []
     platforms_for_latest_rust = []
     for image in metadata["images"]:
         if image["os"] != "linux":
             continue
         platform = _make_platform(image)
-        if image["architecture"] == 'amd64':
-            platforms_for_simple.append(platform)
-        elif "bullseye" in tag or "buster" in tag:
-            pass
-            # platforms_for_latest_rust.append(platform)
+        if ("bullseye" in tag or "buster" in tag) and image['architecture'] != 'i386':
+            platforms_for_latest_rust.append(platform)
         else:
             platforms_for_packaged_rust.append(platform)
-    if platforms_for_simple:
-        actions[version] += GH_ACTION_BUILD_AND_PUSH_STEP.substitute(
-            type="simple",
-            raw_tags=tag,
-            platforms=",".join(platforms_for_simple),
-            dockerfile="Dockerfile",
-            tags=_make_tags(tag, poetry_version),
-            poetry_version=poetry_version,
-            base_image_version=tag,
-        )
     if platforms_for_latest_rust:
         actions[version] += GH_ACTION_BUILD_AND_PUSH_STEP.substitute(
             type="latest rust",
