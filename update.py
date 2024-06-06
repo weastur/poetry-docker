@@ -61,7 +61,7 @@ GH_ACTION_BUILD_AND_PUSH_STEP = Template(
     """
     - name: Build and push ($type) ($raw_tags)
       uses: docker/build-push-action@v5
-      continue-on-error: true
+      continue-on-error: false
       with:
         context: .
         file: ./$dockerfile
