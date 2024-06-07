@@ -14,6 +14,21 @@ POETRY_RELEASES_URL = (
 )
 PYTHON_IMAGE_METADATA_URL_TEMPLATE = "https://hub.docker.com/v2/namespaces/library/repositories/python/tags?page_size={page_size}&page={page}"
 ALLOWED_VERSIONS = ["3.8", "3.9", "3.10", "3.11", "3.12"]
+RESTRICTED_OS = [
+    "alpine3.8",
+    "alpine3.9",
+    "alpine3.10",
+    "alpine3.11",
+    "alpine3.12",
+    "alpine3.13",
+    "alpine3.14",
+    "alpine3.15",
+    "alpine3.16",
+    "alpine3.17",
+    "alpine3.18",
+    "buster",
+    "bullseye",
+]
 GH_ACTION_START = Template(
     """---
 name: Python $ver
@@ -124,45 +139,69 @@ def _download_python_image_metadata() -> list:
     return metadata
 
 
+def _is_special(tag: str) -> bool:
+    return tag == "latest" or tag.split("-")[0] == "3"
+
+
 def _parse_version(tag: str) -> str:
-    if tag in ("latest", "3"):
+    if _is_special(tag):
         return ALLOWED_VERSIONS[-1]
     for ver in ALLOWED_VERSIONS:
         if tag.startswith(ver):
             return ver
 
 
+def _upd_max_version(tag: str, latest_version):
+    if not re.fullmatch(r"^\d\.\d+\.\d+$", tag):
+        return
+    major_ver = _parse_version(tag)
+    if not latest_version[major_ver] or int(tag.split(".")[2]) > int(
+        latest_version[major_ver].split(".")[2]
+    ):
+        latest_version[major_ver] = tag
+
+
+def _filter_images(images: list) -> list:
+    pre_filtered = []
+    latest_version = {ver: None for ver in ALLOWED_VERSIONS}
+    for image in images:
+        if image.get("tag_status") != "active" or image.get("content_type") != "image":
+            continue
+        tag = image["name"]
+        if not (
+            _is_special(tag)
+            or any(map(lambda ver: tag.startswith(ver), ALLOWED_VERSIONS))
+        ):
+            continue
+        if "rc" in tag or any(
+            map(lambda restricted_os: restricted_os in tag, RESTRICTED_OS)
+        ):
+            continue
+        _upd_max_version(tag, latest_version)
+        pre_filtered.append(image)
+    filtered = []
+    for image in pre_filtered:
+        tag = image["name"]
+        if not re.fullmatch(r"^\d\.\d+\.\d+.*", tag) or tag.startswith(
+            latest_version[_parse_version(tag)]
+        ):
+            filtered.append(image)
+    return filtered
+
+
 poetry_version = _get_latest_poetry_version()
-python_image_metadata = _download_python_image_metadata()
 actions = {
     ver: GH_ACTION_START.substitute(ver=ver, day=_id)
     for _id, ver in enumerate(ALLOWED_VERSIONS)
 }
 
-for metadata in python_image_metadata:
-    if (
-        metadata.get("tag_status") != "active"
-        or metadata.get("content_type") != "image"
-        or "windows" in metadata["name"]
-    ):
-        continue
+for metadata in _filter_images(_download_python_image_metadata()):
     tag = metadata["name"]
-    if (
-        tag != "latest"
-        and tag != "3"
-        and not any(map(lambda ver: tag.startswith(ver), ALLOWED_VERSIONS))
-    ):
-        continue
-    if not tag.split("-")[0].replace(".", "").isdigit() or "rc" in tag:
-        continue
     version = _parse_version(tag)
     platforms = []
     for image in metadata["images"]:
-        if image["os"] != "linux":
-            continue
-        platform = _make_platform(image)
-        if not ("bullseye" in tag or "buster" in tag):
-            platforms.append(platform)
+        if image["os"] == "linux":
+            platforms.append(_make_platform(image))
     if platforms:
         actions[version] += GH_ACTION_BUILD_AND_PUSH_STEP.substitute(
             raw_tags=tag,

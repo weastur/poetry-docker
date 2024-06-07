@@ -38,6 +38,21 @@ jobs:
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v3
 
+    - name: Build and push (latest)
+      uses: docker/build-push-action@v5
+      continue-on-error: false
+      with:
+        context: .
+        file: ./Dockerfile
+        platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x
+        push: true
+        tags: weastur/poetry:latest-python-latest,weastur/poetry:1.8.3-python-latest,weastur/poetry:latest
+        cache-from: type=local,src=/tmp/.buildx-cache
+        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
+        build-args: |
+          BASE_IMAGE_VERSION=latest
+          POETRY_VERSION=1.8.3
+
     - name: Build and push (3.12.3-alpine3.20)
       uses: docker/build-push-action@v5
       continue-on-error: false
@@ -98,6 +113,36 @@ jobs:
           BASE_IMAGE_VERSION=3.12-alpine
           POETRY_VERSION=1.8.3
 
+    - name: Build and push (3-alpine3.20)
+      uses: docker/build-push-action@v5
+      continue-on-error: false
+      with:
+        context: .
+        file: ./Dockerfile
+        platforms: linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x
+        push: true
+        tags: weastur/poetry:latest-python-3-alpine3.20,weastur/poetry:1.8.3-python-3-alpine3.20
+        cache-from: type=local,src=/tmp/.buildx-cache
+        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
+        build-args: |
+          BASE_IMAGE_VERSION=3-alpine3.20
+          POETRY_VERSION=1.8.3
+
+    - name: Build and push (3-alpine)
+      uses: docker/build-push-action@v5
+      continue-on-error: false
+      with:
+        context: .
+        file: ./Dockerfile
+        platforms: linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x
+        push: true
+        tags: weastur/poetry:latest-python-3-alpine,weastur/poetry:1.8.3-python-3-alpine
+        cache-from: type=local,src=/tmp/.buildx-cache
+        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
+        build-args: |
+          BASE_IMAGE_VERSION=3-alpine
+          POETRY_VERSION=1.8.3
+
     - name: Build and push (3.12.3)
       uses: docker/build-push-action@v5
       continue-on-error: false
@@ -141,6 +186,21 @@ jobs:
         cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
         build-args: |
           BASE_IMAGE_VERSION=3
+          POETRY_VERSION=1.8.3
+
+    - name: Build and push (3-bookworm)
+      uses: docker/build-push-action@v5
+      continue-on-error: false
+      with:
+        context: .
+        file: ./Dockerfile
+        platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x
+        push: true
+        tags: weastur/poetry:latest-python-3-bookworm,weastur/poetry:1.8.3-python-3-bookworm
+        cache-from: type=local,src=/tmp/.buildx-cache
+        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
+        build-args: |
+          BASE_IMAGE_VERSION=3-bookworm
           POETRY_VERSION=1.8.3
 
     - name: Build and push (3.12.3-bookworm)
@@ -233,6 +293,36 @@ jobs:
           BASE_IMAGE_VERSION=3.12-slim
           POETRY_VERSION=1.8.3
 
+    - name: Build and push (3-slim-bookworm)
+      uses: docker/build-push-action@v5
+      continue-on-error: false
+      with:
+        context: .
+        file: ./Dockerfile
+        platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x
+        push: true
+        tags: weastur/poetry:latest-python-3-slim-bookworm,weastur/poetry:1.8.3-python-3-slim-bookworm
+        cache-from: type=local,src=/tmp/.buildx-cache
+        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
+        build-args: |
+          BASE_IMAGE_VERSION=3-slim-bookworm
+          POETRY_VERSION=1.8.3
+
+    - name: Build and push (3-slim)
+      uses: docker/build-push-action@v5
+      continue-on-error: false
+      with:
+        context: .
+        file: ./Dockerfile
+        platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x
+        push: true
+        tags: weastur/poetry:latest-python-3-slim,weastur/poetry:1.8.3-python-3-slim
+        cache-from: type=local,src=/tmp/.buildx-cache
+        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
+        build-args: |
+          BASE_IMAGE_VERSION=3-slim
+          POETRY_VERSION=1.8.3
+
     - name: Build and push (3.12.3-alpine3.19)
       uses: docker/build-push-action@v5
       continue-on-error: false
@@ -246,21 +336,6 @@ jobs:
         cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
         build-args: |
           BASE_IMAGE_VERSION=3.12.3-alpine3.19
-          POETRY_VERSION=1.8.3
-
-    - name: Build and push (3.12.3-alpine3.18)
-      uses: docker/build-push-action@v5
-      continue-on-error: false
-      with:
-        context: .
-        file: ./Dockerfile
-        platforms: linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x
-        push: true
-        tags: weastur/poetry:latest-python-3.12.3-alpine3.18,weastur/poetry:1.8.3-python-3.12.3-alpine3.18
-        cache-from: type=local,src=/tmp/.buildx-cache
-        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
-        build-args: |
-          BASE_IMAGE_VERSION=3.12.3-alpine3.18
           POETRY_VERSION=1.8.3
 
     - name: Build and push (3.12-alpine3.19)
@@ -278,7 +353,7 @@ jobs:
           BASE_IMAGE_VERSION=3.12-alpine3.19
           POETRY_VERSION=1.8.3
 
-    - name: Build and push (3.12-alpine3.18)
+    - name: Build and push (3-alpine3.19)
       uses: docker/build-push-action@v5
       continue-on-error: false
       with:
@@ -286,341 +361,41 @@ jobs:
         file: ./Dockerfile
         platforms: linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x
         push: true
-        tags: weastur/poetry:latest-python-3.12-alpine3.18,weastur/poetry:1.8.3-python-3.12-alpine3.18
+        tags: weastur/poetry:latest-python-3-alpine3.19,weastur/poetry:1.8.3-python-3-alpine3.19
         cache-from: type=local,src=/tmp/.buildx-cache
         cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
         build-args: |
-          BASE_IMAGE_VERSION=3.12-alpine3.18
+          BASE_IMAGE_VERSION=3-alpine3.19
           POETRY_VERSION=1.8.3
 
-    - name: Build and push (3.12.2-slim-bookworm)
+    - name: Build and push (3-stretch)
       uses: docker/build-push-action@v5
       continue-on-error: false
       with:
         context: .
         file: ./Dockerfile
-        platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x
+        platforms: linux/arm64/v8,linux/ppc64le,linux/amd64,linux/arm/v5,linux/386,linux/arm/v7,linux/s390x
         push: true
-        tags: weastur/poetry:latest-python-3.12.2-slim-bookworm,weastur/poetry:1.8.3-python-3.12.2-slim-bookworm
+        tags: weastur/poetry:latest-python-3-stretch,weastur/poetry:1.8.3-python-3-stretch
         cache-from: type=local,src=/tmp/.buildx-cache
         cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
         build-args: |
-          BASE_IMAGE_VERSION=3.12.2-slim-bookworm
+          BASE_IMAGE_VERSION=3-stretch
           POETRY_VERSION=1.8.3
 
-    - name: Build and push (3.12.2-slim)
+    - name: Build and push (3-slim-stretch)
       uses: docker/build-push-action@v5
       continue-on-error: false
       with:
         context: .
         file: ./Dockerfile
-        platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x
+        platforms: linux/amd64,linux/s390x,linux/arm64/v8,linux/386,linux/arm/v7,linux/ppc64le,linux/arm/v5
         push: true
-        tags: weastur/poetry:latest-python-3.12.2-slim,weastur/poetry:1.8.3-python-3.12.2-slim
+        tags: weastur/poetry:latest-python-3-slim-stretch,weastur/poetry:1.8.3-python-3-slim-stretch
         cache-from: type=local,src=/tmp/.buildx-cache
         cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
         build-args: |
-          BASE_IMAGE_VERSION=3.12.2-slim
-          POETRY_VERSION=1.8.3
-
-    - name: Build and push (3.12.2-bookworm)
-      uses: docker/build-push-action@v5
-      continue-on-error: false
-      with:
-        context: .
-        file: ./Dockerfile
-        platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x
-        push: true
-        tags: weastur/poetry:latest-python-3.12.2-bookworm,weastur/poetry:1.8.3-python-3.12.2-bookworm
-        cache-from: type=local,src=/tmp/.buildx-cache
-        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
-        build-args: |
-          BASE_IMAGE_VERSION=3.12.2-bookworm
-          POETRY_VERSION=1.8.3
-
-    - name: Build and push (3.12.2-alpine3.19)
-      uses: docker/build-push-action@v5
-      continue-on-error: false
-      with:
-        context: .
-        file: ./Dockerfile
-        platforms: linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x
-        push: true
-        tags: weastur/poetry:latest-python-3.12.2-alpine3.19,weastur/poetry:1.8.3-python-3.12.2-alpine3.19
-        cache-from: type=local,src=/tmp/.buildx-cache
-        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
-        build-args: |
-          BASE_IMAGE_VERSION=3.12.2-alpine3.19
-          POETRY_VERSION=1.8.3
-
-    - name: Build and push (3.12.2-alpine3.18)
-      uses: docker/build-push-action@v5
-      continue-on-error: false
-      with:
-        context: .
-        file: ./Dockerfile
-        platforms: linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x
-        push: true
-        tags: weastur/poetry:latest-python-3.12.2-alpine3.18,weastur/poetry:1.8.3-python-3.12.2-alpine3.18
-        cache-from: type=local,src=/tmp/.buildx-cache
-        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
-        build-args: |
-          BASE_IMAGE_VERSION=3.12.2-alpine3.18
-          POETRY_VERSION=1.8.3
-
-    - name: Build and push (3.12.2-alpine)
-      uses: docker/build-push-action@v5
-      continue-on-error: false
-      with:
-        context: .
-        file: ./Dockerfile
-        platforms: linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x
-        push: true
-        tags: weastur/poetry:latest-python-3.12.2-alpine,weastur/poetry:1.8.3-python-3.12.2-alpine
-        cache-from: type=local,src=/tmp/.buildx-cache
-        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
-        build-args: |
-          BASE_IMAGE_VERSION=3.12.2-alpine
-          POETRY_VERSION=1.8.3
-
-    - name: Build and push (3.12.2)
-      uses: docker/build-push-action@v5
-      continue-on-error: false
-      with:
-        context: .
-        file: ./Dockerfile
-        platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x
-        push: true
-        tags: weastur/poetry:latest-python-3.12.2,weastur/poetry:1.8.3-python-3.12.2
-        cache-from: type=local,src=/tmp/.buildx-cache
-        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
-        build-args: |
-          BASE_IMAGE_VERSION=3.12.2
-          POETRY_VERSION=1.8.3
-
-    - name: Build and push (3.12.1-bookworm)
-      uses: docker/build-push-action@v5
-      continue-on-error: false
-      with:
-        context: .
-        file: ./Dockerfile
-        platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x
-        push: true
-        tags: weastur/poetry:latest-python-3.12.1-bookworm,weastur/poetry:1.8.3-python-3.12.1-bookworm
-        cache-from: type=local,src=/tmp/.buildx-cache
-        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
-        build-args: |
-          BASE_IMAGE_VERSION=3.12.1-bookworm
-          POETRY_VERSION=1.8.3
-
-    - name: Build and push (3.12.1)
-      uses: docker/build-push-action@v5
-      continue-on-error: false
-      with:
-        context: .
-        file: ./Dockerfile
-        platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x
-        push: true
-        tags: weastur/poetry:latest-python-3.12.1,weastur/poetry:1.8.3-python-3.12.1
-        cache-from: type=local,src=/tmp/.buildx-cache
-        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
-        build-args: |
-          BASE_IMAGE_VERSION=3.12.1
-          POETRY_VERSION=1.8.3
-
-    - name: Build and push (3.12.1-slim-bookworm)
-      uses: docker/build-push-action@v5
-      continue-on-error: false
-      with:
-        context: .
-        file: ./Dockerfile
-        platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x
-        push: true
-        tags: weastur/poetry:latest-python-3.12.1-slim-bookworm,weastur/poetry:1.8.3-python-3.12.1-slim-bookworm
-        cache-from: type=local,src=/tmp/.buildx-cache
-        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
-        build-args: |
-          BASE_IMAGE_VERSION=3.12.1-slim-bookworm
-          POETRY_VERSION=1.8.3
-
-    - name: Build and push (3.12.1-slim)
-      uses: docker/build-push-action@v5
-      continue-on-error: false
-      with:
-        context: .
-        file: ./Dockerfile
-        platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x
-        push: true
-        tags: weastur/poetry:latest-python-3.12.1-slim,weastur/poetry:1.8.3-python-3.12.1-slim
-        cache-from: type=local,src=/tmp/.buildx-cache
-        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
-        build-args: |
-          BASE_IMAGE_VERSION=3.12.1-slim
-          POETRY_VERSION=1.8.3
-
-    - name: Build and push (3.12.1-alpine3.19)
-      uses: docker/build-push-action@v5
-      continue-on-error: false
-      with:
-        context: .
-        file: ./Dockerfile
-        platforms: linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x
-        push: true
-        tags: weastur/poetry:latest-python-3.12.1-alpine3.19,weastur/poetry:1.8.3-python-3.12.1-alpine3.19
-        cache-from: type=local,src=/tmp/.buildx-cache
-        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
-        build-args: |
-          BASE_IMAGE_VERSION=3.12.1-alpine3.19
-          POETRY_VERSION=1.8.3
-
-    - name: Build and push (3.12.1-alpine3.18)
-      uses: docker/build-push-action@v5
-      continue-on-error: false
-      with:
-        context: .
-        file: ./Dockerfile
-        platforms: linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x
-        push: true
-        tags: weastur/poetry:latest-python-3.12.1-alpine3.18,weastur/poetry:1.8.3-python-3.12.1-alpine3.18
-        cache-from: type=local,src=/tmp/.buildx-cache
-        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
-        build-args: |
-          BASE_IMAGE_VERSION=3.12.1-alpine3.18
-          POETRY_VERSION=1.8.3
-
-    - name: Build and push (3.12.1-alpine)
-      uses: docker/build-push-action@v5
-      continue-on-error: false
-      with:
-        context: .
-        file: ./Dockerfile
-        platforms: linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x
-        push: true
-        tags: weastur/poetry:latest-python-3.12.1-alpine,weastur/poetry:1.8.3-python-3.12.1-alpine
-        cache-from: type=local,src=/tmp/.buildx-cache
-        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
-        build-args: |
-          BASE_IMAGE_VERSION=3.12.1-alpine
-          POETRY_VERSION=1.8.3
-
-    - name: Build and push (3.12.0-slim-bookworm)
-      uses: docker/build-push-action@v5
-      continue-on-error: false
-      with:
-        context: .
-        file: ./Dockerfile
-        platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x
-        push: true
-        tags: weastur/poetry:latest-python-3.12.0-slim-bookworm,weastur/poetry:1.8.3-python-3.12.0-slim-bookworm
-        cache-from: type=local,src=/tmp/.buildx-cache
-        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
-        build-args: |
-          BASE_IMAGE_VERSION=3.12.0-slim-bookworm
-          POETRY_VERSION=1.8.3
-
-    - name: Build and push (3.12.0-slim)
-      uses: docker/build-push-action@v5
-      continue-on-error: false
-      with:
-        context: .
-        file: ./Dockerfile
-        platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x
-        push: true
-        tags: weastur/poetry:latest-python-3.12.0-slim,weastur/poetry:1.8.3-python-3.12.0-slim
-        cache-from: type=local,src=/tmp/.buildx-cache
-        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
-        build-args: |
-          BASE_IMAGE_VERSION=3.12.0-slim
-          POETRY_VERSION=1.8.3
-
-    - name: Build and push (3.12.0-bookworm)
-      uses: docker/build-push-action@v5
-      continue-on-error: false
-      with:
-        context: .
-        file: ./Dockerfile
-        platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x
-        push: true
-        tags: weastur/poetry:latest-python-3.12.0-bookworm,weastur/poetry:1.8.3-python-3.12.0-bookworm
-        cache-from: type=local,src=/tmp/.buildx-cache
-        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
-        build-args: |
-          BASE_IMAGE_VERSION=3.12.0-bookworm
-          POETRY_VERSION=1.8.3
-
-    - name: Build and push (3.12.0-alpine3.18)
-      uses: docker/build-push-action@v5
-      continue-on-error: false
-      with:
-        context: .
-        file: ./Dockerfile
-        platforms: linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x
-        push: true
-        tags: weastur/poetry:latest-python-3.12.0-alpine3.18,weastur/poetry:1.8.3-python-3.12.0-alpine3.18
-        cache-from: type=local,src=/tmp/.buildx-cache
-        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
-        build-args: |
-          BASE_IMAGE_VERSION=3.12.0-alpine3.18
-          POETRY_VERSION=1.8.3
-
-    - name: Build and push (3.12.0-alpine3.17)
-      uses: docker/build-push-action@v5
-      continue-on-error: false
-      with:
-        context: .
-        file: ./Dockerfile
-        platforms: linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x
-        push: true
-        tags: weastur/poetry:latest-python-3.12.0-alpine3.17,weastur/poetry:1.8.3-python-3.12.0-alpine3.17
-        cache-from: type=local,src=/tmp/.buildx-cache
-        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
-        build-args: |
-          BASE_IMAGE_VERSION=3.12.0-alpine3.17
-          POETRY_VERSION=1.8.3
-
-    - name: Build and push (3.12.0-alpine)
-      uses: docker/build-push-action@v5
-      continue-on-error: false
-      with:
-        context: .
-        file: ./Dockerfile
-        platforms: linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x
-        push: true
-        tags: weastur/poetry:latest-python-3.12.0-alpine,weastur/poetry:1.8.3-python-3.12.0-alpine
-        cache-from: type=local,src=/tmp/.buildx-cache
-        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
-        build-args: |
-          BASE_IMAGE_VERSION=3.12.0-alpine
-          POETRY_VERSION=1.8.3
-
-    - name: Build and push (3.12.0)
-      uses: docker/build-push-action@v5
-      continue-on-error: false
-      with:
-        context: .
-        file: ./Dockerfile
-        platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x
-        push: true
-        tags: weastur/poetry:latest-python-3.12.0,weastur/poetry:1.8.3-python-3.12.0
-        cache-from: type=local,src=/tmp/.buildx-cache
-        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
-        build-args: |
-          BASE_IMAGE_VERSION=3.12.0
-          POETRY_VERSION=1.8.3
-
-    - name: Build and push (3.12-alpine3.17)
-      uses: docker/build-push-action@v5
-      continue-on-error: false
-      with:
-        context: .
-        file: ./Dockerfile
-        platforms: linux/arm/v6,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x,linux/amd64
-        push: true
-        tags: weastur/poetry:latest-python-3.12-alpine3.17,weastur/poetry:1.8.3-python-3.12-alpine3.17
-        cache-from: type=local,src=/tmp/.buildx-cache
-        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
-        build-args: |
-          BASE_IMAGE_VERSION=3.12-alpine3.17
+          BASE_IMAGE_VERSION=3-slim-stretch
           POETRY_VERSION=1.8.3
 
     - name: Move cache
