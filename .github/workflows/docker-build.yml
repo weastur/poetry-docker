@@ -1208,36 +1208,6 @@ jobs:
           BASE_IMAGE_VERSION=3.10-alpine3.19
           POETRY_VERSION=1.8.3
 
-    - name: Build and push (3-stretch)
-      uses: docker/build-push-action@v5
-      continue-on-error: false
-      with:
-        context: .
-        file: ./Dockerfile
-        platforms: linux/arm64/v8,linux/ppc64le,linux/amd64,linux/arm/v5,linux/386,linux/arm/v7,linux/s390x
-        push: true
-        tags: weastur/poetry:latest-python-3-stretch,weastur/poetry:1.8.3-python-3-stretch
-        cache-from: type=local,src=/tmp/.buildx-cache
-        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
-        build-args: |
-          BASE_IMAGE_VERSION=3-stretch
-          POETRY_VERSION=1.8.3
-
-    - name: Build and push (3-slim-stretch)
-      uses: docker/build-push-action@v5
-      continue-on-error: false
-      with:
-        context: .
-        file: ./Dockerfile
-        platforms: linux/amd64,linux/s390x,linux/arm64/v8,linux/386,linux/arm/v7,linux/ppc64le,linux/arm/v5
-        push: true
-        tags: weastur/poetry:latest-python-3-slim-stretch,weastur/poetry:1.8.3-python-3-slim-stretch
-        cache-from: type=local,src=/tmp/.buildx-cache
-        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
-        build-args: |
-          BASE_IMAGE_VERSION=3-slim-stretch
-          POETRY_VERSION=1.8.3
-
     - name: Move cache
       run: |
         rm -rf /tmp/.buildx-cache
