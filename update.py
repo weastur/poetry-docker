@@ -47,23 +47,19 @@ jobs:
       uses: actions/cache@v4
       with:
         path: /tmp/.buildx-cache
-        key: $${{ runner.os }}-buildx-$${{ github.sha }}
+        key: ${{ runner.os }}-buildx-${{ github.sha }}
         restore-keys: |
-          $${{ runner.os }}-buildx-
+          ${{ runner.os }}-buildx-
 
     - name: Login to DockerHub
       uses: docker/login-action@v3
       with:
-        username: $${{ secrets.DOCKERHUB_USERNAME }}
-        password: $${{ secrets.DOCKERHUB_TOKEN }}
+        username: ${{ secrets.DOCKERHUB_USERNAME }}
+        password: ${{ secrets.DOCKERHUB_TOKEN }}
 
     - name: Download poetry installer
       run: |
         wget -q -S -O install.py https://install.python-poetry.org
-
-    - name: Download rust installer
-      run: |
-        wget -q -S -O install.sh https://sh.rustup.rs
 
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v3
