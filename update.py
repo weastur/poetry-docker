@@ -1,8 +1,6 @@
 #!/usr/bin/env python3
 
-import glob
 import json
-import os
 import re
 import urllib.request
 
@@ -26,16 +24,16 @@ RESTRICTED_OS = [
     "alpine3.16",
     "alpine3.17",
     "alpine3.18",
+    "stretch",
     "buster",
     "bullseye",
 ]
-GH_ACTION_START = Template(
-    """---
-name: Python $ver
+GH_ACTION_START = """---
+name: Build and push
 
 on:
   schedule:
-    - cron: '0 3 * * $day'
+    - cron: '0 0 * * 0'
   workflow_dispatch:
 
 jobs:
@@ -70,7 +68,6 @@ jobs:
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v3
 """
-)
 
 GH_ACTION_BUILD_AND_PUSH_STEP = Template(
     """
@@ -190,20 +187,16 @@ def _filter_images(images: list) -> list:
 
 
 poetry_version = _get_latest_poetry_version()
-actions = {
-    ver: GH_ACTION_START.substitute(ver=ver, day=_id)
-    for _id, ver in enumerate(ALLOWED_VERSIONS)
-}
+action = GH_ACTION_START
 
 for metadata in _filter_images(_download_python_image_metadata()):
     tag = metadata["name"]
-    version = _parse_version(tag)
     platforms = []
     for image in metadata["images"]:
         if image["os"] == "linux":
             platforms.append(_make_platform(image))
     if platforms:
-        actions[version] += GH_ACTION_BUILD_AND_PUSH_STEP.substitute(
+        action += GH_ACTION_BUILD_AND_PUSH_STEP.substitute(
             raw_tags=tag,
             platforms=",".join(platforms),
             tags=_make_tags(tag, poetry_version),
@@ -211,11 +204,6 @@ for metadata in _filter_images(_download_python_image_metadata()):
             base_image_version=tag,
         )
 
-for file_path in glob.glob(".github/workflows/docker-build-*"):
-    os.remove(file_path)
-
-for version in actions:
-    action = actions[version] + GH_ACTION_MOVE_CACHE_STEP
-    fid = version.replace(".", "")
-    with open(f".github/workflows/docker-build-{fid}.yml", "w") as file:
-        file.write(action)
+action += GH_ACTION_MOVE_CACHE_STEP
+with open(".github/workflows/docker-build.yml", "w") as file:
+    file.write(action)
