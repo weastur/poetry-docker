@@ -38,7 +38,7 @@ on:
 
 jobs:
   build-and-push:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
     - name: Check out code
       uses: actions/checkout@v4

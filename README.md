@@ -70,9 +70,7 @@ for `3.12.0`. Also, there are no builds for **too old** systems like Debian `bus
   versions of toolchains suitable for building those deps. In other words, some systems have too old
   packages, so before installing poetry on `buster`, for example, we need to install the latest rust
   toolchain, which is overkill, I believe.
-- There is no power to re-build everything at least once a week. Github Actions runners are too slow, 
-  I created a bare-metal self-hosted runner, but even with it, the current pipeline (for the latest only versions)
-  runs not so fast
+- There is no power to re-build everything at least once a week. Github Actions runners are too slow
 
 ## Contributing
 
