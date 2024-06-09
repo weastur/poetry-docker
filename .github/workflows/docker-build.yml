@@ -8,18 +8,16 @@ on:
 
 jobs:
   build-and-push:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
     - name: Check out code
       uses: actions/checkout@v4
 
-    - name: Cache Docker layers
-      uses: actions/cache@v4
-      with:
-        path: /tmp/.buildx-cache
-        key: ${{ runner.os }}-buildx-${{ github.sha }}
-        restore-keys: |
-          ${{ runner.os }}-buildx-
+    - name: Set up QEMU
+      uses: docker/setup-qemu-action@v3
+
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v3
 
     - name: Login to DockerHub
       uses: docker/login-action@v3
@@ -31,9 +29,6 @@ jobs:
       run: |
         wget -q -S -O install.py https://install.python-poetry.org
 
-    - name: Set up Docker Buildx
-      uses: docker/setup-buildx-action@v3
-
     - name: Build and push (latest)
       uses: docker/build-push-action@v5
       continue-on-error: false
@@ -43,8 +38,6 @@ jobs:
         platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x
         push: true
         tags: weastur/poetry:latest-python-latest,weastur/poetry:1.8.3-python-latest,weastur/poetry:latest
-        cache-from: type=local,src=/tmp/.buildx-cache
-        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
         build-args: |
           BASE_IMAGE_VERSION=latest
           POETRY_VERSION=1.8.3
@@ -58,8 +51,6 @@ jobs:
         platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x
         push: true
         tags: weastur/poetry:latest-python-3.12.4-slim-bookworm,weastur/poetry:1.8.3-python-3.12.4-slim-bookworm
-        cache-from: type=local,src=/tmp/.buildx-cache
-        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
         build-args: |
           BASE_IMAGE_VERSION=3.12.4-slim-bookworm
           POETRY_VERSION=1.8.3
@@ -73,8 +64,6 @@ jobs:
         platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x
         push: true
         tags: weastur/poetry:latest-python-3.12.4-slim,weastur/poetry:1.8.3-python-3.12.4-slim
-        cache-from: type=local,src=/tmp/.buildx-cache
-        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
         build-args: |
           BASE_IMAGE_VERSION=3.12.4-slim
           POETRY_VERSION=1.8.3
@@ -88,8 +77,6 @@ jobs:
         platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x
         push: true
         tags: weastur/poetry:latest-python-3.12.4-bookworm,weastur/poetry:1.8.3-python-3.12.4-bookworm
-        cache-from: type=local,src=/tmp/.buildx-cache
-        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
         build-args: |
           BASE_IMAGE_VERSION=3.12.4-bookworm
           POETRY_VERSION=1.8.3
@@ -103,8 +90,6 @@ jobs:
         platforms: linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x
         push: true
         tags: weastur/poetry:latest-python-3.12.4-alpine3.20,weastur/poetry:1.8.3-python-3.12.4-alpine3.20
-        cache-from: type=local,src=/tmp/.buildx-cache
-        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
         build-args: |
           BASE_IMAGE_VERSION=3.12.4-alpine3.20
           POETRY_VERSION=1.8.3
@@ -118,8 +103,6 @@ jobs:
         platforms: linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x
         push: true
         tags: weastur/poetry:latest-python-3.12.4-alpine3.19,weastur/poetry:1.8.3-python-3.12.4-alpine3.19
-        cache-from: type=local,src=/tmp/.buildx-cache
-        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
         build-args: |
           BASE_IMAGE_VERSION=3.12.4-alpine3.19
           POETRY_VERSION=1.8.3
@@ -133,8 +116,6 @@ jobs:
         platforms: linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x
         push: true
         tags: weastur/poetry:latest-python-3.12.4-alpine,weastur/poetry:1.8.3-python-3.12.4-alpine
-        cache-from: type=local,src=/tmp/.buildx-cache
-        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
         build-args: |
           BASE_IMAGE_VERSION=3.12.4-alpine
           POETRY_VERSION=1.8.3
@@ -148,8 +129,6 @@ jobs:
         platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x
         push: true
         tags: weastur/poetry:latest-python-3.12.4,weastur/poetry:1.8.3-python-3.12.4
-        cache-from: type=local,src=/tmp/.buildx-cache
-        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
         build-args: |
           BASE_IMAGE_VERSION=3.12.4
           POETRY_VERSION=1.8.3
@@ -163,8 +142,6 @@ jobs:
         platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x
         push: true
         tags: weastur/poetry:latest-python-3.12-slim-bookworm,weastur/poetry:1.8.3-python-3.12-slim-bookworm
-        cache-from: type=local,src=/tmp/.buildx-cache
-        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
         build-args: |
           BASE_IMAGE_VERSION=3.12-slim-bookworm
           POETRY_VERSION=1.8.3
@@ -178,8 +155,6 @@ jobs:
         platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x
         push: true
         tags: weastur/poetry:latest-python-3.12-slim,weastur/poetry:1.8.3-python-3.12-slim
-        cache-from: type=local,src=/tmp/.buildx-cache
-        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
         build-args: |
           BASE_IMAGE_VERSION=3.12-slim
           POETRY_VERSION=1.8.3
@@ -193,8 +168,6 @@ jobs:
         platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x
         push: true
         tags: weastur/poetry:latest-python-3.12-bookworm,weastur/poetry:1.8.3-python-3.12-bookworm
-        cache-from: type=local,src=/tmp/.buildx-cache
-        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
         build-args: |
           BASE_IMAGE_VERSION=3.12-bookworm
           POETRY_VERSION=1.8.3
@@ -208,8 +181,6 @@ jobs:
         platforms: linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x
         push: true
         tags: weastur/poetry:latest-python-3.12-alpine3.20,weastur/poetry:1.8.3-python-3.12-alpine3.20
-        cache-from: type=local,src=/tmp/.buildx-cache
-        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
         build-args: |
           BASE_IMAGE_VERSION=3.12-alpine3.20
           POETRY_VERSION=1.8.3
@@ -223,8 +194,6 @@ jobs:
         platforms: linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x
         push: true
         tags: weastur/poetry:latest-python-3.12-alpine3.19,weastur/poetry:1.8.3-python-3.12-alpine3.19
-        cache-from: type=local,src=/tmp/.buildx-cache
-        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
         build-args: |
           BASE_IMAGE_VERSION=3.12-alpine3.19
           POETRY_VERSION=1.8.3
@@ -238,8 +207,6 @@ jobs:
         platforms: linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x
         push: true
         tags: weastur/poetry:latest-python-3.12-alpine,weastur/poetry:1.8.3-python-3.12-alpine
-        cache-from: type=local,src=/tmp/.buildx-cache
-        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
         build-args: |
           BASE_IMAGE_VERSION=3.12-alpine
           POETRY_VERSION=1.8.3
@@ -253,8 +220,6 @@ jobs:
         platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x
         push: true
         tags: weastur/poetry:latest-python-3.12,weastur/poetry:1.8.3-python-3.12
-        cache-from: type=local,src=/tmp/.buildx-cache
-        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
         build-args: |
           BASE_IMAGE_VERSION=3.12
           POETRY_VERSION=1.8.3
@@ -268,8 +233,6 @@ jobs:
         platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x
         push: true
         tags: weastur/poetry:latest-python-3-slim-bookworm,weastur/poetry:1.8.3-python-3-slim-bookworm
-        cache-from: type=local,src=/tmp/.buildx-cache
-        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
         build-args: |
           BASE_IMAGE_VERSION=3-slim-bookworm
           POETRY_VERSION=1.8.3
@@ -283,8 +246,6 @@ jobs:
         platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x
         push: true
         tags: weastur/poetry:latest-python-3-slim,weastur/poetry:1.8.3-python-3-slim
-        cache-from: type=local,src=/tmp/.buildx-cache
-        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
         build-args: |
           BASE_IMAGE_VERSION=3-slim
           POETRY_VERSION=1.8.3
@@ -298,8 +259,6 @@ jobs:
         platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x
         push: true
         tags: weastur/poetry:latest-python-3-bookworm,weastur/poetry:1.8.3-python-3-bookworm
-        cache-from: type=local,src=/tmp/.buildx-cache
-        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
         build-args: |
           BASE_IMAGE_VERSION=3-bookworm
           POETRY_VERSION=1.8.3
@@ -313,8 +272,6 @@ jobs:
         platforms: linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x
         push: true
         tags: weastur/poetry:latest-python-3-alpine3.20,weastur/poetry:1.8.3-python-3-alpine3.20
-        cache-from: type=local,src=/tmp/.buildx-cache
-        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
         build-args: |
           BASE_IMAGE_VERSION=3-alpine3.20
           POETRY_VERSION=1.8.3
@@ -328,8 +285,6 @@ jobs:
         platforms: linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x
         push: true
         tags: weastur/poetry:latest-python-3-alpine3.19,weastur/poetry:1.8.3-python-3-alpine3.19
-        cache-from: type=local,src=/tmp/.buildx-cache
-        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
         build-args: |
           BASE_IMAGE_VERSION=3-alpine3.19
           POETRY_VERSION=1.8.3
@@ -343,8 +298,6 @@ jobs:
         platforms: linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x
         push: true
         tags: weastur/poetry:latest-python-3-alpine,weastur/poetry:1.8.3-python-3-alpine
-        cache-from: type=local,src=/tmp/.buildx-cache
-        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
         build-args: |
           BASE_IMAGE_VERSION=3-alpine
           POETRY_VERSION=1.8.3
@@ -358,8 +311,6 @@ jobs:
         platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x
         push: true
         tags: weastur/poetry:latest-python-3,weastur/poetry:1.8.3-python-3
-        cache-from: type=local,src=/tmp/.buildx-cache
-        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
         build-args: |
           BASE_IMAGE_VERSION=3
           POETRY_VERSION=1.8.3
@@ -373,8 +324,6 @@ jobs:
         platforms: linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/riscv64,linux/s390x
         push: true
         tags: weastur/poetry:latest-python-3.8.19-alpine3.20,weastur/poetry:1.8.3-python-3.8.19-alpine3.20
-        cache-from: type=local,src=/tmp/.buildx-cache
-        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
         build-args: |
           BASE_IMAGE_VERSION=3.8.19-alpine3.20
           POETRY_VERSION=1.8.3
@@ -388,8 +337,6 @@ jobs:
         platforms: linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/riscv64,linux/s390x
         push: true
         tags: weastur/poetry:latest-python-3.8.19-alpine,weastur/poetry:1.8.3-python-3.8.19-alpine
-        cache-from: type=local,src=/tmp/.buildx-cache
-        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
         build-args: |
           BASE_IMAGE_VERSION=3.8.19-alpine
           POETRY_VERSION=1.8.3
@@ -403,8 +350,6 @@ jobs:
         platforms: linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/riscv64,linux/s390x
         push: true
         tags: weastur/poetry:latest-python-3.8-alpine3.20,weastur/poetry:1.8.3-python-3.8-alpine3.20
-        cache-from: type=local,src=/tmp/.buildx-cache
-        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
         build-args: |
           BASE_IMAGE_VERSION=3.8-alpine3.20
           POETRY_VERSION=1.8.3
@@ -418,8 +363,6 @@ jobs:
         platforms: linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/riscv64,linux/s390x
         push: true
         tags: weastur/poetry:latest-python-3.8-alpine,weastur/poetry:1.8.3-python-3.8-alpine
-        cache-from: type=local,src=/tmp/.buildx-cache
-        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
         build-args: |
           BASE_IMAGE_VERSION=3.8-alpine
           POETRY_VERSION=1.8.3
@@ -433,8 +376,6 @@ jobs:
         platforms: linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x
         push: true
         tags: weastur/poetry:latest-python-3.11.9-alpine3.20,weastur/poetry:1.8.3-python-3.11.9-alpine3.20
-        cache-from: type=local,src=/tmp/.buildx-cache
-        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
         build-args: |
           BASE_IMAGE_VERSION=3.11.9-alpine3.20
           POETRY_VERSION=1.8.3
@@ -448,8 +389,6 @@ jobs:
         platforms: linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x
         push: true
         tags: weastur/poetry:latest-python-3.11.9-alpine,weastur/poetry:1.8.3-python-3.11.9-alpine
-        cache-from: type=local,src=/tmp/.buildx-cache
-        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
         build-args: |
           BASE_IMAGE_VERSION=3.11.9-alpine
           POETRY_VERSION=1.8.3
@@ -463,8 +402,6 @@ jobs:
         platforms: linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x
         push: true
         tags: weastur/poetry:latest-python-3.11-alpine3.20,weastur/poetry:1.8.3-python-3.11-alpine3.20
-        cache-from: type=local,src=/tmp/.buildx-cache
-        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
         build-args: |
           BASE_IMAGE_VERSION=3.11-alpine3.20
           POETRY_VERSION=1.8.3
@@ -478,8 +415,6 @@ jobs:
         platforms: linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x
         push: true
         tags: weastur/poetry:latest-python-3.11-alpine,weastur/poetry:1.8.3-python-3.11-alpine
-        cache-from: type=local,src=/tmp/.buildx-cache
-        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
         build-args: |
           BASE_IMAGE_VERSION=3.11-alpine
           POETRY_VERSION=1.8.3
@@ -493,8 +428,6 @@ jobs:
         platforms: linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x
         push: true
         tags: weastur/poetry:latest-python-3.10.14-alpine3.20,weastur/poetry:1.8.3-python-3.10.14-alpine3.20
-        cache-from: type=local,src=/tmp/.buildx-cache
-        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
         build-args: |
           BASE_IMAGE_VERSION=3.10.14-alpine3.20
           POETRY_VERSION=1.8.3
@@ -508,8 +441,6 @@ jobs:
         platforms: linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x
         push: true
         tags: weastur/poetry:latest-python-3.10.14-alpine,weastur/poetry:1.8.3-python-3.10.14-alpine
-        cache-from: type=local,src=/tmp/.buildx-cache
-        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
         build-args: |
           BASE_IMAGE_VERSION=3.10.14-alpine
           POETRY_VERSION=1.8.3
@@ -523,8 +454,6 @@ jobs:
         platforms: linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x
         push: true
         tags: weastur/poetry:latest-python-3.10-alpine3.20,weastur/poetry:1.8.3-python-3.10-alpine3.20
-        cache-from: type=local,src=/tmp/.buildx-cache
-        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
         build-args: |
           BASE_IMAGE_VERSION=3.10-alpine3.20
           POETRY_VERSION=1.8.3
@@ -538,8 +467,6 @@ jobs:
         platforms: linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x
         push: true
         tags: weastur/poetry:latest-python-3.10-alpine,weastur/poetry:1.8.3-python-3.10-alpine
-        cache-from: type=local,src=/tmp/.buildx-cache
-        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
         build-args: |
           BASE_IMAGE_VERSION=3.10-alpine
           POETRY_VERSION=1.8.3
@@ -553,8 +480,6 @@ jobs:
         platforms: linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/riscv64,linux/s390x
         push: true
         tags: weastur/poetry:latest-python-3.9.19-alpine3.20,weastur/poetry:1.8.3-python-3.9.19-alpine3.20
-        cache-from: type=local,src=/tmp/.buildx-cache
-        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
         build-args: |
           BASE_IMAGE_VERSION=3.9.19-alpine3.20
           POETRY_VERSION=1.8.3
@@ -568,8 +493,6 @@ jobs:
         platforms: linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/riscv64,linux/s390x
         push: true
         tags: weastur/poetry:latest-python-3.9.19-alpine,weastur/poetry:1.8.3-python-3.9.19-alpine
-        cache-from: type=local,src=/tmp/.buildx-cache
-        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
         build-args: |
           BASE_IMAGE_VERSION=3.9.19-alpine
           POETRY_VERSION=1.8.3
@@ -583,8 +506,6 @@ jobs:
         platforms: linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/riscv64,linux/s390x
         push: true
         tags: weastur/poetry:latest-python-3.9-alpine3.20,weastur/poetry:1.8.3-python-3.9-alpine3.20
-        cache-from: type=local,src=/tmp/.buildx-cache
-        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
         build-args: |
           BASE_IMAGE_VERSION=3.9-alpine3.20
           POETRY_VERSION=1.8.3
@@ -598,8 +519,6 @@ jobs:
         platforms: linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/riscv64,linux/s390x
         push: true
         tags: weastur/poetry:latest-python-3.9-alpine,weastur/poetry:1.8.3-python-3.9-alpine
-        cache-from: type=local,src=/tmp/.buildx-cache
-        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
         build-args: |
           BASE_IMAGE_VERSION=3.9-alpine
           POETRY_VERSION=1.8.3
@@ -613,8 +532,6 @@ jobs:
         platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x
         push: true
         tags: weastur/poetry:latest-python-3.11.9,weastur/poetry:1.8.3-python-3.11.9
-        cache-from: type=local,src=/tmp/.buildx-cache
-        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
         build-args: |
           BASE_IMAGE_VERSION=3.11.9
           POETRY_VERSION=1.8.3
@@ -628,8 +545,6 @@ jobs:
         platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x
         push: true
         tags: weastur/poetry:latest-python-3.11,weastur/poetry:1.8.3-python-3.11
-        cache-from: type=local,src=/tmp/.buildx-cache
-        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
         build-args: |
           BASE_IMAGE_VERSION=3.11
           POETRY_VERSION=1.8.3
@@ -643,8 +558,6 @@ jobs:
         platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/mips64le,linux/ppc64le,linux/s390x
         push: true
         tags: weastur/poetry:latest-python-3.9.19-bookworm,weastur/poetry:1.8.3-python-3.9.19-bookworm
-        cache-from: type=local,src=/tmp/.buildx-cache
-        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
         build-args: |
           BASE_IMAGE_VERSION=3.9.19-bookworm
           POETRY_VERSION=1.8.3
@@ -658,8 +571,6 @@ jobs:
         platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/mips64le,linux/ppc64le,linux/s390x
         push: true
         tags: weastur/poetry:latest-python-3.9.19,weastur/poetry:1.8.3-python-3.9.19
-        cache-from: type=local,src=/tmp/.buildx-cache
-        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
         build-args: |
           BASE_IMAGE_VERSION=3.9.19
           POETRY_VERSION=1.8.3
@@ -673,8 +584,6 @@ jobs:
         platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/mips64le,linux/ppc64le,linux/s390x
         push: true
         tags: weastur/poetry:latest-python-3.9-bookworm,weastur/poetry:1.8.3-python-3.9-bookworm
-        cache-from: type=local,src=/tmp/.buildx-cache
-        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
         build-args: |
           BASE_IMAGE_VERSION=3.9-bookworm
           POETRY_VERSION=1.8.3
@@ -688,8 +597,6 @@ jobs:
         platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/mips64le,linux/ppc64le,linux/s390x
         push: true
         tags: weastur/poetry:latest-python-3.9,weastur/poetry:1.8.3-python-3.9
-        cache-from: type=local,src=/tmp/.buildx-cache
-        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
         build-args: |
           BASE_IMAGE_VERSION=3.9
           POETRY_VERSION=1.8.3
@@ -703,8 +610,6 @@ jobs:
         platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/mips64le,linux/ppc64le,linux/s390x
         push: true
         tags: weastur/poetry:latest-python-3.8.19-bookworm,weastur/poetry:1.8.3-python-3.8.19-bookworm
-        cache-from: type=local,src=/tmp/.buildx-cache
-        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
         build-args: |
           BASE_IMAGE_VERSION=3.8.19-bookworm
           POETRY_VERSION=1.8.3
@@ -718,8 +623,6 @@ jobs:
         platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/mips64le,linux/ppc64le,linux/s390x
         push: true
         tags: weastur/poetry:latest-python-3.8.19,weastur/poetry:1.8.3-python-3.8.19
-        cache-from: type=local,src=/tmp/.buildx-cache
-        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
         build-args: |
           BASE_IMAGE_VERSION=3.8.19
           POETRY_VERSION=1.8.3
@@ -733,8 +636,6 @@ jobs:
         platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/mips64le,linux/ppc64le,linux/s390x
         push: true
         tags: weastur/poetry:latest-python-3.8-bookworm,weastur/poetry:1.8.3-python-3.8-bookworm
-        cache-from: type=local,src=/tmp/.buildx-cache
-        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
         build-args: |
           BASE_IMAGE_VERSION=3.8-bookworm
           POETRY_VERSION=1.8.3
@@ -748,8 +649,6 @@ jobs:
         platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/mips64le,linux/ppc64le,linux/s390x
         push: true
         tags: weastur/poetry:latest-python-3.8,weastur/poetry:1.8.3-python-3.8
-        cache-from: type=local,src=/tmp/.buildx-cache
-        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
         build-args: |
           BASE_IMAGE_VERSION=3.8
           POETRY_VERSION=1.8.3
@@ -763,8 +662,6 @@ jobs:
         platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x
         push: true
         tags: weastur/poetry:latest-python-3.11.9-bookworm,weastur/poetry:1.8.3-python-3.11.9-bookworm
-        cache-from: type=local,src=/tmp/.buildx-cache
-        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
         build-args: |
           BASE_IMAGE_VERSION=3.11.9-bookworm
           POETRY_VERSION=1.8.3
@@ -778,8 +675,6 @@ jobs:
         platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x
         push: true
         tags: weastur/poetry:latest-python-3.11-bookworm,weastur/poetry:1.8.3-python-3.11-bookworm
-        cache-from: type=local,src=/tmp/.buildx-cache
-        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
         build-args: |
           BASE_IMAGE_VERSION=3.11-bookworm
           POETRY_VERSION=1.8.3
@@ -793,8 +688,6 @@ jobs:
         platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x
         push: true
         tags: weastur/poetry:latest-python-3.10.14-bookworm,weastur/poetry:1.8.3-python-3.10.14-bookworm
-        cache-from: type=local,src=/tmp/.buildx-cache
-        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
         build-args: |
           BASE_IMAGE_VERSION=3.10.14-bookworm
           POETRY_VERSION=1.8.3
@@ -808,8 +701,6 @@ jobs:
         platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x
         push: true
         tags: weastur/poetry:latest-python-3.10.14,weastur/poetry:1.8.3-python-3.10.14
-        cache-from: type=local,src=/tmp/.buildx-cache
-        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
         build-args: |
           BASE_IMAGE_VERSION=3.10.14
           POETRY_VERSION=1.8.3
@@ -823,8 +714,6 @@ jobs:
         platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x
         push: true
         tags: weastur/poetry:latest-python-3.10-bookworm,weastur/poetry:1.8.3-python-3.10-bookworm
-        cache-from: type=local,src=/tmp/.buildx-cache
-        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
         build-args: |
           BASE_IMAGE_VERSION=3.10-bookworm
           POETRY_VERSION=1.8.3
@@ -838,8 +727,6 @@ jobs:
         platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x
         push: true
         tags: weastur/poetry:latest-python-3.10,weastur/poetry:1.8.3-python-3.10
-        cache-from: type=local,src=/tmp/.buildx-cache
-        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
         build-args: |
           BASE_IMAGE_VERSION=3.10
           POETRY_VERSION=1.8.3
@@ -853,8 +740,6 @@ jobs:
         platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/mips64le,linux/ppc64le,linux/s390x
         push: true
         tags: weastur/poetry:latest-python-3.9.19-slim-bookworm,weastur/poetry:1.8.3-python-3.9.19-slim-bookworm
-        cache-from: type=local,src=/tmp/.buildx-cache
-        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
         build-args: |
           BASE_IMAGE_VERSION=3.9.19-slim-bookworm
           POETRY_VERSION=1.8.3
@@ -868,8 +753,6 @@ jobs:
         platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/mips64le,linux/ppc64le,linux/s390x
         push: true
         tags: weastur/poetry:latest-python-3.9.19-slim,weastur/poetry:1.8.3-python-3.9.19-slim
-        cache-from: type=local,src=/tmp/.buildx-cache
-        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
         build-args: |
           BASE_IMAGE_VERSION=3.9.19-slim
           POETRY_VERSION=1.8.3
@@ -883,8 +766,6 @@ jobs:
         platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/mips64le,linux/ppc64le,linux/s390x
         push: true
         tags: weastur/poetry:latest-python-3.9-slim-bookworm,weastur/poetry:1.8.3-python-3.9-slim-bookworm
-        cache-from: type=local,src=/tmp/.buildx-cache
-        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
         build-args: |
           BASE_IMAGE_VERSION=3.9-slim-bookworm
           POETRY_VERSION=1.8.3
@@ -898,8 +779,6 @@ jobs:
         platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/mips64le,linux/ppc64le,linux/s390x
         push: true
         tags: weastur/poetry:latest-python-3.9-slim,weastur/poetry:1.8.3-python-3.9-slim
-        cache-from: type=local,src=/tmp/.buildx-cache
-        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
         build-args: |
           BASE_IMAGE_VERSION=3.9-slim
           POETRY_VERSION=1.8.3
@@ -913,8 +792,6 @@ jobs:
         platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/mips64le,linux/ppc64le,linux/s390x
         push: true
         tags: weastur/poetry:latest-python-3.8.19-slim-bookworm,weastur/poetry:1.8.3-python-3.8.19-slim-bookworm
-        cache-from: type=local,src=/tmp/.buildx-cache
-        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
         build-args: |
           BASE_IMAGE_VERSION=3.8.19-slim-bookworm
           POETRY_VERSION=1.8.3
@@ -928,8 +805,6 @@ jobs:
         platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/mips64le,linux/ppc64le,linux/s390x
         push: true
         tags: weastur/poetry:latest-python-3.8.19-slim,weastur/poetry:1.8.3-python-3.8.19-slim
-        cache-from: type=local,src=/tmp/.buildx-cache
-        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
         build-args: |
           BASE_IMAGE_VERSION=3.8.19-slim
           POETRY_VERSION=1.8.3
@@ -943,8 +818,6 @@ jobs:
         platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/mips64le,linux/ppc64le,linux/s390x
         push: true
         tags: weastur/poetry:latest-python-3.8-slim-bookworm,weastur/poetry:1.8.3-python-3.8-slim-bookworm
-        cache-from: type=local,src=/tmp/.buildx-cache
-        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
         build-args: |
           BASE_IMAGE_VERSION=3.8-slim-bookworm
           POETRY_VERSION=1.8.3
@@ -958,8 +831,6 @@ jobs:
         platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/mips64le,linux/ppc64le,linux/s390x
         push: true
         tags: weastur/poetry:latest-python-3.8-slim,weastur/poetry:1.8.3-python-3.8-slim
-        cache-from: type=local,src=/tmp/.buildx-cache
-        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
         build-args: |
           BASE_IMAGE_VERSION=3.8-slim
           POETRY_VERSION=1.8.3
@@ -973,8 +844,6 @@ jobs:
         platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x
         push: true
         tags: weastur/poetry:latest-python-3.11.9-slim-bookworm,weastur/poetry:1.8.3-python-3.11.9-slim-bookworm
-        cache-from: type=local,src=/tmp/.buildx-cache
-        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
         build-args: |
           BASE_IMAGE_VERSION=3.11.9-slim-bookworm
           POETRY_VERSION=1.8.3
@@ -988,8 +857,6 @@ jobs:
         platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x
         push: true
         tags: weastur/poetry:latest-python-3.11.9-slim,weastur/poetry:1.8.3-python-3.11.9-slim
-        cache-from: type=local,src=/tmp/.buildx-cache
-        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
         build-args: |
           BASE_IMAGE_VERSION=3.11.9-slim
           POETRY_VERSION=1.8.3
@@ -1003,8 +870,6 @@ jobs:
         platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x
         push: true
         tags: weastur/poetry:latest-python-3.11-slim-bookworm,weastur/poetry:1.8.3-python-3.11-slim-bookworm
-        cache-from: type=local,src=/tmp/.buildx-cache
-        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
         build-args: |
           BASE_IMAGE_VERSION=3.11-slim-bookworm
           POETRY_VERSION=1.8.3
@@ -1018,8 +883,6 @@ jobs:
         platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x
         push: true
         tags: weastur/poetry:latest-python-3.11-slim,weastur/poetry:1.8.3-python-3.11-slim
-        cache-from: type=local,src=/tmp/.buildx-cache
-        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
         build-args: |
           BASE_IMAGE_VERSION=3.11-slim
           POETRY_VERSION=1.8.3
@@ -1033,8 +896,6 @@ jobs:
         platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x
         push: true
         tags: weastur/poetry:latest-python-3.10.14-slim-bookworm,weastur/poetry:1.8.3-python-3.10.14-slim-bookworm
-        cache-from: type=local,src=/tmp/.buildx-cache
-        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
         build-args: |
           BASE_IMAGE_VERSION=3.10.14-slim-bookworm
           POETRY_VERSION=1.8.3
@@ -1048,8 +909,6 @@ jobs:
         platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x
         push: true
         tags: weastur/poetry:latest-python-3.10.14-slim,weastur/poetry:1.8.3-python-3.10.14-slim
-        cache-from: type=local,src=/tmp/.buildx-cache
-        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
         build-args: |
           BASE_IMAGE_VERSION=3.10.14-slim
           POETRY_VERSION=1.8.3
@@ -1063,8 +922,6 @@ jobs:
         platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x
         push: true
         tags: weastur/poetry:latest-python-3.10-slim-bookworm,weastur/poetry:1.8.3-python-3.10-slim-bookworm
-        cache-from: type=local,src=/tmp/.buildx-cache
-        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
         build-args: |
           BASE_IMAGE_VERSION=3.10-slim-bookworm
           POETRY_VERSION=1.8.3
@@ -1078,8 +935,6 @@ jobs:
         platforms: linux/amd64,linux/arm/v5,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x
         push: true
         tags: weastur/poetry:latest-python-3.10-slim,weastur/poetry:1.8.3-python-3.10-slim
-        cache-from: type=local,src=/tmp/.buildx-cache
-        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
         build-args: |
           BASE_IMAGE_VERSION=3.10-slim
           POETRY_VERSION=1.8.3
@@ -1093,8 +948,6 @@ jobs:
         platforms: linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x
         push: true
         tags: weastur/poetry:latest-python-3.11.9-alpine3.19,weastur/poetry:1.8.3-python-3.11.9-alpine3.19
-        cache-from: type=local,src=/tmp/.buildx-cache
-        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
         build-args: |
           BASE_IMAGE_VERSION=3.11.9-alpine3.19
           POETRY_VERSION=1.8.3
@@ -1108,8 +961,6 @@ jobs:
         platforms: linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x
         push: true
         tags: weastur/poetry:latest-python-3.11-alpine3.19,weastur/poetry:1.8.3-python-3.11-alpine3.19
-        cache-from: type=local,src=/tmp/.buildx-cache
-        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
         build-args: |
           BASE_IMAGE_VERSION=3.11-alpine3.19
           POETRY_VERSION=1.8.3
@@ -1123,8 +974,6 @@ jobs:
         platforms: linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x
         push: true
         tags: weastur/poetry:latest-python-3.9.19-alpine3.19,weastur/poetry:1.8.3-python-3.9.19-alpine3.19
-        cache-from: type=local,src=/tmp/.buildx-cache
-        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
         build-args: |
           BASE_IMAGE_VERSION=3.9.19-alpine3.19
           POETRY_VERSION=1.8.3
@@ -1138,8 +987,6 @@ jobs:
         platforms: linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x
         push: true
         tags: weastur/poetry:latest-python-3.9-alpine3.19,weastur/poetry:1.8.3-python-3.9-alpine3.19
-        cache-from: type=local,src=/tmp/.buildx-cache
-        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
         build-args: |
           BASE_IMAGE_VERSION=3.9-alpine3.19
           POETRY_VERSION=1.8.3
@@ -1153,8 +1000,6 @@ jobs:
         platforms: linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x
         push: true
         tags: weastur/poetry:latest-python-3.8.19-alpine3.19,weastur/poetry:1.8.3-python-3.8.19-alpine3.19
-        cache-from: type=local,src=/tmp/.buildx-cache
-        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
         build-args: |
           BASE_IMAGE_VERSION=3.8.19-alpine3.19
           POETRY_VERSION=1.8.3
@@ -1168,8 +1013,6 @@ jobs:
         platforms: linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x
         push: true
         tags: weastur/poetry:latest-python-3.8-alpine3.19,weastur/poetry:1.8.3-python-3.8-alpine3.19
-        cache-from: type=local,src=/tmp/.buildx-cache
-        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
         build-args: |
           BASE_IMAGE_VERSION=3.8-alpine3.19
           POETRY_VERSION=1.8.3
@@ -1183,8 +1026,6 @@ jobs:
         platforms: linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x
         push: true
         tags: weastur/poetry:latest-python-3.10.14-alpine3.19,weastur/poetry:1.8.3-python-3.10.14-alpine3.19
-        cache-from: type=local,src=/tmp/.buildx-cache
-        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
         build-args: |
           BASE_IMAGE_VERSION=3.10.14-alpine3.19
           POETRY_VERSION=1.8.3
@@ -1198,13 +1039,6 @@ jobs:
         platforms: linux/arm/v7,linux/arm64/v8,linux/386,linux/ppc64le,linux/s390x,linux/amd64,linux/arm/v6
         push: true
         tags: weastur/poetry:latest-python-3.10-alpine3.19,weastur/poetry:1.8.3-python-3.10-alpine3.19
-        cache-from: type=local,src=/tmp/.buildx-cache
-        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
         build-args: |
           BASE_IMAGE_VERSION=3.10-alpine3.19
           POETRY_VERSION=1.8.3
-
-    - name: Move cache
-      run: |
-        rm -rf /tmp/.buildx-cache
-        mv /tmp/.buildx-cache-new /tmp/.buildx-cache
