@@ -174,7 +174,7 @@ for metadata in _filter_images(_download_python_image_metadata()):
     tag = metadata["name"]
     platforms = []
     for image in metadata["images"]:
-        if image["os"] == "linux":
+        if image["os"] == "linux" and image['architecture'] != 's390x':
             platforms.append(_make_platform(image))
     if platforms:
         action += GH_ACTION_BUILD_AND_PUSH_STEP.substitute(
