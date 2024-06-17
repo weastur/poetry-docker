@@ -30,7 +30,7 @@ jobs:
         wget -q -S -O install.py https://install.python-poetry.org
 
     - name: Build and push (latest)
-      uses: docker/build-push-action@v5
+      uses: docker/build-push-action@v6
       continue-on-error: false
       with:
         context: .
@@ -43,7 +43,7 @@ jobs:
           POETRY_VERSION=1.8.3
 
     - name: Build and push (3.10.14-alpine3.20)
-      uses: docker/build-push-action@v5
+      uses: docker/build-push-action@v6
       continue-on-error: false
       with:
         context: .
@@ -56,7 +56,7 @@ jobs:
           POETRY_VERSION=1.8.3
 
     - name: Build and push (3.10.14-alpine)
-      uses: docker/build-push-action@v5
+      uses: docker/build-push-action@v6
       continue-on-error: false
       with:
         context: .
@@ -69,7 +69,7 @@ jobs:
           POETRY_VERSION=1.8.3
 
     - name: Build and push (3.10-alpine3.20)
-      uses: docker/build-push-action@v5
+      uses: docker/build-push-action@v6
       continue-on-error: false
       with:
         context: .
@@ -82,7 +82,7 @@ jobs:
           POETRY_VERSION=1.8.3
 
     - name: Build and push (3.10-alpine)
-      uses: docker/build-push-action@v5
+      uses: docker/build-push-action@v6
       continue-on-error: false
       with:
         context: .
@@ -95,7 +95,7 @@ jobs:
           POETRY_VERSION=1.8.3
 
     - name: Build and push (3.12.4-alpine3.20)
-      uses: docker/build-push-action@v5
+      uses: docker/build-push-action@v6
       continue-on-error: false
       with:
         context: .
@@ -108,7 +108,7 @@ jobs:
           POETRY_VERSION=1.8.3
 
     - name: Build and push (3.12.4-alpine3.19)
-      uses: docker/build-push-action@v5
+      uses: docker/build-push-action@v6
       continue-on-error: false
       with:
         context: .
@@ -121,7 +121,7 @@ jobs:
           POETRY_VERSION=1.8.3
 
     - name: Build and push (3.12.4-alpine)
-      uses: docker/build-push-action@v5
+      uses: docker/build-push-action@v6
       continue-on-error: false
       with:
         context: .
@@ -134,7 +134,7 @@ jobs:
           POETRY_VERSION=1.8.3
 
     - name: Build and push (3.12-alpine3.20)
-      uses: docker/build-push-action@v5
+      uses: docker/build-push-action@v6
       continue-on-error: false
       with:
         context: .
@@ -147,7 +147,7 @@ jobs:
           POETRY_VERSION=1.8.3
 
     - name: Build and push (3.12-alpine3.19)
-      uses: docker/build-push-action@v5
+      uses: docker/build-push-action@v6
       continue-on-error: false
       with:
         context: .
@@ -160,7 +160,7 @@ jobs:
           POETRY_VERSION=1.8.3
 
     - name: Build and push (3.12-alpine)
-      uses: docker/build-push-action@v5
+      uses: docker/build-push-action@v6
       continue-on-error: false
       with:
         context: .
@@ -173,7 +173,7 @@ jobs:
           POETRY_VERSION=1.8.3
 
     - name: Build and push (3.11.9-alpine3.20)
-      uses: docker/build-push-action@v5
+      uses: docker/build-push-action@v6
       continue-on-error: false
       with:
         context: .
@@ -186,7 +186,7 @@ jobs:
           POETRY_VERSION=1.8.3
 
     - name: Build and push (3.11.9-alpine3.19)
-      uses: docker/build-push-action@v5
+      uses: docker/build-push-action@v6
       continue-on-error: false
       with:
         context: .
@@ -199,7 +199,7 @@ jobs:
           POETRY_VERSION=1.8.3
 
     - name: Build and push (3.11.9-alpine)
-      uses: docker/build-push-action@v5
+      uses: docker/build-push-action@v6
       continue-on-error: false
       with:
         context: .
@@ -212,7 +212,7 @@ jobs:
           POETRY_VERSION=1.8.3
 
     - name: Build and push (3.11-alpine3.20)
-      uses: docker/build-push-action@v5
+      uses: docker/build-push-action@v6
       continue-on-error: false
       with:
         context: .
@@ -225,7 +225,7 @@ jobs:
           POETRY_VERSION=1.8.3
 
     - name: Build and push (3.11-alpine3.19)
-      uses: docker/build-push-action@v5
+      uses: docker/build-push-action@v6
       continue-on-error: false
       with:
         context: .
@@ -238,7 +238,7 @@ jobs:
           POETRY_VERSION=1.8.3
 
     - name: Build and push (3.11-alpine)
-      uses: docker/build-push-action@v5
+      uses: docker/build-push-action@v6
       continue-on-error: false
       with:
         context: .
@@ -251,7 +251,7 @@ jobs:
           POETRY_VERSION=1.8.3
 
     - name: Build and push (3.10.14-alpine3.19)
-      uses: docker/build-push-action@v5
+      uses: docker/build-push-action@v6
       continue-on-error: false
       with:
         context: .
@@ -264,7 +264,7 @@ jobs:
           POETRY_VERSION=1.8.3
 
     - name: Build and push (3.10-alpine3.19)
-      uses: docker/build-push-action@v5
+      uses: docker/build-push-action@v6
       continue-on-error: false
       with:
         context: .
@@ -277,7 +277,7 @@ jobs:
           POETRY_VERSION=1.8.3
 
     - name: Build and push (3-alpine3.20)
-      uses: docker/build-push-action@v5
+      uses: docker/build-push-action@v6
       continue-on-error: false
       with:
         context: .
@@ -290,7 +290,7 @@ jobs:
           POETRY_VERSION=1.8.3
 
     - name: Build and push (3-alpine3.19)
-      uses: docker/build-push-action@v5
+      uses: docker/build-push-action@v6
       continue-on-error: false
       with:
         context: .
@@ -303,7 +303,7 @@ jobs:
           POETRY_VERSION=1.8.3
 
     - name: Build and push (3-alpine)
-      uses: docker/build-push-action@v5
+      uses: docker/build-push-action@v6
       continue-on-error: false
       with:
         context: .
@@ -316,7 +316,7 @@ jobs:
           POETRY_VERSION=1.8.3
 
     - name: Build and push (3.9.19-slim-bookworm)
-      uses: docker/build-push-action@v5
+      uses: docker/build-push-action@v6
       continue-on-error: false
       with:
         context: .
@@ -329,7 +329,7 @@ jobs:
           POETRY_VERSION=1.8.3
 
     - name: Build and push (3.9.19-slim)
-      uses: docker/build-push-action@v5
+      uses: docker/build-push-action@v6
       continue-on-error: false
       with:
         context: .
@@ -342,7 +342,7 @@ jobs:
           POETRY_VERSION=1.8.3
 
     - name: Build and push (3.9.19-bookworm)
-      uses: docker/build-push-action@v5
+      uses: docker/build-push-action@v6
       continue-on-error: false
       with:
         context: .
@@ -355,7 +355,7 @@ jobs:
           POETRY_VERSION=1.8.3
 
     - name: Build and push (3.9.19)
-      uses: docker/build-push-action@v5
+      uses: docker/build-push-action@v6
       continue-on-error: false
       with:
         context: .
@@ -368,7 +368,7 @@ jobs:
           POETRY_VERSION=1.8.3
 
     - name: Build and push (3.9-slim-bookworm)
-      uses: docker/build-push-action@v5
+      uses: docker/build-push-action@v6
       continue-on-error: false
       with:
         context: .
@@ -381,7 +381,7 @@ jobs:
           POETRY_VERSION=1.8.3
 
     - name: Build and push (3.9-slim)
-      uses: docker/build-push-action@v5
+      uses: docker/build-push-action@v6
       continue-on-error: false
       with:
         context: .
@@ -394,7 +394,7 @@ jobs:
           POETRY_VERSION=1.8.3
 
     - name: Build and push (3.9-bookworm)
-      uses: docker/build-push-action@v5
+      uses: docker/build-push-action@v6
       continue-on-error: false
       with:
         context: .
@@ -407,7 +407,7 @@ jobs:
           POETRY_VERSION=1.8.3
 
     - name: Build and push (3.9)
-      uses: docker/build-push-action@v5
+      uses: docker/build-push-action@v6
       continue-on-error: false
       with:
         context: .
@@ -420,7 +420,7 @@ jobs:
           POETRY_VERSION=1.8.3
 
     - name: Build and push (3.8.19-slim-bookworm)
-      uses: docker/build-push-action@v5
+      uses: docker/build-push-action@v6
       continue-on-error: false
       with:
         context: .
@@ -433,7 +433,7 @@ jobs:
           POETRY_VERSION=1.8.3
 
     - name: Build and push (3.8.19-slim)
-      uses: docker/build-push-action@v5
+      uses: docker/build-push-action@v6
       continue-on-error: false
       with:
         context: .
@@ -446,7 +446,7 @@ jobs:
           POETRY_VERSION=1.8.3
 
     - name: Build and push (3.8.19-bookworm)
-      uses: docker/build-push-action@v5
+      uses: docker/build-push-action@v6
       continue-on-error: false
       with:
         context: .
@@ -459,7 +459,7 @@ jobs:
           POETRY_VERSION=1.8.3
 
     - name: Build and push (3.8.19)
-      uses: docker/build-push-action@v5
+      uses: docker/build-push-action@v6
       continue-on-error: false
       with:
         context: .
@@ -472,7 +472,7 @@ jobs:
           POETRY_VERSION=1.8.3
 
     - name: Build and push (3.8-slim-bookworm)
-      uses: docker/build-push-action@v5
+      uses: docker/build-push-action@v6
       continue-on-error: false
       with:
         context: .
@@ -485,7 +485,7 @@ jobs:
           POETRY_VERSION=1.8.3
 
     - name: Build and push (3.8-slim)
-      uses: docker/build-push-action@v5
+      uses: docker/build-push-action@v6
       continue-on-error: false
       with:
         context: .
@@ -498,7 +498,7 @@ jobs:
           POETRY_VERSION=1.8.3
 
     - name: Build and push (3.8-bookworm)
-      uses: docker/build-push-action@v5
+      uses: docker/build-push-action@v6
       continue-on-error: false
       with:
         context: .
@@ -511,7 +511,7 @@ jobs:
           POETRY_VERSION=1.8.3
 
     - name: Build and push (3.8)
-      uses: docker/build-push-action@v5
+      uses: docker/build-push-action@v6
       continue-on-error: false
       with:
         context: .
@@ -524,7 +524,7 @@ jobs:
           POETRY_VERSION=1.8.3
 
     - name: Build and push (3.12.4-slim-bookworm)
-      uses: docker/build-push-action@v5
+      uses: docker/build-push-action@v6
       continue-on-error: false
       with:
         context: .
@@ -537,7 +537,7 @@ jobs:
           POETRY_VERSION=1.8.3
 
     - name: Build and push (3.12.4-slim)
-      uses: docker/build-push-action@v5
+      uses: docker/build-push-action@v6
       continue-on-error: false
       with:
         context: .
@@ -550,7 +550,7 @@ jobs:
           POETRY_VERSION=1.8.3
 
     - name: Build and push (3.12.4-bookworm)
-      uses: docker/build-push-action@v5
+      uses: docker/build-push-action@v6
       continue-on-error: false
       with:
         context: .
@@ -563,7 +563,7 @@ jobs:
           POETRY_VERSION=1.8.3
 
     - name: Build and push (3.12.4)
-      uses: docker/build-push-action@v5
+      uses: docker/build-push-action@v6
       continue-on-error: false
       with:
         context: .
@@ -576,7 +576,7 @@ jobs:
           POETRY_VERSION=1.8.3
 
     - name: Build and push (3.12-slim-bookworm)
-      uses: docker/build-push-action@v5
+      uses: docker/build-push-action@v6
       continue-on-error: false
       with:
         context: .
@@ -589,7 +589,7 @@ jobs:
           POETRY_VERSION=1.8.3
 
     - name: Build and push (3.12-slim)
-      uses: docker/build-push-action@v5
+      uses: docker/build-push-action@v6
       continue-on-error: false
       with:
         context: .
@@ -602,7 +602,7 @@ jobs:
           POETRY_VERSION=1.8.3
 
     - name: Build and push (3.12-bookworm)
-      uses: docker/build-push-action@v5
+      uses: docker/build-push-action@v6
       continue-on-error: false
       with:
         context: .
@@ -615,7 +615,7 @@ jobs:
           POETRY_VERSION=1.8.3
 
     - name: Build and push (3.12)
-      uses: docker/build-push-action@v5
+      uses: docker/build-push-action@v6
       continue-on-error: false
       with:
         context: .
@@ -628,7 +628,7 @@ jobs:
           POETRY_VERSION=1.8.3
 
     - name: Build and push (3.11.9-slim-bookworm)
-      uses: docker/build-push-action@v5
+      uses: docker/build-push-action@v6
       continue-on-error: false
       with:
         context: .
@@ -641,7 +641,7 @@ jobs:
           POETRY_VERSION=1.8.3
 
     - name: Build and push (3.11.9-slim)
-      uses: docker/build-push-action@v5
+      uses: docker/build-push-action@v6
       continue-on-error: false
       with:
         context: .
@@ -654,7 +654,7 @@ jobs:
           POETRY_VERSION=1.8.3
 
     - name: Build and push (3.11.9-bookworm)
-      uses: docker/build-push-action@v5
+      uses: docker/build-push-action@v6
       continue-on-error: false
       with:
         context: .
@@ -667,7 +667,7 @@ jobs:
           POETRY_VERSION=1.8.3
 
     - name: Build and push (3.11.9)
-      uses: docker/build-push-action@v5
+      uses: docker/build-push-action@v6
       continue-on-error: false
       with:
         context: .
@@ -680,7 +680,7 @@ jobs:
           POETRY_VERSION=1.8.3
 
     - name: Build and push (3.11-slim-bookworm)
-      uses: docker/build-push-action@v5
+      uses: docker/build-push-action@v6
       continue-on-error: false
       with:
         context: .
@@ -693,7 +693,7 @@ jobs:
           POETRY_VERSION=1.8.3
 
     - name: Build and push (3.11-slim)
-      uses: docker/build-push-action@v5
+      uses: docker/build-push-action@v6
       continue-on-error: false
       with:
         context: .
@@ -706,7 +706,7 @@ jobs:
           POETRY_VERSION=1.8.3
 
     - name: Build and push (3.11-bookworm)
-      uses: docker/build-push-action@v5
+      uses: docker/build-push-action@v6
       continue-on-error: false
       with:
         context: .
@@ -719,7 +719,7 @@ jobs:
           POETRY_VERSION=1.8.3
 
     - name: Build and push (3.11)
-      uses: docker/build-push-action@v5
+      uses: docker/build-push-action@v6
       continue-on-error: false
       with:
         context: .
@@ -732,7 +732,7 @@ jobs:
           POETRY_VERSION=1.8.3
 
     - name: Build and push (3.10.14-slim-bookworm)
-      uses: docker/build-push-action@v5
+      uses: docker/build-push-action@v6
       continue-on-error: false
       with:
         context: .
@@ -745,7 +745,7 @@ jobs:
           POETRY_VERSION=1.8.3
 
     - name: Build and push (3.10.14-slim)
-      uses: docker/build-push-action@v5
+      uses: docker/build-push-action@v6
       continue-on-error: false
       with:
         context: .
@@ -758,7 +758,7 @@ jobs:
           POETRY_VERSION=1.8.3
 
     - name: Build and push (3.10.14-bookworm)
-      uses: docker/build-push-action@v5
+      uses: docker/build-push-action@v6
       continue-on-error: false
       with:
         context: .
@@ -771,7 +771,7 @@ jobs:
           POETRY_VERSION=1.8.3
 
     - name: Build and push (3.10.14)
-      uses: docker/build-push-action@v5
+      uses: docker/build-push-action@v6
       continue-on-error: false
       with:
         context: .
@@ -784,7 +784,7 @@ jobs:
           POETRY_VERSION=1.8.3
 
     - name: Build and push (3.10-slim-bookworm)
-      uses: docker/build-push-action@v5
+      uses: docker/build-push-action@v6
       continue-on-error: false
       with:
         context: .
@@ -797,7 +797,7 @@ jobs:
           POETRY_VERSION=1.8.3
 
     - name: Build and push (3.10-slim)
-      uses: docker/build-push-action@v5
+      uses: docker/build-push-action@v6
       continue-on-error: false
       with:
         context: .
@@ -810,7 +810,7 @@ jobs:
           POETRY_VERSION=1.8.3
 
     - name: Build and push (3.10-bookworm)
-      uses: docker/build-push-action@v5
+      uses: docker/build-push-action@v6
       continue-on-error: false
       with:
         context: .
@@ -823,7 +823,7 @@ jobs:
           POETRY_VERSION=1.8.3
 
     - name: Build and push (3.10)
-      uses: docker/build-push-action@v5
+      uses: docker/build-push-action@v6
       continue-on-error: false
       with:
         context: .
@@ -836,7 +836,7 @@ jobs:
           POETRY_VERSION=1.8.3
 
     - name: Build and push (3-slim-bookworm)
-      uses: docker/build-push-action@v5
+      uses: docker/build-push-action@v6
       continue-on-error: false
       with:
         context: .
@@ -849,7 +849,7 @@ jobs:
           POETRY_VERSION=1.8.3
 
     - name: Build and push (3-slim)
-      uses: docker/build-push-action@v5
+      uses: docker/build-push-action@v6
       continue-on-error: false
       with:
         context: .
@@ -862,7 +862,7 @@ jobs:
           POETRY_VERSION=1.8.3
 
     - name: Build and push (3-bookworm)
-      uses: docker/build-push-action@v5
+      uses: docker/build-push-action@v6
       continue-on-error: false
       with:
         context: .
@@ -875,7 +875,7 @@ jobs:
           POETRY_VERSION=1.8.3
 
     - name: Build and push (3)
-      uses: docker/build-push-action@v5
+      uses: docker/build-push-action@v6
       continue-on-error: false
       with:
         context: .
@@ -888,7 +888,7 @@ jobs:
           POETRY_VERSION=1.8.3
 
     - name: Build and push (3.8.19-alpine3.20)
-      uses: docker/build-push-action@v5
+      uses: docker/build-push-action@v6
       continue-on-error: false
       with:
         context: .
@@ -901,7 +901,7 @@ jobs:
           POETRY_VERSION=1.8.3
 
     - name: Build and push (3.8.19-alpine)
-      uses: docker/build-push-action@v5
+      uses: docker/build-push-action@v6
       continue-on-error: false
       with:
         context: .
@@ -914,7 +914,7 @@ jobs:
           POETRY_VERSION=1.8.3
 
     - name: Build and push (3.8-alpine3.20)
-      uses: docker/build-push-action@v5
+      uses: docker/build-push-action@v6
       continue-on-error: false
       with:
         context: .
@@ -927,7 +927,7 @@ jobs:
           POETRY_VERSION=1.8.3
 
     - name: Build and push (3.8-alpine)
-      uses: docker/build-push-action@v5
+      uses: docker/build-push-action@v6
       continue-on-error: false
       with:
         context: .
@@ -940,7 +940,7 @@ jobs:
           POETRY_VERSION=1.8.3
 
     - name: Build and push (3.9.19-alpine3.20)
-      uses: docker/build-push-action@v5
+      uses: docker/build-push-action@v6
       continue-on-error: false
       with:
         context: .
@@ -953,7 +953,7 @@ jobs:
           POETRY_VERSION=1.8.3
 
     - name: Build and push (3.9.19-alpine)
-      uses: docker/build-push-action@v5
+      uses: docker/build-push-action@v6
       continue-on-error: false
       with:
         context: .
@@ -966,7 +966,7 @@ jobs:
           POETRY_VERSION=1.8.3
 
     - name: Build and push (3.9-alpine3.20)
-      uses: docker/build-push-action@v5
+      uses: docker/build-push-action@v6
       continue-on-error: false
       with:
         context: .
@@ -979,7 +979,7 @@ jobs:
           POETRY_VERSION=1.8.3
 
     - name: Build and push (3.9-alpine)
-      uses: docker/build-push-action@v5
+      uses: docker/build-push-action@v6
       continue-on-error: false
       with:
         context: .
@@ -992,7 +992,7 @@ jobs:
           POETRY_VERSION=1.8.3
 
     - name: Build and push (3.9.19-alpine3.19)
-      uses: docker/build-push-action@v5
+      uses: docker/build-push-action@v6
       continue-on-error: false
       with:
         context: .
@@ -1005,7 +1005,7 @@ jobs:
           POETRY_VERSION=1.8.3
 
     - name: Build and push (3.9-alpine3.19)
-      uses: docker/build-push-action@v5
+      uses: docker/build-push-action@v6
       continue-on-error: false
       with:
         context: .
@@ -1018,7 +1018,7 @@ jobs:
           POETRY_VERSION=1.8.3
 
     - name: Build and push (3.8.19-alpine3.19)
-      uses: docker/build-push-action@v5
+      uses: docker/build-push-action@v6
       continue-on-error: false
       with:
         context: .
@@ -1031,7 +1031,7 @@ jobs:
           POETRY_VERSION=1.8.3
 
     - name: Build and push (3.8-alpine3.19)
-      uses: docker/build-push-action@v5
+      uses: docker/build-push-action@v6
       continue-on-error: false
       with:
         context: .
