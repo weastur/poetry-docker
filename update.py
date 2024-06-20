@@ -2,6 +2,7 @@
 
 import json
 import re
+import typing
 import urllib.request
 
 from string import Template
@@ -12,6 +13,7 @@ POETRY_RELEASES_URL = (
 )
 PYTHON_IMAGE_METADATA_URL_TEMPLATE = "https://hub.docker.com/v2/namespaces/library/repositories/python/tags?page_size={page_size}&page={page}"
 ALLOWED_VERSIONS = ["3.8", "3.9", "3.10", "3.11", "3.12"]
+ALLOWED_ARCHITECTURES = ["amd64", "386", "arm64", "arm"]
 RESTRICTED_OS = [
     "alpine3.8",
     "alpine3.9",
@@ -40,40 +42,41 @@ jobs:
   build-and-push:
     runs-on: ubuntu-latest
     steps:
-    - name: Check out code
-      uses: actions/checkout@v4
+      - name: Check out code
+        uses: actions/checkout@v4
 
-    - name: Set up QEMU
-      uses: docker/setup-qemu-action@v3
+      - name: Login to DockerHub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-    - name: Set up Docker Buildx
-      uses: docker/setup-buildx-action@v3
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+        with:
+          version: "lab:latest"
+          driver: cloud
+          endpoint: "weastur/builder"
 
-    - name: Login to DockerHub
-      uses: docker/login-action@v3
-      with:
-        username: ${{ secrets.DOCKERHUB_USERNAME }}
-        password: ${{ secrets.DOCKERHUB_TOKEN }}
-
-    - name: Download poetry installer
-      run: |
-        wget -q -S -O install.py https://install.python-poetry.org
+      - name: Download poetry installer
+        run: |
+          wget -q -S -O install.py https://install.python-poetry.org
 """
 
 GH_ACTION_BUILD_AND_PUSH_STEP = Template(
     """
-    - name: Build and push ($raw_tags)
-      uses: docker/build-push-action@v6
-      continue-on-error: false
-      with:
-        context: .
-        file: ./Dockerfile
-        platforms: $platforms
-        push: true
-        tags: $tags
-        build-args: |
-          BASE_IMAGE_VERSION=$base_image_version
-          POETRY_VERSION=$poetry_version
+      - name: Build and push ($raw_tags)
+        uses: docker/build-push-action@v6
+        continue-on-error: false
+        with:
+          context: .
+          file: ./Dockerfile
+          platforms: $platforms
+          push: true
+          tags: $tags
+          build-args: |
+            BASE_IMAGE_VERSION=$base_image_version
+            POETRY_VERSION=$poetry_version
 """
 )
 
@@ -86,7 +89,9 @@ def _get_latest_poetry_version() -> str:
 
 def _make_platform(image: dict) -> str:
     if image["variant"]:
-        return "{}/{}/{}".format(image["os"], image["architecture"], image["variant"])
+        return "{}/{}/{}".format(
+            image["os"], image["architecture"], image["variant"]
+        )
     else:
         return "{}/{}".format(image["os"], image["architecture"])
 
@@ -107,7 +112,9 @@ def _download_python_image_metadata() -> list:
     metadata = []
     while True:
         with urllib.request.urlopen(
-            PYTHON_IMAGE_METADATA_URL_TEMPLATE.format(page_size=page_size, page=page)
+            PYTHON_IMAGE_METADATA_URL_TEMPLATE.format(
+                page_size=page_size, page=page
+            )
         ) as response:
             data = json.loads(response.read().decode())
             metadata.extend(data["results"])
@@ -143,7 +150,10 @@ def _filter_images(images: list) -> list:
     pre_filtered = []
     latest_version = {ver: None for ver in ALLOWED_VERSIONS}
     for image in images:
-        if image.get("tag_status") != "active" or image.get("content_type") != "image":
+        if (
+            image.get("tag_status") != "active"
+            or image.get("content_type") != "image"
+        ):
             continue
         tag = image["name"]
         if not (
@@ -174,7 +184,10 @@ for metadata in _filter_images(_download_python_image_metadata()):
     tag = metadata["name"]
     platforms = []
     for image in metadata["images"]:
-        if image["os"] == "linux" and image["architecture"] not in ["s390x", "ppc64le"]:
+        if (
+            image["os"] == "linux"
+            and image["architecture"] in ALLOWED_ARCHITECTURES
+        ):
             platforms.append(_make_platform(image))
     if platforms:
         action += GH_ACTION_BUILD_AND_PUSH_STEP.substitute(
