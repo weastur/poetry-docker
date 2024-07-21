@@ -19,11 +19,12 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - name: Set up QEMU
-        uses: docker/setup-qemu-action@v3
-
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
+        with:
+          version: "lab:latest"
+          driver: cloud
+          endpoint: "weastur/builder"
 
       - name: Download poetry installer
         run: |
@@ -35,7 +36,7 @@ jobs:
         with:
           context: .
           file: ./Dockerfile
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64,linux/arm/v7,linux/arm64,linux/386
           push: true
           tags: weastur/poetry:latest-python-latest,weastur/poetry:1.8.3-python-latest,weastur/poetry:latest
           build-args: |
@@ -48,7 +49,7 @@ jobs:
         with:
           context: .
           file: ./Dockerfile
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64,linux/arm/v7,linux/arm64,linux/386
           push: true
           tags: weastur/poetry:latest-python-3.12.4-bookworm,weastur/poetry:1.8.3-python-3.12.4-bookworm
           build-args: |
@@ -61,7 +62,7 @@ jobs:
         with:
           context: .
           file: ./Dockerfile
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64,linux/arm/v7,linux/arm64,linux/386
           push: true
           tags: weastur/poetry:latest-python-3.12.4,weastur/poetry:1.8.3-python-3.12.4
           build-args: |
@@ -74,7 +75,7 @@ jobs:
         with:
           context: .
           file: ./Dockerfile
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64,linux/arm/v7,linux/arm64,linux/386
           push: true
           tags: weastur/poetry:latest-python-3.12-bookworm,weastur/poetry:1.8.3-python-3.12-bookworm
           build-args: |
@@ -87,7 +88,7 @@ jobs:
         with:
           context: .
           file: ./Dockerfile
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64,linux/arm/v7,linux/arm64,linux/386
           push: true
           tags: weastur/poetry:latest-python-3.12,weastur/poetry:1.8.3-python-3.12
           build-args: |
@@ -100,7 +101,7 @@ jobs:
         with:
           context: .
           file: ./Dockerfile
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64,linux/arm/v7,linux/arm64,linux/386
           push: true
           tags: weastur/poetry:latest-python-3-bookworm,weastur/poetry:1.8.3-python-3-bookworm
           build-args: |
@@ -113,7 +114,7 @@ jobs:
         with:
           context: .
           file: ./Dockerfile
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64,linux/arm/v7,linux/arm64,linux/386
           push: true
           tags: weastur/poetry:latest-python-3,weastur/poetry:1.8.3-python-3
           build-args: |
@@ -126,7 +127,7 @@ jobs:
         with:
           context: .
           file: ./Dockerfile
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64,linux/arm/v7,linux/arm64,linux/386
           push: true
           tags: weastur/poetry:latest-python-3.9.19-slim-bookworm,weastur/poetry:1.8.3-python-3.9.19-slim-bookworm
           build-args: |
@@ -139,7 +140,7 @@ jobs:
         with:
           context: .
           file: ./Dockerfile
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64,linux/arm/v7,linux/arm64,linux/386
           push: true
           tags: weastur/poetry:latest-python-3.9.19-slim,weastur/poetry:1.8.3-python-3.9.19-slim
           build-args: |
@@ -152,7 +153,7 @@ jobs:
         with:
           context: .
           file: ./Dockerfile
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64,linux/arm/v7,linux/arm64,linux/386
           push: true
           tags: weastur/poetry:latest-python-3.9.19-bookworm,weastur/poetry:1.8.3-python-3.9.19-bookworm
           build-args: |
@@ -165,7 +166,7 @@ jobs:
         with:
           context: .
           file: ./Dockerfile
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64,linux/386
           push: true
           tags: weastur/poetry:latest-python-3.9.19-alpine3.20,weastur/poetry:1.8.3-python-3.9.19-alpine3.20
           build-args: |
@@ -178,7 +179,7 @@ jobs:
         with:
           context: .
           file: ./Dockerfile
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64,linux/386
           push: true
           tags: weastur/poetry:latest-python-3.9.19-alpine3.19,weastur/poetry:1.8.3-python-3.9.19-alpine3.19
           build-args: |
@@ -191,7 +192,7 @@ jobs:
         with:
           context: .
           file: ./Dockerfile
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64,linux/386
           push: true
           tags: weastur/poetry:latest-python-3.9.19-alpine,weastur/poetry:1.8.3-python-3.9.19-alpine
           build-args: |
@@ -204,7 +205,7 @@ jobs:
         with:
           context: .
           file: ./Dockerfile
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64,linux/arm/v7,linux/arm64,linux/386
           push: true
           tags: weastur/poetry:latest-python-3.9.19,weastur/poetry:1.8.3-python-3.9.19
           build-args: |
@@ -217,7 +218,7 @@ jobs:
         with:
           context: .
           file: ./Dockerfile
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64,linux/arm/v7,linux/arm64,linux/386
           push: true
           tags: weastur/poetry:latest-python-3.9-slim-bookworm,weastur/poetry:1.8.3-python-3.9-slim-bookworm
           build-args: |
@@ -230,7 +231,7 @@ jobs:
         with:
           context: .
           file: ./Dockerfile
-          platforms: linux/arm64,linux/amd64
+          platforms: linux/arm/v7,linux/arm64,linux/386,linux/amd64
           push: true
           tags: weastur/poetry:latest-python-3.9-slim,weastur/poetry:1.8.3-python-3.9-slim
           build-args: |
@@ -243,7 +244,7 @@ jobs:
         with:
           context: .
           file: ./Dockerfile
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64,linux/arm/v7,linux/arm64,linux/386
           push: true
           tags: weastur/poetry:latest-python-3.9-bookworm,weastur/poetry:1.8.3-python-3.9-bookworm
           build-args: |
@@ -256,7 +257,7 @@ jobs:
         with:
           context: .
           file: ./Dockerfile
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64,linux/386
           push: true
           tags: weastur/poetry:latest-python-3.9-alpine3.20,weastur/poetry:1.8.3-python-3.9-alpine3.20
           build-args: |
@@ -269,7 +270,7 @@ jobs:
         with:
           context: .
           file: ./Dockerfile
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64,linux/386
           push: true
           tags: weastur/poetry:latest-python-3.9-alpine3.19,weastur/poetry:1.8.3-python-3.9-alpine3.19
           build-args: |
@@ -282,7 +283,7 @@ jobs:
         with:
           context: .
           file: ./Dockerfile
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64,linux/386
           push: true
           tags: weastur/poetry:latest-python-3.9-alpine,weastur/poetry:1.8.3-python-3.9-alpine
           build-args: |
@@ -295,7 +296,7 @@ jobs:
         with:
           context: .
           file: ./Dockerfile
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64,linux/arm/v7,linux/arm64,linux/386
           push: true
           tags: weastur/poetry:latest-python-3.9,weastur/poetry:1.8.3-python-3.9
           build-args: |
@@ -308,7 +309,7 @@ jobs:
         with:
           context: .
           file: ./Dockerfile
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64,linux/arm/v7,linux/arm64,linux/386
           push: true
           tags: weastur/poetry:latest-python-3.8.19-slim-bookworm,weastur/poetry:1.8.3-python-3.8.19-slim-bookworm
           build-args: |
@@ -321,7 +322,7 @@ jobs:
         with:
           context: .
           file: ./Dockerfile
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64,linux/arm/v7,linux/arm64,linux/386
           push: true
           tags: weastur/poetry:latest-python-3.8.19-slim,weastur/poetry:1.8.3-python-3.8.19-slim
           build-args: |
@@ -334,7 +335,7 @@ jobs:
         with:
           context: .
           file: ./Dockerfile
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64,linux/arm/v7,linux/arm64,linux/386
           push: true
           tags: weastur/poetry:latest-python-3.8.19-bookworm,weastur/poetry:1.8.3-python-3.8.19-bookworm
           build-args: |
@@ -347,7 +348,7 @@ jobs:
         with:
           context: .
           file: ./Dockerfile
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64,linux/386
           push: true
           tags: weastur/poetry:latest-python-3.8.19-alpine3.20,weastur/poetry:1.8.3-python-3.8.19-alpine3.20
           build-args: |
@@ -360,7 +361,7 @@ jobs:
         with:
           context: .
           file: ./Dockerfile
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64,linux/386
           push: true
           tags: weastur/poetry:latest-python-3.8.19-alpine3.19,weastur/poetry:1.8.3-python-3.8.19-alpine3.19
           build-args: |
@@ -373,7 +374,7 @@ jobs:
         with:
           context: .
           file: ./Dockerfile
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64,linux/386
           push: true
           tags: weastur/poetry:latest-python-3.8.19-alpine,weastur/poetry:1.8.3-python-3.8.19-alpine
           build-args: |
@@ -386,7 +387,7 @@ jobs:
         with:
           context: .
           file: ./Dockerfile
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64,linux/arm/v7,linux/arm64,linux/386
           push: true
           tags: weastur/poetry:latest-python-3.8.19,weastur/poetry:1.8.3-python-3.8.19
           build-args: |
@@ -399,7 +400,7 @@ jobs:
         with:
           context: .
           file: ./Dockerfile
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64,linux/arm/v7,linux/arm64,linux/386
           push: true
           tags: weastur/poetry:latest-python-3.8-slim-bookworm,weastur/poetry:1.8.3-python-3.8-slim-bookworm
           build-args: |
@@ -412,7 +413,7 @@ jobs:
         with:
           context: .
           file: ./Dockerfile
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64,linux/arm/v7,linux/arm64,linux/386
           push: true
           tags: weastur/poetry:latest-python-3.8-slim,weastur/poetry:1.8.3-python-3.8-slim
           build-args: |
@@ -425,7 +426,7 @@ jobs:
         with:
           context: .
           file: ./Dockerfile
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64,linux/arm/v7,linux/arm64,linux/386
           push: true
           tags: weastur/poetry:latest-python-3.8-bookworm,weastur/poetry:1.8.3-python-3.8-bookworm
           build-args: |
@@ -438,7 +439,7 @@ jobs:
         with:
           context: .
           file: ./Dockerfile
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64,linux/386
           push: true
           tags: weastur/poetry:latest-python-3.8-alpine3.20,weastur/poetry:1.8.3-python-3.8-alpine3.20
           build-args: |
@@ -451,7 +452,7 @@ jobs:
         with:
           context: .
           file: ./Dockerfile
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64,linux/386
           push: true
           tags: weastur/poetry:latest-python-3.8-alpine3.19,weastur/poetry:1.8.3-python-3.8-alpine3.19
           build-args: |
@@ -464,7 +465,7 @@ jobs:
         with:
           context: .
           file: ./Dockerfile
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64,linux/386
           push: true
           tags: weastur/poetry:latest-python-3.8-alpine,weastur/poetry:1.8.3-python-3.8-alpine
           build-args: |
@@ -477,7 +478,7 @@ jobs:
         with:
           context: .
           file: ./Dockerfile
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64,linux/arm/v7,linux/arm64,linux/386
           push: true
           tags: weastur/poetry:latest-python-3.8,weastur/poetry:1.8.3-python-3.8
           build-args: |
@@ -490,7 +491,7 @@ jobs:
         with:
           context: .
           file: ./Dockerfile
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64,linux/arm/v7,linux/arm64,linux/386
           push: true
           tags: weastur/poetry:latest-python-3.12.4-slim-bookworm,weastur/poetry:1.8.3-python-3.12.4-slim-bookworm
           build-args: |
@@ -503,7 +504,7 @@ jobs:
         with:
           context: .
           file: ./Dockerfile
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64,linux/arm/v7,linux/arm64,linux/386
           push: true
           tags: weastur/poetry:latest-python-3.12.4-slim,weastur/poetry:1.8.3-python-3.12.4-slim
           build-args: |
@@ -516,7 +517,7 @@ jobs:
         with:
           context: .
           file: ./Dockerfile
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64,linux/386
           push: true
           tags: weastur/poetry:latest-python-3.12.4-alpine3.20,weastur/poetry:1.8.3-python-3.12.4-alpine3.20
           build-args: |
@@ -529,7 +530,7 @@ jobs:
         with:
           context: .
           file: ./Dockerfile
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64,linux/386
           push: true
           tags: weastur/poetry:latest-python-3.12.4-alpine3.19,weastur/poetry:1.8.3-python-3.12.4-alpine3.19
           build-args: |
@@ -542,7 +543,7 @@ jobs:
         with:
           context: .
           file: ./Dockerfile
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64,linux/386
           push: true
           tags: weastur/poetry:latest-python-3.12.4-alpine,weastur/poetry:1.8.3-python-3.12.4-alpine
           build-args: |
@@ -555,7 +556,7 @@ jobs:
         with:
           context: .
           file: ./Dockerfile
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64,linux/arm/v7,linux/arm64,linux/386
           push: true
           tags: weastur/poetry:latest-python-3.12-slim-bookworm,weastur/poetry:1.8.3-python-3.12-slim-bookworm
           build-args: |
@@ -568,7 +569,7 @@ jobs:
         with:
           context: .
           file: ./Dockerfile
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64,linux/arm/v7,linux/arm64,linux/386
           push: true
           tags: weastur/poetry:latest-python-3.12-slim,weastur/poetry:1.8.3-python-3.12-slim
           build-args: |
@@ -581,7 +582,7 @@ jobs:
         with:
           context: .
           file: ./Dockerfile
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64,linux/386
           push: true
           tags: weastur/poetry:latest-python-3.12-alpine3.20,weastur/poetry:1.8.3-python-3.12-alpine3.20
           build-args: |
@@ -594,7 +595,7 @@ jobs:
         with:
           context: .
           file: ./Dockerfile
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64,linux/386
           push: true
           tags: weastur/poetry:latest-python-3.12-alpine3.19,weastur/poetry:1.8.3-python-3.12-alpine3.19
           build-args: |
@@ -607,7 +608,7 @@ jobs:
         with:
           context: .
           file: ./Dockerfile
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64,linux/386
           push: true
           tags: weastur/poetry:latest-python-3.12-alpine,weastur/poetry:1.8.3-python-3.12-alpine
           build-args: |
@@ -620,7 +621,7 @@ jobs:
         with:
           context: .
           file: ./Dockerfile
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64,linux/arm/v7,linux/arm64,linux/386
           push: true
           tags: weastur/poetry:latest-python-3.11.9-slim-bookworm,weastur/poetry:1.8.3-python-3.11.9-slim-bookworm
           build-args: |
@@ -633,7 +634,7 @@ jobs:
         with:
           context: .
           file: ./Dockerfile
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64,linux/arm/v7,linux/arm64,linux/386
           push: true
           tags: weastur/poetry:latest-python-3.11.9-slim,weastur/poetry:1.8.3-python-3.11.9-slim
           build-args: |
@@ -646,7 +647,7 @@ jobs:
         with:
           context: .
           file: ./Dockerfile
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64,linux/arm/v7,linux/arm64,linux/386
           push: true
           tags: weastur/poetry:latest-python-3.11.9-bookworm,weastur/poetry:1.8.3-python-3.11.9-bookworm
           build-args: |
@@ -659,7 +660,7 @@ jobs:
         with:
           context: .
           file: ./Dockerfile
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64,linux/386
           push: true
           tags: weastur/poetry:latest-python-3.11.9-alpine3.20,weastur/poetry:1.8.3-python-3.11.9-alpine3.20
           build-args: |
@@ -672,7 +673,7 @@ jobs:
         with:
           context: .
           file: ./Dockerfile
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64,linux/386
           push: true
           tags: weastur/poetry:latest-python-3.11.9-alpine3.19,weastur/poetry:1.8.3-python-3.11.9-alpine3.19
           build-args: |
@@ -685,7 +686,7 @@ jobs:
         with:
           context: .
           file: ./Dockerfile
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64,linux/386
           push: true
           tags: weastur/poetry:latest-python-3.11.9-alpine,weastur/poetry:1.8.3-python-3.11.9-alpine
           build-args: |
@@ -698,7 +699,7 @@ jobs:
         with:
           context: .
           file: ./Dockerfile
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64,linux/arm/v7,linux/arm64,linux/386
           push: true
           tags: weastur/poetry:latest-python-3.11.9,weastur/poetry:1.8.3-python-3.11.9
           build-args: |
@@ -711,7 +712,7 @@ jobs:
         with:
           context: .
           file: ./Dockerfile
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64,linux/arm/v7,linux/arm64,linux/386
           push: true
           tags: weastur/poetry:latest-python-3.11-slim-bookworm,weastur/poetry:1.8.3-python-3.11-slim-bookworm
           build-args: |
@@ -724,7 +725,7 @@ jobs:
         with:
           context: .
           file: ./Dockerfile
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64,linux/arm/v7,linux/arm64,linux/386
           push: true
           tags: weastur/poetry:latest-python-3.11-slim,weastur/poetry:1.8.3-python-3.11-slim
           build-args: |
@@ -737,7 +738,7 @@ jobs:
         with:
           context: .
           file: ./Dockerfile
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64,linux/arm/v7,linux/arm64,linux/386
           push: true
           tags: weastur/poetry:latest-python-3.11-bookworm,weastur/poetry:1.8.3-python-3.11-bookworm
           build-args: |
@@ -750,7 +751,7 @@ jobs:
         with:
           context: .
           file: ./Dockerfile
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64,linux/386
           push: true
           tags: weastur/poetry:latest-python-3.11-alpine3.20,weastur/poetry:1.8.3-python-3.11-alpine3.20
           build-args: |
@@ -763,7 +764,7 @@ jobs:
         with:
           context: .
           file: ./Dockerfile
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64,linux/386
           push: true
           tags: weastur/poetry:latest-python-3.11-alpine3.19,weastur/poetry:1.8.3-python-3.11-alpine3.19
           build-args: |
@@ -776,7 +777,7 @@ jobs:
         with:
           context: .
           file: ./Dockerfile
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64,linux/386
           push: true
           tags: weastur/poetry:latest-python-3.11-alpine,weastur/poetry:1.8.3-python-3.11-alpine
           build-args: |
@@ -789,7 +790,7 @@ jobs:
         with:
           context: .
           file: ./Dockerfile
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64,linux/arm/v7,linux/arm64,linux/386
           push: true
           tags: weastur/poetry:latest-python-3.11,weastur/poetry:1.8.3-python-3.11
           build-args: |
@@ -802,7 +803,7 @@ jobs:
         with:
           context: .
           file: ./Dockerfile
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64,linux/arm/v7,linux/arm64,linux/386
           push: true
           tags: weastur/poetry:latest-python-3.10.14-slim-bookworm,weastur/poetry:1.8.3-python-3.10.14-slim-bookworm
           build-args: |
@@ -815,7 +816,7 @@ jobs:
         with:
           context: .
           file: ./Dockerfile
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64,linux/arm/v7,linux/arm64,linux/386
           push: true
           tags: weastur/poetry:latest-python-3.10.14-slim,weastur/poetry:1.8.3-python-3.10.14-slim
           build-args: |
@@ -828,7 +829,7 @@ jobs:
         with:
           context: .
           file: ./Dockerfile
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64,linux/arm/v7,linux/arm64,linux/386
           push: true
           tags: weastur/poetry:latest-python-3.10.14-bookworm,weastur/poetry:1.8.3-python-3.10.14-bookworm
           build-args: |
@@ -841,7 +842,7 @@ jobs:
         with:
           context: .
           file: ./Dockerfile
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64,linux/386
           push: true
           tags: weastur/poetry:latest-python-3.10.14-alpine3.20,weastur/poetry:1.8.3-python-3.10.14-alpine3.20
           build-args: |
@@ -854,7 +855,7 @@ jobs:
         with:
           context: .
           file: ./Dockerfile
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64,linux/386
           push: true
           tags: weastur/poetry:latest-python-3.10.14-alpine3.19,weastur/poetry:1.8.3-python-3.10.14-alpine3.19
           build-args: |
@@ -867,7 +868,7 @@ jobs:
         with:
           context: .
           file: ./Dockerfile
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64,linux/386
           push: true
           tags: weastur/poetry:latest-python-3.10.14-alpine,weastur/poetry:1.8.3-python-3.10.14-alpine
           build-args: |
@@ -880,7 +881,7 @@ jobs:
         with:
           context: .
           file: ./Dockerfile
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64,linux/arm/v7,linux/arm64,linux/386
           push: true
           tags: weastur/poetry:latest-python-3.10.14,weastur/poetry:1.8.3-python-3.10.14
           build-args: |
@@ -893,7 +894,7 @@ jobs:
         with:
           context: .
           file: ./Dockerfile
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64,linux/arm/v7,linux/arm64,linux/386
           push: true
           tags: weastur/poetry:latest-python-3.10-slim-bookworm,weastur/poetry:1.8.3-python-3.10-slim-bookworm
           build-args: |
@@ -906,7 +907,7 @@ jobs:
         with:
           context: .
           file: ./Dockerfile
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64,linux/arm/v7,linux/arm64,linux/386
           push: true
           tags: weastur/poetry:latest-python-3.10-slim,weastur/poetry:1.8.3-python-3.10-slim
           build-args: |
@@ -919,7 +920,7 @@ jobs:
         with:
           context: .
           file: ./Dockerfile
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64,linux/arm/v7,linux/arm64,linux/386
           push: true
           tags: weastur/poetry:latest-python-3.10-bookworm,weastur/poetry:1.8.3-python-3.10-bookworm
           build-args: |
@@ -932,7 +933,7 @@ jobs:
         with:
           context: .
           file: ./Dockerfile
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64,linux/386
           push: true
           tags: weastur/poetry:latest-python-3.10-alpine3.20,weastur/poetry:1.8.3-python-3.10-alpine3.20
           build-args: |
@@ -945,7 +946,7 @@ jobs:
         with:
           context: .
           file: ./Dockerfile
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64,linux/386
           push: true
           tags: weastur/poetry:latest-python-3.10-alpine3.19,weastur/poetry:1.8.3-python-3.10-alpine3.19
           build-args: |
@@ -958,7 +959,7 @@ jobs:
         with:
           context: .
           file: ./Dockerfile
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64,linux/386
           push: true
           tags: weastur/poetry:latest-python-3.10-alpine,weastur/poetry:1.8.3-python-3.10-alpine
           build-args: |
@@ -971,7 +972,7 @@ jobs:
         with:
           context: .
           file: ./Dockerfile
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64,linux/arm/v7,linux/arm64,linux/386
           push: true
           tags: weastur/poetry:latest-python-3.10,weastur/poetry:1.8.3-python-3.10
           build-args: |
@@ -984,7 +985,7 @@ jobs:
         with:
           context: .
           file: ./Dockerfile
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64,linux/arm/v7,linux/arm64,linux/386
           push: true
           tags: weastur/poetry:latest-python-3-slim-bookworm,weastur/poetry:1.8.3-python-3-slim-bookworm
           build-args: |
@@ -997,7 +998,7 @@ jobs:
         with:
           context: .
           file: ./Dockerfile
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64,linux/arm/v7,linux/arm64,linux/386
           push: true
           tags: weastur/poetry:latest-python-3-slim,weastur/poetry:1.8.3-python-3-slim
           build-args: |
@@ -1010,7 +1011,7 @@ jobs:
         with:
           context: .
           file: ./Dockerfile
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64,linux/386
           push: true
           tags: weastur/poetry:latest-python-3-alpine3.20,weastur/poetry:1.8.3-python-3-alpine3.20
           build-args: |
@@ -1023,7 +1024,7 @@ jobs:
         with:
           context: .
           file: ./Dockerfile
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64,linux/386
           push: true
           tags: weastur/poetry:latest-python-3-alpine3.19,weastur/poetry:1.8.3-python-3-alpine3.19
           build-args: |
@@ -1036,7 +1037,7 @@ jobs:
         with:
           context: .
           file: ./Dockerfile
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64,linux/386
           push: true
           tags: weastur/poetry:latest-python-3-alpine,weastur/poetry:1.8.3-python-3-alpine
           build-args: |

@@ -13,7 +13,12 @@ POETRY_RELEASES_URL = (
 )
 PYTHON_IMAGE_METADATA_URL_TEMPLATE = "https://hub.docker.com/v2/namespaces/library/repositories/python/tags?page_size={page_size}&page={page}"
 ALLOWED_VERSIONS = ["3.8", "3.9", "3.10", "3.11", "3.12"]
-ALLOWED_ARCHITECTURES = ["amd64", "arm64"]
+ALLOWED_ARCHITECTURES = {
+    "amd64": [None, "v2", "v3", "v4"],
+    "arm64": [None],
+    "386": [None],
+    "arm": [None, "v6", "v7"]
+}
 RESTRICTED_OS = [
     "alpine3.8",
     "alpine3.9",
@@ -187,6 +192,7 @@ for metadata in _filter_images(_download_python_image_metadata()):
         if (
             image["os"] == "linux"
             and image["architecture"] in ALLOWED_ARCHITECTURES
+            and image["variant"] in ALLOWED_ARCHITECTURES[image["architecture"]]
         ):
             platforms.append(_make_platform(image))
     if platforms:
