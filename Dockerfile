@@ -5,7 +5,9 @@ ARG POETRY_VERSION
 
 ENV PATH=/root/.local/bin:$PATH
 RUN --mount=type=tmpfs,target=/root/.cargo --mount=type=bind,source=install.py,target=/install.py set -eux; \
-    if grep -q alpine /etc/os-release || [ "$(arch)" = "aarch64" ]; then \
+    if grep -q debian /etc/os-release; then \
+        POETRY_VERSION=$POETRY_VERSION python /install.py || cat /poetry-installer-error-*.log ; \
+    else \
         apk add --no-cache --virtual .build-deps \
             cargo \
             g++ \
@@ -18,8 +20,6 @@ RUN --mount=type=tmpfs,target=/root/.cargo --mount=type=bind,source=install.py,t
         ; \
         POETRY_VERSION=$POETRY_VERSION python /install.py || cat /poetry-installer-error-*.log ; \
         apk del --no-network .build-deps; \
-    else \
-        POETRY_VERSION=$POETRY_VERSION python /install.py || cat /poetry-installer-error-*.log ; \
     fi ; \
     poetry --version
 
