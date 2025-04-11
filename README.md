@@ -63,8 +63,8 @@ Every single step of the build process runs with GitHub Actions.
 This project builds images with the latest poetry for **every latest**
 version of every **supported** python for every available architecture which has
 pre-built [cryptography](https://pypi.org/project/cryptography) and [cffi](https://pypi.org/project/cffi/). For now, those are `x86_64` and `aarch64` architectures.
-For example, it builds images for `3.12.3` python, but not
-for `3.12.0`. Also, there are no builds for **too old** systems like Debian `buster` or `bullseye`
+
+Also, there are no builds for **too old** systems like Debian `buster` or `bullseye`
  or too old Alpine.
 
 ### Why not to re-build every available tag?
