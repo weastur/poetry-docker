@@ -16,8 +16,6 @@ ALLOWED_VERSIONS = ["3.9", "3.10", "3.11", "3.12", "3.13"]
 ALLOWED_ARCHITECTURES = {
     "amd64": [None, "v2", "v3", "v4"],
     "arm64": [None],
-    "386": [None],
-    "arm": [None, "v6", "v7"]
 }
 RESTRICTED_OS = [
     "alpine3.8",
