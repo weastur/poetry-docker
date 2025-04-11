@@ -61,7 +61,8 @@ Every single step of the build process runs with GitHub Actions.
 ## Where is python:XYZ image?
 
 This project builds images with the latest poetry for **every latest**
-version of every **supported** python for every available architecture.
+version of every **supported** python for every available architecture which has
+pre-built [cryptography](https://pypi.org/project/cryptography).
 For example, it builds images for `3.12.3` python, but not
 for `3.12.0`. Also, there are no builds for **too old** systems like Debian `buster` or `bullseye`
  or too old Alpine.
