@@ -13,9 +13,8 @@ POETRY_RELEASES_URL = (
 PYTHON_IMAGE_METADATA_URL_TEMPLATE = "https://hub.docker.com/v2/namespaces/library/repositories/python/tags?page_size={page_size}&page={page}"
 ALLOWED_VERSIONS = ["3.9", "3.10", "3.11", "3.12", "3.13"]
 ALLOWED_ARCHITECTURES = {
-    # "amd64": [None, "v2", "v3", "v4"],
-    # "arm64": [None, "v8"],
-    "arm": [None, "v7"],
+    "amd64": [None, "v2", "v3", "v4"],
+    "arm64": [None, "v8"],
 }
 RESTRICTED_OS = [
     "alpine3.8",
