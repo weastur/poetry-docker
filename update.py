@@ -2,7 +2,6 @@
 
 import json
 import re
-import typing
 import urllib.request
 
 from string import Template
@@ -15,7 +14,8 @@ PYTHON_IMAGE_METADATA_URL_TEMPLATE = "https://hub.docker.com/v2/namespaces/libra
 ALLOWED_VERSIONS = ["3.9", "3.10", "3.11", "3.12", "3.13"]
 ALLOWED_ARCHITECTURES = {
     # "amd64": [None, "v2", "v3", "v4"],
-    "arm64": [None, "v8"],
+    # "arm64": [None, "v8"],
+    "arm": [None, "v7"],
 }
 RESTRICTED_OS = [
     "alpine3.8",
@@ -92,9 +92,7 @@ def _get_latest_poetry_version() -> str:
 
 def _make_platform(image: dict) -> str:
     if image["variant"]:
-        return "{}/{}/{}".format(
-            image["os"], image["architecture"], image["variant"]
-        )
+        return "{}/{}/{}".format(image["os"], image["architecture"], image["variant"])
     else:
         return "{}/{}".format(image["os"], image["architecture"])
 
@@ -115,9 +113,7 @@ def _download_python_image_metadata() -> list:
     metadata = []
     while True:
         with urllib.request.urlopen(
-            PYTHON_IMAGE_METADATA_URL_TEMPLATE.format(
-                page_size=page_size, page=page
-            )
+            PYTHON_IMAGE_METADATA_URL_TEMPLATE.format(page_size=page_size, page=page)
         ) as response:
             data = json.loads(response.read().decode())
             metadata.extend(data["results"])
@@ -153,10 +149,7 @@ def _filter_images(images: list) -> list:
     pre_filtered = []
     latest_version = {ver: None for ver in ALLOWED_VERSIONS}
     for image in images:
-        if (
-            image.get("tag_status") != "active"
-            or image.get("content_type") != "image"
-        ):
+        if image.get("tag_status") != "active" or image.get("content_type") != "image":
             continue
         tag = image["name"]
         if not (
