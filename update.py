@@ -12,7 +12,7 @@ POETRY_RELEASES_URL = (
     "https://api.github.com/repos/python-poetry/poetry/releases/latest"
 )
 PYTHON_IMAGE_METADATA_URL_TEMPLATE = "https://hub.docker.com/v2/namespaces/library/repositories/python/tags?page_size={page_size}&page={page}"
-ALLOWED_VERSIONS = ["3.8", "3.9", "3.10", "3.11", "3.12"]
+ALLOWED_VERSIONS = ["3.9", "3.10", "3.11", "3.12", "3.13"]
 ALLOWED_ARCHITECTURES = {
     "amd64": [None, "v2", "v3", "v4"],
     "arm64": [None],
@@ -31,6 +31,7 @@ RESTRICTED_OS = [
     "alpine3.16",
     "alpine3.17",
     "alpine3.18",
+    "alpine3.19",
     "stretch",
     "buster",
     "bullseye",
@@ -56,12 +57,11 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
+        name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
-        with:
-          version: "lab:latest"
-          driver: cloud
-          endpoint: "weastur/builder"
 
       - name: Download poetry installer
         run: |
