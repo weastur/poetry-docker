@@ -1,5 +1,7 @@
 # poetry-docker
 
+<div align="center">
+
 ![Update](https://github.com/weastur/poetry-docker/workflows/Update/badge.svg)
 [![Build and push](https://github.com/weastur/poetry-docker/actions/workflows/docker-build.yml/badge.svg)](https://github.com/weastur/poetry-docker/actions/workflows/docker-build.yml)
 [![Docker Pulls](https://img.shields.io/docker/pulls/weastur/poetry)](https://hub.docker.com/r/weastur/poetry/)
@@ -7,6 +9,8 @@
 
 **non-windows** [Official Python](https://hub.docker.com/_/python/)
 docker images with the latest [Poetry](https://python-poetry.org)
+
+</div>
 
 ## Usage
 
@@ -77,13 +81,6 @@ for `3.12.0`. Also, there are no builds for **too old** systems like Debian `bus
 You need Docker installed.
 You can start from `.github/workflows/docker-build.yml` to inspect the build process.
 The main files are `Dockerfile` and `update.py`.
-
-Also, you can use [pre-commit](https://pre-commit.com) to run some checks
-locally before committing.
-
-```bash
-pre-commit install
-```
 
 ## License
 
