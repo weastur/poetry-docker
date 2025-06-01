@@ -42,6 +42,357 @@ jobs:
             BASE_IMAGE_VERSION=latest
             POETRY_VERSION=2.1.3
 
+      - name: Build and push (3.9.22-alpine3.22)
+        uses: docker/build-push-action@v6
+        continue-on-error: false
+        with:
+          context: .
+          file: ./Dockerfile
+          platforms: linux/amd64,linux/arm64/v8
+          push: true
+          tags: weastur/poetry:latest-python-3.9.22-alpine3.22,weastur/poetry:2.1.3-python-3.9.22-alpine3.22
+          build-args: |
+            BASE_IMAGE_VERSION=3.9.22-alpine3.22
+            POETRY_VERSION=2.1.3
+
+      - name: Build and push (3.9.22-alpine)
+        uses: docker/build-push-action@v6
+        continue-on-error: false
+        with:
+          context: .
+          file: ./Dockerfile
+          platforms: linux/amd64,linux/arm64/v8
+          push: true
+          tags: weastur/poetry:latest-python-3.9.22-alpine,weastur/poetry:2.1.3-python-3.9.22-alpine
+          build-args: |
+            BASE_IMAGE_VERSION=3.9.22-alpine
+            POETRY_VERSION=2.1.3
+
+      - name: Build and push (3.9-alpine3.22)
+        uses: docker/build-push-action@v6
+        continue-on-error: false
+        with:
+          context: .
+          file: ./Dockerfile
+          platforms: linux/arm64/v8,linux/amd64
+          push: true
+          tags: weastur/poetry:latest-python-3.9-alpine3.22,weastur/poetry:2.1.3-python-3.9-alpine3.22
+          build-args: |
+            BASE_IMAGE_VERSION=3.9-alpine3.22
+            POETRY_VERSION=2.1.3
+
+      - name: Build and push (3.9-alpine)
+        uses: docker/build-push-action@v6
+        continue-on-error: false
+        with:
+          context: .
+          file: ./Dockerfile
+          platforms: linux/amd64,linux/arm64/v8
+          push: true
+          tags: weastur/poetry:latest-python-3.9-alpine,weastur/poetry:2.1.3-python-3.9-alpine
+          build-args: |
+            BASE_IMAGE_VERSION=3.9-alpine
+            POETRY_VERSION=2.1.3
+
+      - name: Build and push (3.10.17-alpine3.22)
+        uses: docker/build-push-action@v6
+        continue-on-error: false
+        with:
+          context: .
+          file: ./Dockerfile
+          platforms: linux/amd64,linux/arm64/v8
+          push: true
+          tags: weastur/poetry:latest-python-3.10.17-alpine3.22,weastur/poetry:2.1.3-python-3.10.17-alpine3.22
+          build-args: |
+            BASE_IMAGE_VERSION=3.10.17-alpine3.22
+            POETRY_VERSION=2.1.3
+
+      - name: Build and push (3.10.17-alpine)
+        uses: docker/build-push-action@v6
+        continue-on-error: false
+        with:
+          context: .
+          file: ./Dockerfile
+          platforms: linux/amd64,linux/arm64/v8
+          push: true
+          tags: weastur/poetry:latest-python-3.10.17-alpine,weastur/poetry:2.1.3-python-3.10.17-alpine
+          build-args: |
+            BASE_IMAGE_VERSION=3.10.17-alpine
+            POETRY_VERSION=2.1.3
+
+      - name: Build and push (3.10-alpine3.22)
+        uses: docker/build-push-action@v6
+        continue-on-error: false
+        with:
+          context: .
+          file: ./Dockerfile
+          platforms: linux/amd64,linux/arm64/v8
+          push: true
+          tags: weastur/poetry:latest-python-3.10-alpine3.22,weastur/poetry:2.1.3-python-3.10-alpine3.22
+          build-args: |
+            BASE_IMAGE_VERSION=3.10-alpine3.22
+            POETRY_VERSION=2.1.3
+
+      - name: Build and push (3.10-alpine)
+        uses: docker/build-push-action@v6
+        continue-on-error: false
+        with:
+          context: .
+          file: ./Dockerfile
+          platforms: linux/amd64,linux/arm64/v8
+          push: true
+          tags: weastur/poetry:latest-python-3.10-alpine,weastur/poetry:2.1.3-python-3.10-alpine
+          build-args: |
+            BASE_IMAGE_VERSION=3.10-alpine
+            POETRY_VERSION=2.1.3
+
+      - name: Build and push (3-alpine)
+        uses: docker/build-push-action@v6
+        continue-on-error: false
+        with:
+          context: .
+          file: ./Dockerfile
+          platforms: linux/amd64,linux/arm64/v8
+          push: true
+          tags: weastur/poetry:latest-python-3-alpine,weastur/poetry:2.1.3-python-3-alpine
+          build-args: |
+            BASE_IMAGE_VERSION=3-alpine
+            POETRY_VERSION=2.1.3
+
+      - name: Build and push (3.13.3-alpine3.22)
+        uses: docker/build-push-action@v6
+        continue-on-error: false
+        with:
+          context: .
+          file: ./Dockerfile
+          platforms: linux/amd64,linux/arm64/v8
+          push: true
+          tags: weastur/poetry:latest-python-3.13.3-alpine3.22,weastur/poetry:2.1.3-python-3.13.3-alpine3.22
+          build-args: |
+            BASE_IMAGE_VERSION=3.13.3-alpine3.22
+            POETRY_VERSION=2.1.3
+
+      - name: Build and push (3.13.3-alpine)
+        uses: docker/build-push-action@v6
+        continue-on-error: false
+        with:
+          context: .
+          file: ./Dockerfile
+          platforms: linux/amd64,linux/arm64/v8
+          push: true
+          tags: weastur/poetry:latest-python-3.13.3-alpine,weastur/poetry:2.1.3-python-3.13.3-alpine
+          build-args: |
+            BASE_IMAGE_VERSION=3.13.3-alpine
+            POETRY_VERSION=2.1.3
+
+      - name: Build and push (3.13-alpine3.22)
+        uses: docker/build-push-action@v6
+        continue-on-error: false
+        with:
+          context: .
+          file: ./Dockerfile
+          platforms: linux/amd64,linux/arm64/v8
+          push: true
+          tags: weastur/poetry:latest-python-3.13-alpine3.22,weastur/poetry:2.1.3-python-3.13-alpine3.22
+          build-args: |
+            BASE_IMAGE_VERSION=3.13-alpine3.22
+            POETRY_VERSION=2.1.3
+
+      - name: Build and push (3.13-alpine)
+        uses: docker/build-push-action@v6
+        continue-on-error: false
+        with:
+          context: .
+          file: ./Dockerfile
+          platforms: linux/amd64,linux/arm64/v8
+          push: true
+          tags: weastur/poetry:latest-python-3.13-alpine,weastur/poetry:2.1.3-python-3.13-alpine
+          build-args: |
+            BASE_IMAGE_VERSION=3.13-alpine
+            POETRY_VERSION=2.1.3
+
+      - name: Build and push (3.12.10-alpine3.22)
+        uses: docker/build-push-action@v6
+        continue-on-error: false
+        with:
+          context: .
+          file: ./Dockerfile
+          platforms: linux/amd64,linux/arm64/v8
+          push: true
+          tags: weastur/poetry:latest-python-3.12.10-alpine3.22,weastur/poetry:2.1.3-python-3.12.10-alpine3.22
+          build-args: |
+            BASE_IMAGE_VERSION=3.12.10-alpine3.22
+            POETRY_VERSION=2.1.3
+
+      - name: Build and push (3.12.10-alpine)
+        uses: docker/build-push-action@v6
+        continue-on-error: false
+        with:
+          context: .
+          file: ./Dockerfile
+          platforms: linux/amd64,linux/arm64/v8
+          push: true
+          tags: weastur/poetry:latest-python-3.12.10-alpine,weastur/poetry:2.1.3-python-3.12.10-alpine
+          build-args: |
+            BASE_IMAGE_VERSION=3.12.10-alpine
+            POETRY_VERSION=2.1.3
+
+      - name: Build and push (3.12-alpine3.22)
+        uses: docker/build-push-action@v6
+        continue-on-error: false
+        with:
+          context: .
+          file: ./Dockerfile
+          platforms: linux/amd64,linux/arm64/v8
+          push: true
+          tags: weastur/poetry:latest-python-3.12-alpine3.22,weastur/poetry:2.1.3-python-3.12-alpine3.22
+          build-args: |
+            BASE_IMAGE_VERSION=3.12-alpine3.22
+            POETRY_VERSION=2.1.3
+
+      - name: Build and push (3.12-alpine)
+        uses: docker/build-push-action@v6
+        continue-on-error: false
+        with:
+          context: .
+          file: ./Dockerfile
+          platforms: linux/amd64,linux/arm64/v8
+          push: true
+          tags: weastur/poetry:latest-python-3.12-alpine,weastur/poetry:2.1.3-python-3.12-alpine
+          build-args: |
+            BASE_IMAGE_VERSION=3.12-alpine
+            POETRY_VERSION=2.1.3
+
+      - name: Build and push (3.11.12-alpine3.22)
+        uses: docker/build-push-action@v6
+        continue-on-error: false
+        with:
+          context: .
+          file: ./Dockerfile
+          platforms: linux/arm64/v8,linux/amd64
+          push: true
+          tags: weastur/poetry:latest-python-3.11.12-alpine3.22,weastur/poetry:2.1.3-python-3.11.12-alpine3.22
+          build-args: |
+            BASE_IMAGE_VERSION=3.11.12-alpine3.22
+            POETRY_VERSION=2.1.3
+
+      - name: Build and push (3.11.12-alpine)
+        uses: docker/build-push-action@v6
+        continue-on-error: false
+        with:
+          context: .
+          file: ./Dockerfile
+          platforms: linux/amd64,linux/arm64/v8
+          push: true
+          tags: weastur/poetry:latest-python-3.11.12-alpine,weastur/poetry:2.1.3-python-3.11.12-alpine
+          build-args: |
+            BASE_IMAGE_VERSION=3.11.12-alpine
+            POETRY_VERSION=2.1.3
+
+      - name: Build and push (3.11-alpine3.22)
+        uses: docker/build-push-action@v6
+        continue-on-error: false
+        with:
+          context: .
+          file: ./Dockerfile
+          platforms: linux/amd64,linux/arm64/v8
+          push: true
+          tags: weastur/poetry:latest-python-3.11-alpine3.22,weastur/poetry:2.1.3-python-3.11-alpine3.22
+          build-args: |
+            BASE_IMAGE_VERSION=3.11-alpine3.22
+            POETRY_VERSION=2.1.3
+
+      - name: Build and push (3.11-alpine)
+        uses: docker/build-push-action@v6
+        continue-on-error: false
+        with:
+          context: .
+          file: ./Dockerfile
+          platforms: linux/amd64,linux/arm64/v8
+          push: true
+          tags: weastur/poetry:latest-python-3.11-alpine,weastur/poetry:2.1.3-python-3.11-alpine
+          build-args: |
+            BASE_IMAGE_VERSION=3.11-alpine
+            POETRY_VERSION=2.1.3
+
+      - name: Build and push (3-alpine3.22)
+        uses: docker/build-push-action@v6
+        continue-on-error: false
+        with:
+          context: .
+          file: ./Dockerfile
+          platforms: linux/amd64,linux/arm64/v8
+          push: true
+          tags: weastur/poetry:latest-python-3-alpine3.22,weastur/poetry:2.1.3-python-3-alpine3.22
+          build-args: |
+            BASE_IMAGE_VERSION=3-alpine3.22
+            POETRY_VERSION=2.1.3
+
+      - name: Build and push (3.13.3)
+        uses: docker/build-push-action@v6
+        continue-on-error: false
+        with:
+          context: .
+          file: ./Dockerfile
+          platforms: linux/amd64,linux/arm64/v8
+          push: true
+          tags: weastur/poetry:latest-python-3.13.3,weastur/poetry:2.1.3-python-3.13.3
+          build-args: |
+            BASE_IMAGE_VERSION=3.13.3
+            POETRY_VERSION=2.1.3
+
+      - name: Build and push (3.13)
+        uses: docker/build-push-action@v6
+        continue-on-error: false
+        with:
+          context: .
+          file: ./Dockerfile
+          platforms: linux/amd64,linux/arm64/v8
+          push: true
+          tags: weastur/poetry:latest-python-3.13,weastur/poetry:2.1.3-python-3.13
+          build-args: |
+            BASE_IMAGE_VERSION=3.13
+            POETRY_VERSION=2.1.3
+
+      - name: Build and push (3.12.10)
+        uses: docker/build-push-action@v6
+        continue-on-error: false
+        with:
+          context: .
+          file: ./Dockerfile
+          platforms: linux/amd64,linux/arm64/v8
+          push: true
+          tags: weastur/poetry:latest-python-3.12.10,weastur/poetry:2.1.3-python-3.12.10
+          build-args: |
+            BASE_IMAGE_VERSION=3.12.10
+            POETRY_VERSION=2.1.3
+
+      - name: Build and push (3.12)
+        uses: docker/build-push-action@v6
+        continue-on-error: false
+        with:
+          context: .
+          file: ./Dockerfile
+          platforms: linux/amd64,linux/arm64/v8
+          push: true
+          tags: weastur/poetry:latest-python-3.12,weastur/poetry:2.1.3-python-3.12
+          build-args: |
+            BASE_IMAGE_VERSION=3.12
+            POETRY_VERSION=2.1.3
+
+      - name: Build and push (3)
+        uses: docker/build-push-action@v6
+        continue-on-error: false
+        with:
+          context: .
+          file: ./Dockerfile
+          platforms: linux/amd64,linux/arm64/v8
+          push: true
+          tags: weastur/poetry:latest-python-3,weastur/poetry:2.1.3-python-3
+          build-args: |
+            BASE_IMAGE_VERSION=3
+            POETRY_VERSION=2.1.3
+
       - name: Build and push (3.9.22-bookworm)
         uses: docker/build-push-action@v6
         continue-on-error: false
@@ -159,19 +510,6 @@ jobs:
             BASE_IMAGE_VERSION=3.13.3-bookworm
             POETRY_VERSION=2.1.3
 
-      - name: Build and push (3.13.3)
-        uses: docker/build-push-action@v6
-        continue-on-error: false
-        with:
-          context: .
-          file: ./Dockerfile
-          platforms: linux/amd64,linux/arm64/v8
-          push: true
-          tags: weastur/poetry:latest-python-3.13.3,weastur/poetry:2.1.3-python-3.13.3
-          build-args: |
-            BASE_IMAGE_VERSION=3.13.3
-            POETRY_VERSION=2.1.3
-
       - name: Build and push (3.13-bookworm)
         uses: docker/build-push-action@v6
         continue-on-error: false
@@ -183,19 +521,6 @@ jobs:
           tags: weastur/poetry:latest-python-3.13-bookworm,weastur/poetry:2.1.3-python-3.13-bookworm
           build-args: |
             BASE_IMAGE_VERSION=3.13-bookworm
-            POETRY_VERSION=2.1.3
-
-      - name: Build and push (3.13)
-        uses: docker/build-push-action@v6
-        continue-on-error: false
-        with:
-          context: .
-          file: ./Dockerfile
-          platforms: linux/amd64,linux/arm64/v8
-          push: true
-          tags: weastur/poetry:latest-python-3.13,weastur/poetry:2.1.3-python-3.13
-          build-args: |
-            BASE_IMAGE_VERSION=3.13
             POETRY_VERSION=2.1.3
 
       - name: Build and push (3.12.10-bookworm)
@@ -211,19 +536,6 @@ jobs:
             BASE_IMAGE_VERSION=3.12.10-bookworm
             POETRY_VERSION=2.1.3
 
-      - name: Build and push (3.12.10)
-        uses: docker/build-push-action@v6
-        continue-on-error: false
-        with:
-          context: .
-          file: ./Dockerfile
-          platforms: linux/amd64,linux/arm64/v8
-          push: true
-          tags: weastur/poetry:latest-python-3.12.10,weastur/poetry:2.1.3-python-3.12.10
-          build-args: |
-            BASE_IMAGE_VERSION=3.12.10
-            POETRY_VERSION=2.1.3
-
       - name: Build and push (3.12-bookworm)
         uses: docker/build-push-action@v6
         continue-on-error: false
@@ -235,19 +547,6 @@ jobs:
           tags: weastur/poetry:latest-python-3.12-bookworm,weastur/poetry:2.1.3-python-3.12-bookworm
           build-args: |
             BASE_IMAGE_VERSION=3.12-bookworm
-            POETRY_VERSION=2.1.3
-
-      - name: Build and push (3.12)
-        uses: docker/build-push-action@v6
-        continue-on-error: false
-        with:
-          context: .
-          file: ./Dockerfile
-          platforms: linux/amd64,linux/arm64/v8
-          push: true
-          tags: weastur/poetry:latest-python-3.12,weastur/poetry:2.1.3-python-3.12
-          build-args: |
-            BASE_IMAGE_VERSION=3.12
             POETRY_VERSION=2.1.3
 
       - name: Build and push (3.11.12-bookworm)
@@ -295,7 +594,7 @@ jobs:
         with:
           context: .
           file: ./Dockerfile
-          platforms: linux/arm64/v8,linux/amd64
+          platforms: linux/amd64,linux/arm64/v8
           push: true
           tags: weastur/poetry:latest-python-3.11,weastur/poetry:2.1.3-python-3.11
           build-args: |
@@ -313,19 +612,6 @@ jobs:
           tags: weastur/poetry:latest-python-3-bookworm,weastur/poetry:2.1.3-python-3-bookworm
           build-args: |
             BASE_IMAGE_VERSION=3-bookworm
-            POETRY_VERSION=2.1.3
-
-      - name: Build and push (3)
-        uses: docker/build-push-action@v6
-        continue-on-error: false
-        with:
-          context: .
-          file: ./Dockerfile
-          platforms: linux/amd64,linux/arm64/v8
-          push: true
-          tags: weastur/poetry:latest-python-3,weastur/poetry:2.1.3-python-3
-          build-args: |
-            BASE_IMAGE_VERSION=3
             POETRY_VERSION=2.1.3
 
       - name: Build and push (3.10.17-slim-bookworm)
@@ -640,19 +926,6 @@ jobs:
             BASE_IMAGE_VERSION=3.10.17-alpine3.20
             POETRY_VERSION=2.1.3
 
-      - name: Build and push (3.10.17-alpine)
-        uses: docker/build-push-action@v6
-        continue-on-error: false
-        with:
-          context: .
-          file: ./Dockerfile
-          platforms: linux/amd64,linux/arm64/v8
-          push: true
-          tags: weastur/poetry:latest-python-3.10.17-alpine,weastur/poetry:2.1.3-python-3.10.17-alpine
-          build-args: |
-            BASE_IMAGE_VERSION=3.10.17-alpine
-            POETRY_VERSION=2.1.3
-
       - name: Build and push (3.10-alpine3.21)
         uses: docker/build-push-action@v6
         continue-on-error: false
@@ -677,19 +950,6 @@ jobs:
           tags: weastur/poetry:latest-python-3.10-alpine3.20,weastur/poetry:2.1.3-python-3.10-alpine3.20
           build-args: |
             BASE_IMAGE_VERSION=3.10-alpine3.20
-            POETRY_VERSION=2.1.3
-
-      - name: Build and push (3.10-alpine)
-        uses: docker/build-push-action@v6
-        continue-on-error: false
-        with:
-          context: .
-          file: ./Dockerfile
-          platforms: linux/amd64,linux/arm64/v8
-          push: true
-          tags: weastur/poetry:latest-python-3.10-alpine,weastur/poetry:2.1.3-python-3.10-alpine
-          build-args: |
-            BASE_IMAGE_VERSION=3.10-alpine
             POETRY_VERSION=2.1.3
 
       - name: Build and push (3.12.10-alpine3.21)
@@ -718,19 +978,6 @@ jobs:
             BASE_IMAGE_VERSION=3.12.10-alpine3.20
             POETRY_VERSION=2.1.3
 
-      - name: Build and push (3.12.10-alpine)
-        uses: docker/build-push-action@v6
-        continue-on-error: false
-        with:
-          context: .
-          file: ./Dockerfile
-          platforms: linux/amd64,linux/arm64/v8
-          push: true
-          tags: weastur/poetry:latest-python-3.12.10-alpine,weastur/poetry:2.1.3-python-3.12.10-alpine
-          build-args: |
-            BASE_IMAGE_VERSION=3.12.10-alpine
-            POETRY_VERSION=2.1.3
-
       - name: Build and push (3.12-alpine3.21)
         uses: docker/build-push-action@v6
         continue-on-error: false
@@ -755,19 +1002,6 @@ jobs:
           tags: weastur/poetry:latest-python-3.12-alpine3.20,weastur/poetry:2.1.3-python-3.12-alpine3.20
           build-args: |
             BASE_IMAGE_VERSION=3.12-alpine3.20
-            POETRY_VERSION=2.1.3
-
-      - name: Build and push (3.12-alpine)
-        uses: docker/build-push-action@v6
-        continue-on-error: false
-        with:
-          context: .
-          file: ./Dockerfile
-          platforms: linux/amd64,linux/arm64/v8
-          push: true
-          tags: weastur/poetry:latest-python-3.12-alpine,weastur/poetry:2.1.3-python-3.12-alpine
-          build-args: |
-            BASE_IMAGE_VERSION=3.12-alpine
             POETRY_VERSION=2.1.3
 
       - name: Build and push (3.11.12-alpine3.21)
@@ -796,19 +1030,6 @@ jobs:
             BASE_IMAGE_VERSION=3.11.12-alpine3.20
             POETRY_VERSION=2.1.3
 
-      - name: Build and push (3.11.12-alpine)
-        uses: docker/build-push-action@v6
-        continue-on-error: false
-        with:
-          context: .
-          file: ./Dockerfile
-          platforms: linux/amd64,linux/arm64/v8
-          push: true
-          tags: weastur/poetry:latest-python-3.11.12-alpine,weastur/poetry:2.1.3-python-3.11.12-alpine
-          build-args: |
-            BASE_IMAGE_VERSION=3.11.12-alpine
-            POETRY_VERSION=2.1.3
-
       - name: Build and push (3.11-alpine3.21)
         uses: docker/build-push-action@v6
         continue-on-error: false
@@ -835,19 +1056,6 @@ jobs:
             BASE_IMAGE_VERSION=3.11-alpine3.20
             POETRY_VERSION=2.1.3
 
-      - name: Build and push (3.11-alpine)
-        uses: docker/build-push-action@v6
-        continue-on-error: false
-        with:
-          context: .
-          file: ./Dockerfile
-          platforms: linux/amd64,linux/arm64/v8
-          push: true
-          tags: weastur/poetry:latest-python-3.11-alpine,weastur/poetry:2.1.3-python-3.11-alpine
-          build-args: |
-            BASE_IMAGE_VERSION=3.11-alpine
-            POETRY_VERSION=2.1.3
-
       - name: Build and push (3-alpine3.21)
         uses: docker/build-push-action@v6
         continue-on-error: false
@@ -867,24 +1075,11 @@ jobs:
         with:
           context: .
           file: ./Dockerfile
-          platforms: linux/arm64/v8,linux/amd64
+          platforms: linux/amd64,linux/arm64/v8
           push: true
           tags: weastur/poetry:latest-python-3-alpine3.20,weastur/poetry:2.1.3-python-3-alpine3.20
           build-args: |
             BASE_IMAGE_VERSION=3-alpine3.20
-            POETRY_VERSION=2.1.3
-
-      - name: Build and push (3-alpine)
-        uses: docker/build-push-action@v6
-        continue-on-error: false
-        with:
-          context: .
-          file: ./Dockerfile
-          platforms: linux/amd64,linux/arm64/v8
-          push: true
-          tags: weastur/poetry:latest-python-3-alpine,weastur/poetry:2.1.3-python-3-alpine
-          build-args: |
-            BASE_IMAGE_VERSION=3-alpine
             POETRY_VERSION=2.1.3
 
       - name: Build and push (3.13.3-alpine3.21)
@@ -913,19 +1108,6 @@ jobs:
             BASE_IMAGE_VERSION=3.13.3-alpine3.20
             POETRY_VERSION=2.1.3
 
-      - name: Build and push (3.13.3-alpine)
-        uses: docker/build-push-action@v6
-        continue-on-error: false
-        with:
-          context: .
-          file: ./Dockerfile
-          platforms: linux/amd64,linux/arm64/v8
-          push: true
-          tags: weastur/poetry:latest-python-3.13.3-alpine,weastur/poetry:2.1.3-python-3.13.3-alpine
-          build-args: |
-            BASE_IMAGE_VERSION=3.13.3-alpine
-            POETRY_VERSION=2.1.3
-
       - name: Build and push (3.13-alpine3.21)
         uses: docker/build-push-action@v6
         continue-on-error: false
@@ -950,19 +1132,6 @@ jobs:
           tags: weastur/poetry:latest-python-3.13-alpine3.20,weastur/poetry:2.1.3-python-3.13-alpine3.20
           build-args: |
             BASE_IMAGE_VERSION=3.13-alpine3.20
-            POETRY_VERSION=2.1.3
-
-      - name: Build and push (3.13-alpine)
-        uses: docker/build-push-action@v6
-        continue-on-error: false
-        with:
-          context: .
-          file: ./Dockerfile
-          platforms: linux/arm64/v8,linux/amd64
-          push: true
-          tags: weastur/poetry:latest-python-3.13-alpine,weastur/poetry:2.1.3-python-3.13-alpine
-          build-args: |
-            BASE_IMAGE_VERSION=3.13-alpine
             POETRY_VERSION=2.1.3
 
       - name: Build and push (3.9.22-alpine3.21)
@@ -991,19 +1160,6 @@ jobs:
             BASE_IMAGE_VERSION=3.9.22-alpine3.20
             POETRY_VERSION=2.1.3
 
-      - name: Build and push (3.9.22-alpine)
-        uses: docker/build-push-action@v6
-        continue-on-error: false
-        with:
-          context: .
-          file: ./Dockerfile
-          platforms: linux/amd64,linux/arm64/v8
-          push: true
-          tags: weastur/poetry:latest-python-3.9.22-alpine,weastur/poetry:2.1.3-python-3.9.22-alpine
-          build-args: |
-            BASE_IMAGE_VERSION=3.9.22-alpine
-            POETRY_VERSION=2.1.3
-
       - name: Build and push (3.9-alpine3.21)
         uses: docker/build-push-action@v6
         continue-on-error: false
@@ -1028,17 +1184,4 @@ jobs:
           tags: weastur/poetry:latest-python-3.9-alpine3.20,weastur/poetry:2.1.3-python-3.9-alpine3.20
           build-args: |
             BASE_IMAGE_VERSION=3.9-alpine3.20
-            POETRY_VERSION=2.1.3
-
-      - name: Build and push (3.9-alpine)
-        uses: docker/build-push-action@v6
-        continue-on-error: false
-        with:
-          context: .
-          file: ./Dockerfile
-          platforms: linux/amd64,linux/arm64/v8
-          push: true
-          tags: weastur/poetry:latest-python-3.9-alpine,weastur/poetry:2.1.3-python-3.9-alpine
-          build-args: |
-            BASE_IMAGE_VERSION=3.9-alpine
             POETRY_VERSION=2.1.3
